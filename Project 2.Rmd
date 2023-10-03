@@ -1,0 +1,82 @@
+---
+title: "Project 2"
+author: "Yvette Callender"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Packages used in this project
+
+```{r, message=FALSE}
+library(tidyverse)
+#library(httr)
+library(jsonlite)
+```
+
+# Introduction
+
+The API chosen for investigation was data from the Center for Disease Control relating to [Vaccination Coverage among Adolescents](https://data.cdc.gov/Teen-Vaccinations/Vaccination-Coverage-among-Adolescents-13-17-Years/ee48-w5t6).  The dataset contains columns for vaccine, dose, geography type (national, regional, state, and local area), geography name, survey year, dimension type, dimension,estimate 95%CI, and sample size.  Dimension types include age, race/ethnicity, insurance coverage, poverty levels, proximity to an urban area, and overall.  This suggests areas of inquiry regarding things like:  
+
+- geographical variation in vaccination coverage at regional level or state level  
+- geographical variation in vaccination coverage differences due to  race/ethnicity or insurance coverage at the 
+regional level and state level  
+- variation in vaccination coverage based on the vaccine in question
+
+The vaccines covered by the database include:
+
+- HPV (human papillomavirus)  
+- Menigococcal Conjugate  
+- T or Td  (tetanus or tetanus/diptheria)  
+- Tdap (tetanus, diptheria, and pertussis) (Replaced Td in 2005) 
+- Varicella (chicken pox)  
+- Hep A (hepatitis A)  
+- MMR (measles, mumps, rubella)  
+- HepB (hepatitis B)  
+
+Parental attitudes may vary a great deal between these vaccines due to several factors such as perception of the threat being protected against (chicken pox not as serious as diptheria), whether the threat is associated with sexual behavior or drug use (HPV or HepB), and whether the vaccine has received particular attention from the anti-vaccination activists (MMR).  The HPV vaccine may also be perceived as more valuable to children who are assigned female at birth than those assigned male at birth. 
+
+For HPV,the database uses the dose variable as way to track differential treatment of "male" and "female" children.
+
+In this project, functions were developed to help users query the dataset about the following:
+
+- HPV Vaccination Coverage: Regional level differences between genders with the option of changing dimension (race/ethnicity, poverty, insurance coverge, urbancity)  
+- HPV Vaccination Coverage: Regional level differences in overall coverage estimate with the option of changing dimension (race/ethnicity, poverty, insurance coverage, urbancity)  
+- Vaccination for Vaccines other than HPV: Regional level differences in coverage estimates with the option of changing vaccine and dimension  
+- Vaccination for Vaccines other than HPV: State level differences in coverage estimates with the option of changing vaccine and dimension.  
+
+Geographical information in the database is presented at a state level and at a regional level. The regions are listed [here](https://www.hhs.gov/about/agencies/iea/regional-offices/index.html). They are:
+
+- 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, and Vermont  
+- 2: New Jersey, New York, Puerto Rico, and the Virgin Islands  
+- 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virgina  
+- 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, Suth Carolina, and Tennessee 
+- 5: Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin  
+- 6: Arkansas, Louisiana, New Mexico, Oklahoma, and Texas  
+- 7: Iowa, Kansas, Missouri, and Nebraska  
+- 8: Colorado, Montana, North Dakota, South Dakota, Utah, and Wyoming
+- 9: Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, 
+Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau  
+- 10:Alaska, Idaho, Oregon, and Washington
+
+## Accessing Data
+
+### Downloading data
+
+The dataset for [Vaccination Coverage among Adolescents](https://data.cdc.gov/Teen-Vaccinations/Vaccination-Coverage-among-Adolescents-13-17-Years/ee48-w5t6) was converted from a JSON object to and R object using `fromJSON` which is in the `jsonlite` package.  The dataset currently contains >25,000 lines (which is greater than the default for from JSON), so the function call needed an explicit limit.  
+
+```{r, cache=TRUE}
+
+vaccine_API <- fromJSON("https://data.cdc.gov/resource/ee48-w5t6.json?$limit=50000") %>% as_tibble
+
+#Verify the number of rows is less than 50000 (that the limit was sufficient to retrieve the complete dataset).
+
+nrow(vaccine_API)
+vaccine_API
+
+```
