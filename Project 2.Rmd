@@ -176,3 +176,127 @@ demo_function_2a
 *States that have more than a 15% difference (absolute) in coverage rates (with a higher percent of females being vaccinated) include New Jersey, Tennessee, Virginia, and West Virginia.  At the other extreme, Kentucky has more than a 15% difference (absolute) in coverage with a higher percent of males vaccinated.  The quick look at the data suggests that further study of the gender differences in HPV vaccine coverage correlated with region might  be interesting.*  
 
 
+
+### Function 3 for  Vaccination Coverage for Vaccines other than HPV: Regional Level Differences 
+
+The function `vaccines_regional_eval_function` selects the rows related to  vaccination with vaccines other than HPV at the regional level.  Varicella data is also being excluded because the compliance data is separated into entries for teens with just vaccinations, those with a history of the disease and those with both. 
+
+The user can select a `year_of_interest` to use in the analysis.  Possible values for years are each year of `2006` through `2022`.  The user may also select.  A default value of 2022 is provided for `year_of_interest`
+
+The user can select a `vaccine_of_interest`.  Possible values include:
+
+- "Meningococcal Conjugate"  
+- "Td or Tdap"  
+- "Tdap"  
+- "Hep A"  
+- "MMR"  
+- "HepB" 
+
+A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.
+
+-
+
+```{r, Function 3 for looking at data for vaccines other than HPV data-regional level  }
+vaccines_regional_eval_function <- function(vaccine_of_interest = NULL, year_of_interest = "2022" ){
+  
+    #Check input type
+    if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022'))) stop
+        ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
+         
+    filtered_API <- vaccine_API %>% 
+    filter(vaccine != "HPV" & vaccine != "Varicella"          #Select vaccine=not HPV or Varicella
+           & geography_type == "HHS Regions/National") %>%    #Select National/Regional Level
+    filter(year_season == year_of_interest) %>%               #Filter Year based on user request
+    filter (dimension =="13-17 Years")%>%                            #Filter age to allow comparison between vaccines
+    mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
+
+    # filter for vaccine_of_interest if it is present, otherwise return all
+    if (!is.null(vaccine_of_interest)) {
+        filtered_API <- filtered_API %>% 
+          filter(vaccine == vaccine_of_interest)
+    }
+    return(filtered_API)
+}
+
+```
+
+A demonstration of the function (`vaccines_regional_eval_function`) is given below.
+
+```{r, demonstration of Function 3 , message=TRUE, warning=TRUE}
+demo_function_3 <- vaccines_regional_eval_function(year_of_interest = "2021")
+```
+
+Presentation of the results from this function call transformed into a user-friendly table is given below.
+
+```{r, table using data from Function 3, rows.print=11}
+demo_function_3a <- demo_function_3 %>%
+                    select(geography, vaccine, coverage_estimate)%>% 
+                    pivot_wider(names_from=vaccine, values_from=coverage_estimate)
+demo_function_3a
+
+
+```
+
+*Based on this function call, it appears that vaccination coverage for Hepatitis A is lower than the other vaccines.  
+[Immunization requiredments for secondary school](https://www.immunize.org/laws/hepa.asp) only include Hepatitis A in about half the states. This might be related.  Looking at the state data should include could show if lower rates of vaccination for Hepatitis A are observed only in states without a vaccination requirement. 
+
+
+### Function 4 for  Vaccination Coverage for Vaccines other than HPV: State Level Differences 
+
+The function `vaccines_state_eval_function` selects the rows related to  vaccination with vaccines other than HPV at the state level.  Varicella data is also being excluded because the compliance data is separated into entries for teens with just vaccinations, those with a history of the disease and those with both. 
+
+The user can select a `year_of_interest` to use in the analysis.  Possible values for years are each year of `2006` through `2022`.  A default value of 2022 is provided for `year_of_interest`
+
+The user can select a `vaccine_of_interest`.  Possible values include:
+
+- "Meningococcal Conjugate"  
+- "Td or Tdap"  
+- "Tdap"  
+- "Hep A"  
+- "MMR"  
+- "HepB" 
+
+A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.
+
+The user can select a `state_or_territory_of_interest`. Possible values include the fifty states as well as the territories with data present in the dataset (District of Columbia, Guam, Puerto Rico, and U.S. Virgin Islands.) A default value of NULL is provided for `state_of_interest` this will return data for all the states and territories.
+
+```{r, Function 4 for looking at data for vaccines other than HPV or varicella data-state level  }
+vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_interest=NULL, year_of_interest = "2022" ){
+  
+    #Check input type
+    if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022'))) 
+       {stop
+        ("Year out of range, choose a year between 2006 and 2022 (inclusive).")}
+         
+    filtered_API <- vaccine_API %>% 
+    filter(vaccine != "HPV" & vaccine != "Varicella" &         #Select vaccine=not HPV or Varicella
+          (geography %in% state.name | 
+           geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands"))) %>%
+    filter(year_season == year_of_interest) %>%               #Filter Year based on user request
+    filter (dimension =="13-17 Years")%>%                     #Filter age to allow easy comparison between vaccines
+    mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
+
+    # filter for vaccine_of_interest if it is present, otherwise return all
+    if (!is.null(vaccine_of_interest)) {
+        filtered_API <- filtered_API %>% 
+          filter(vaccine == vaccine_of_interest)
+    }
+
+    # filter for state_of_interest if it is present, otherwise return all
+    if (!is.null(state_of_interest)) {
+        filtered_API <- filtered_API %>% 
+          filter(geography == state_of_interest)
+    }
+
+    return(filtered_API)
+}
+```
+
+A demonstration of the function (`vaccines_state_eval_function`) is given below.
+
+```{r, demonstration of Function 4 , message=TRUE, warning=TRUE}
+demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state_of_interest="North Carolina")
+demo_function_4
+```
