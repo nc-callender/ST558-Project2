@@ -17,6 +17,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 #library(httr)
 library(jsonlite)
+library(ggplot2)
+
 ```
 
 # Introduction
@@ -54,8 +56,8 @@ Geographical information in the database is presented at a state level and at a 
 
 - 1: Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, and Vermont  
 - 2: New Jersey, New York, Puerto Rico, and the Virgin Islands  
-- 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virgina  
-- 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, Suth Carolina, and Tennessee 
+- 3: Delaware, District of Columbia, Maryland, Pennsylvania, Virginia, and West Virginia  
+- 4: Alabama, Florida, Georgia, Kentucky, Mississippi, North Carolina, South Carolina, and Tennessee 
 - 5: Illinois, Indiana, Michigan, Minnesota, Ohio, and Wisconsin  
 - 6: Arkansas, Louisiana, New Mexico, Oklahoma, and Texas  
 - 7: Iowa, Kansas, Missouri, and Nebraska  
@@ -63,6 +65,45 @@ Geographical information in the database is presented at a state level and at a 
 - 9: Arizona, California, Hawaii, Nevada, American Samoa, Commonwealth of the Northern Mariana Islands, 
 Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau  
 - 10:Alaska, Idaho, Oregon, and Washington
+
+These regions are shown visually here.
+
+
+
+
+```{r}
+#Get mapping data for states
+map_data_1 <- map_data("state")
+
+#Add HHS region info for states
+map_data_2 <- as_tibble(map_data_1) %>%  mutate("HHS_region" =
+      (if_else(region %in% c('connecticut', 'maine', 'massachusetts', 
+                                'new hampshire', 'rhode island', 'vermont'),"1",
+      if_else(region %in% c('new jersey', 'new york', "puerto rico", "u.s. virgin islands"),"2",
+      if_else(region %in% c('delaware','district of columbia', 'maryland', 'pennsylvania', 'virginia',                                  'west virginia'),"3",
+      if_else(region %in% c('alabama', 'florida','georgia','kentucky', 'mississippi','north carolina',                                  'south carolina','tennessee'),"4",
+      if_else(region %in% c('illinois','indiana', 'michigan', 'minnesota', 'ohio', 
+                               'wisconsin'),"5",
+      if_else(region %in% c('arkansas', 'louisiana', 'oklahoma', 'new mexico','texas'),"6",
+      if_else(region %in% c('iowa', 'kansas','missouri', 'nebraska'),"7",
+      if_else(region %in% c('colorado', 'montana','north dakota', 'south dakota',  
+                                'utah', 'wyoming'),"8",
+      if_else(region %in% c('arizona', 'california', 'hawaii', 'nevada', "guam") ,"9",
+      if_else(region %in% c('alaska', 'idaho', 'oregon', 
+                               'washington') ,"10","error"))))))))))))
+
+#Make plot
+ggplot(map_data_2, aes (x = long, y = lat, group = group)) +
+    geom_polygon(aes(fill = HHS_region), color = "black")+
+    theme(axis.text = element_blank(),                  #removes lat and long labels and grid
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          rect = element_blank())+
+    labs(title = "HHS Regions for Contiental United States")+
+    guides(fill = guide_legend(title = "HHS Regions"))+
+    scale_fill_discrete(breaks = c('1','2','3', '4','5','6','7','8','9','10')) #Reorder legend
+ 
+```
 
 ## Accessing Data
 
@@ -174,7 +215,6 @@ demo_function_2a
 ```
 
 *States that have more than a 15% difference (absolute) in coverage rates (with a higher percent of females being vaccinated) include New Jersey, Tennessee, Virginia, and West Virginia.  At the other extreme, Kentucky has more than a 15% difference (absolute) in coverage with a higher percent of males vaccinated.  The quick look at the data suggests that further study of the gender differences in HPV vaccine coverage correlated with region might  be interesting.*  
-
 
 
 ### Function 3 for  Vaccination Coverage for Vaccines other than HPV: Regional Level Differences 
@@ -300,3 +340,231 @@ A demonstration of the function (`vaccines_state_eval_function`) is given below.
 demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state_of_interest="North Carolina")
 demo_function_4
 ```
+
+### Function 5 for  Vaccination Coverage 2018-2022 for Vaccines other than HPV or Varicella: State Level Differences 
+
+The function `vaccines_4_year_function` selects the rows related to vaccination with vaccines other than HPV and Varicella at the state level.  
+The user can select a `dimension_type_of_interest`. .
+
+- "Insurance Coverage"  
+- "Poverty"  
+- "Race/Ethnicity "  
+- "Urbanicity"  
+- "Overall"  
+
+The complete list of dimension types are only available for Tdap and Meningococcal Conjugate.  For other vaccines, only `Overall` is available.  The default value for `dimension_type_of_interest` is "Overall".
+
+The user can select a `vaccine_of_interest`.  Possible values include:
+- "Meningococcal Conjugate"  
+- "Td or Tdap"  
+- "Tdap"  
+- "Hep A"  
+- "MMR"  
+- "HepB" 
+
+A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.
+
+
+```{r, Function 5 for looking at 4-year demographic data  }
+vaccines_4_year_function <- function(dimension_type_of_interest="Overall",
+                                     vaccine_of_interest = NULL){
+
+
+         
+    filtered_API <- vaccine_API %>% 
+                    filter(year_season == "2018-2022") %>%                         #select the 4-year season
+                    filter(vaccine != "HPV" & vaccine != "Varicella") %>%          #remove HPV and varicella
+                    filter(dimension_type == dimension_type_of_interest) %>%       #select the dimension_type of interest
+                    filter(geography %in% state.name |                             #remove metropolitan areas
+                           geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands", "United States")) %>%
+                    mutate(coverage_estimate = as.numeric(coverage_estimate))      #Recast coverage_estimate to numeric 
+    
+    # filter for vaccine_of_interest if it is present, otherwise return all
+    if (!is.null(vaccine_of_interest)) {
+        filtered_API <- filtered_API %>% 
+                        filter(vaccine == vaccine_of_interest)
+    }
+    return(filtered_API)
+}
+```
+
+A demonstration of the function (`vaccines_4_year_function`) is given below.
+
+```{r, demonstration of Function 5 , message=TRUE, warning=TRUE}
+demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", vaccine_of_interest = "Meningococcal Conjugate")
+demo_function_5
+unique(demo_function_5$vaccine)
+unique(demo_function_5$dimension)
+```
+
+Presentation of the results from this function call transformed into a user-friendly table is given below.
+
+```{r, table using data from Function 5, rows.print=52}
+
+demo_function_5a <- demo_function_5 %>%
+                    select(geography, dimension, coverage_estimate) %>%
+                    pivot_wider(names_from = dimension, values_from = coverage_estimate)
+
+demo_function_5a
+```
+
+
+### Summary of Functions 
+
+Five functions were developed to do the following:
+
+- Function 1: Obtain regional data About differences in HPV vaccination coverage between genders; user can specify year  
+- Function 2: Obtain state sata about differences in HPV vaccination coverage between genders; user can specify year  
+- Function 3: Obtain regional data about vaccination coverage for meningococcal disease, tetanus, diptheria, pertussis, hepatitis A, measles, mumps, rubella, and hepatitis B; the user can specify a year and a vaccine  
+- Function 4: Obtain state data about vaccination coverage for meningococcal disease, tetanus, diptheria, pertussis, hepatitis A, measles, mumps, rubella, and hepatitis B; the user can specify a year , a vaccine, and a state  
+- Function 5: Obtain state data about vaccination data for the Tdap and meningococcal vaccine for the 2018-2022 time frame sorted by dimension (insurance coverage, poverty, race/ethnicity, urbanicity, and overall); the user may specify a vaccine and a dimension.  
+
+## Exploratory Data Analysis
+
+### Comparing Vaccine Coverage for Tdap and Meningococcal Conjugate
+
+While all states require Tdap vaccination for secondary school attendance, only 35 states require vaccination with the meningococcal conjugate for secondary school attendance.  A possible line of inquiry is does this difference lead to lower vaccine coverage for meningococcal conjugate. Data will be obtained for this using Function 5. The function will be called with all vaccines and overall for the dimension.  The other vaccines will be filtered out and then the table will be pivoted to a wide format.
+
+```{r, compare Tdap and menigococcal }
+coverage_comparison_1 <- vaccines_4_year_function () %>%
+              filter(vaccine == "Tdap" | vaccine == "Meningococcal Conjugate") %>%
+              select (geography, vaccine, coverage_estimate) %>%
+              pivot_wider(names_from = vaccine, values_from = coverage_estimate)
+
+#Change columns names to eliminate illegal characters introduced in pivot operation
+
+colnames(coverage_comparison_1) <- c("geography", "Meningococcal_conjugate", "Tdap")
+
+coverage_comparison_1
+
+#Print quantile summaries
+summary(coverage_comparison_1[2])
+summary(coverage_comparison_1[3])
+```
+
+The data for vaccination with the meningococcal conjugate does appear more spread out.  
+
+### Vaccine Coverage for Meningococcal Conjugate by State Requirements
+
+To see if the spread in coverage for mengicoccal disease is related to [requirements for secondary school attendance] (https://www.immunize.org/laws/menin_sec.asp), a column will be added to the data giving the regulatory status (as a categorical variable) and then that will be used for comparison.  Since vaccination is not mandated at a federal level, it is also filtered out.
+
+```{r}
+#States not requiring vaccination with meningococcal conjugate
+mening_not_required <- c("Alabama","Alaska","California", "Colorado", "Florida", "Mississippi", "Montana",
+                         "Nebraska", "New Hampshire", "Oklahoma", "Oregon", "South Carolina", "Tennessee",
+                         "Washington", "Wyoming" )
+
+
+meningococcal_regulation_analysis <- coverage_comparison_1 %>%
+                                     select(!Tdap) %>%                          #remove Tdap column
+                                     filter(geography != "United States") %>%   #remove US row
+                                     mutate(mening_req = if_else                #create new variable
+                                            (geography %in% mening_not_required, 
+                                             "No", 
+                                             "Yes")) %>%
+                                     select(geography, mening_req, Meningococcal_conjugate) #reorder columns
+
+#Set the regulatory status to be a factor
+meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulation_analysis$mening_req)
+
+meningococcal_regulation_analysis
+```
+
+This data set can be visualized using a boxplot.
+
+```{r, boxplot}
+#Boxplots comparing states with and without  requirements for secondary school attendance
+graph_1 <- ggplot(meningococcal_regulation_analysis, aes(x = mening_req, y = Meningococcal_conjugate))
+graph_1 + geom_boxplot(fill='gray')+
+  labs( x = "Vaccination Required for Secondary School",
+        y = "Vaccination Coverage Estimate",
+        title = "Variation in Coverage Estimate for Meningococcal Disease",
+        subtitle = "by if State Requires Vaccination for Secondary School Attendance")
+```
+
+The boxplots show a considerable difference in vaccination coverage rates between states with and without a vaccination requirement for secondary school.  
+
+It is interesting to consider if the parental choice to vaccinate children is influenced by some other factor when vaccination is not mandated for school attendance.  The data allows evaluation using insurance coverage, poverty,race/ethnicity, and urbanicity. 
+
+###  Vaccine Coverage for Meningococcal Conjugate in States without Mandates 
+
+Analyses were performed to determine if coverage estimates for meningococcal disease are affected by the factors insurance coverage, poverty, race/ethnicity, and urbanicity.  Function 5 was used, selecting for meningococcal conjugate and the appropriate dimension, working through them consecutively.
+Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors and a box plots generated.
+
+```{r, compare menigococcal using insurance}
+
+insurance_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage",
+                                                   vaccine_of_interest = "Meningococcal Conjugate") %>%
+                          select(geography, dimension, coverage_estimate) %>%
+                          filter(geography %in% mening_not_required) 
+insurance_comparison_1 
+
+insurance_comparison_1$dimension<- as.factor(insurance_comparison_1$dimension)
+
+graph_2 <- ggplot(insurance_comparison_1, aes(x = dimension, y = coverage_estimate))
+graph_2 + geom_boxplot(fill='gray')+
+  labs( x = "Insurance Coverage",
+        y = "Vaccination Coverage Estimate",
+        title = "Variation in Coverage Estimate for Meningococcal Disease with Insurance",
+        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+```
+
+```{r, compare menigococcal using poverty}
+
+poverty_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Poverty",
+                                                   vaccine_of_interest = "Meningococcal Conjugate") %>%
+                          select(geography, dimension, coverage_estimate) %>%
+                          filter(geography %in% mening_not_required) 
+
+poverty_comparison_1$dimension<- as.factor(poverty_comparison_1$dimension)
+
+graph_3 <- ggplot(poverty_comparison_1, aes(x = dimension, y = coverage_estimate))
+graph_3 + geom_boxplot(fill='gray')+
+  labs( x = "Poverty",
+        y = "Vaccination Coverage Estimate",
+        title = "Variation in Coverage Estimate for Meningococcal Disease with Poverty Level",
+        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+```
+
+```{r, compare menigococcal using race/ethnicity}
+
+ethnicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Race/Ethnicity ",
+                                                   vaccine_of_interest = "Meningococcal Conjugate") %>%
+                          select(geography, dimension, coverage_estimate) %>%
+                          filter(geography %in% mening_not_required) 
+
+ethnicity_comparison_1$dimension<- as.factor(ethnicity_comparison_1$dimension)
+
+graph_4 <- ggplot(ethnicity_comparison_1, aes(x = dimension, y = coverage_estimate))
+graph_4 + geom_boxplot(fill='gray')+
+  labs( x = "Race/Ethnicity",
+        y = "Vaccination Coverage Estimate",
+        title = "Variation in Coverage Estimate for Meningococcal Disease with Race/Ethnicity",
+        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+```
+
+
+```{r, compare menigococcal using urbanicity}
+
+urbanicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Urbanicity",
+                                                   vaccine_of_interest = "Meningococcal Conjugate") %>%
+                          select(geography, dimension, coverage_estimate) %>%
+                          filter(geography %in% mening_not_required) 
+
+urbanicity_comparison_1$dimension<- as.factor(urbanicity_comparison_1$dimension)
+
+urbanicity_comparison_1 
+
+graph_5 <- ggplot(urbanicity_comparison_1, aes(x = dimension, y = coverage_estimate))
+graph_5 + geom_boxplot(fill='gray')+
+  labs( x = "Urbanicity",
+        y = "Vaccination Coverage Estimate",
+        title = "Variation in Coverage Estimate for Meningococcal Disease with Urbanicity",
+        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+```
+
+
+Comparing these four boxplots, it appears that of the factors studied insurance coverage has the largest impact on vaccination.  Specifically lower vaccination coverage is observed in the uninsured.  The plots on urbanicity suggest that living in a non-metropolitan statistical area also lowers the rate of vaccination
+
+
+###  Vaccine Coverage for Vaccines by Region
