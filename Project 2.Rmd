@@ -15,7 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message=FALSE}
 library(tidyverse)
-#library(httr)
 library(jsonlite)
 library(ggplot2)
 
@@ -23,17 +22,16 @@ library(ggplot2)
 
 # Introduction
 
-The API chosen for investigation was data from the Center for Disease Control relating to [Vaccination Coverage among Adolescents](https://data.cdc.gov/Teen-Vaccinations/Vaccination-Coverage-among-Adolescents-13-17-Years/ee48-w5t6).  The dataset contains columns for vaccine, dose, geography type (national, regional, state, and local area), geography name, survey year, dimension type, dimension,estimate 95%CI, and sample size.  Dimension types include age, race/ethnicity, insurance coverage, poverty levels, proximity to an urban area, and overall.  This suggests areas of inquiry regarding things like:  
+The API chosen for investigation was data from the Center for Disease Control relating to [Vaccination Coverage among Adolescents](https://data.cdc.gov/Teen-Vaccinations/Vaccination-Coverage-among-Adolescents-13-17-Years/ee48-w5t6).  The dataset contains columns for vaccine, dose, geography type (national, regional, state, and local area), geography name, survey year, dimension type, dimension, estimated 95%CI, and sample size.  Dimension types include age, race/ethnicity, insurance coverage, poverty levels, proximity to an urban area, and overall.  This suggests areas of inquiry regarding things like:  
 
 - geographical variation in vaccination coverage at regional level or state level  
-- geographical variation in vaccination coverage differences due to  race/ethnicity or insurance coverage at the 
-regional level and state level  
+- geographical variation in vaccination coverage differences due to  race/ethnicity or insurance coverage at the state level  
 - variation in vaccination coverage based on the vaccine in question
 
 The vaccines covered by the database include:
 
 - HPV (human papillomavirus)  
-- Menigococcal Conjugate  
+- Menigococcal conjugate  
 - T or Td  (tetanus or tetanus/diptheria)  
 - Tdap (tetanus, diptheria, and pertussis) (Replaced Td in 2005) 
 - Varicella (chicken pox)  
@@ -43,12 +41,12 @@ The vaccines covered by the database include:
 
 Parental attitudes may vary a great deal between these vaccines due to several factors such as perception of the threat being protected against (chicken pox not as serious as diptheria), whether the threat is associated with sexual behavior or drug use (HPV or HepB), and whether the vaccine has received particular attention from the anti-vaccination activists (MMR).  The HPV vaccine may also be perceived as more valuable to children who are assigned female at birth than those assigned male at birth. 
 
-For HPV,the database uses the dose variable as way to track differential treatment of "male" and "female" children.
+For HPV, the database uses the dose variable as way to track differential treatment of "male" and "female" children.
 
 In this project, functions were developed to help users query the dataset about the following:
 
-- HPV Vaccination Coverage: Regional level differences between genders with the option of changing dimension (race/ethnicity, poverty, insurance coverge, urbancity)  
-- HPV Vaccination Coverage: Regional level differences in overall coverage estimate with the option of changing dimension (race/ethnicity, poverty, insurance coverage, urbancity)  
+- HPV Vaccination Coverage: Regional level coverage estimates and differences between in coverage between genders   
+- HPV Vaccination Coverage: State level differences coverage estimates and differences in coverage between genders  
 - Vaccination for Vaccines other than HPV: Regional level differences in coverage estimates with the option of changing vaccine and dimension  
 - Vaccination for Vaccines other than HPV: State level differences in coverage estimates with the option of changing vaccine and dimension.  
 
@@ -69,40 +67,45 @@ Federated States of Micronesia, Guam, Marshall Islands, and Republic of Palau
 These regions are shown visually here.
 
 
-
-
 ```{r}
 #Get mapping data for states
 map_data_1 <- map_data("state")
 
 #Add HHS region info for states
-map_data_2 <- as_tibble(map_data_1) %>%  mutate("HHS_region" =
-      (if_else(region %in% c('connecticut', 'maine', 'massachusetts', 
+map_data_2 <- as_tibble(map_data_1) %>%  
+    mutate("HHS_region" =
+          (if_else(region %in% c('connecticut', 'maine', 'massachusetts', 
                                 'new hampshire', 'rhode island', 'vermont'),"1",
-      if_else(region %in% c('new jersey', 'new york', "puerto rico", "u.s. virgin islands"),"2",
-      if_else(region %in% c('delaware','district of columbia', 'maryland', 'pennsylvania', 'virginia',                                  'west virginia'),"3",
-      if_else(region %in% c('alabama', 'florida','georgia','kentucky', 'mississippi','north carolina',                                  'south carolina','tennessee'),"4",
-      if_else(region %in% c('illinois','indiana', 'michigan', 'minnesota', 'ohio', 
-                               'wisconsin'),"5",
-      if_else(region %in% c('arkansas', 'louisiana', 'oklahoma', 'new mexico','texas'),"6",
-      if_else(region %in% c('iowa', 'kansas','missouri', 'nebraska'),"7",
-      if_else(region %in% c('colorado', 'montana','north dakota', 'south dakota',  
+          if_else(region %in% c('new jersey', 'new york', "puerto rico", "u.s. virgin islands"),"2",
+          if_else(region %in% c('delaware','district of columbia', 'maryland', 'pennsylvania', 'virginia',
+                                'west virginia'),"3",
+          if_else(region %in% c('alabama', 'florida','georgia','kentucky', 'mississippi','north carolina',
+                                'south carolina','tennessee'),"4",
+          if_else(region %in% c('illinois','indiana', 'michigan', 'minnesota', 'ohio', 
+                                'wisconsin'),"5",
+          if_else(region %in% c('arkansas', 'louisiana', 'oklahoma', 'new mexico','texas'),"6",
+          if_else(region %in% c('iowa', 'kansas','missouri', 'nebraska'),"7",
+          if_else(region %in% c('colorado', 'montana','north dakota', 'south dakota',  
                                 'utah', 'wyoming'),"8",
-      if_else(region %in% c('arizona', 'california', 'hawaii', 'nevada', "guam") ,"9",
-      if_else(region %in% c('alaska', 'idaho', 'oregon', 
-                               'washington') ,"10","error"))))))))))))
+          if_else(region %in% c('arizona', 'california', 'hawaii', 'nevada', "guam") ,"9",
+          if_else(region %in% c('alaska', 'idaho', 'oregon', 
+                                'washington') ,"10","error"))))))))))))
 
 #Make plot
 ggplot(map_data_2, aes (x = long, y = lat, group = group)) +
     geom_polygon(aes(fill = HHS_region), color = "black")+
-    theme(axis.text = element_blank(),                  #removes lat and long labels and grid
+#removes lat and long labels and grid
+    theme(axis.text = element_blank(),                  
           axis.ticks = element_blank(),
           axis.title = element_blank(),
           rect = element_blank())+
-    labs(title = "HHS Regions for Contiental United States")+
+#Add title
+    labs(title = "Figure 1. HHS Regions for Contiental United States")+
+#Change legend title
     guides(fill = guide_legend(title = "HHS Regions"))+
-    scale_fill_discrete(breaks = c('1','2','3', '4','5','6','7','8','9','10')) #Reorder legend
- 
+#Reorder legend
+      scale_fill_discrete(breaks = c('1','2','3', '4','5','6','7','8','9','10')) 
+
 ```
 
 ## Accessing Data
@@ -134,18 +137,20 @@ HPV_gender_eval_function <- function(year_of_interest = "2022" ){
                                     '2016','2017','2018','2019','2020','2021','2022'))) stop
         ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
          
-                            vaccine_API %>% 
-                            filter(vaccine == "HPV" & geography_type == "HHS Regions/National") %>%  #Select vaccine=HPV and National/Regional Level
-                            filter(year_season == year_of_interest) %>%                              #Filter Year based on user request
-                            filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
-                            filter(dimension == "13-17 Years")
+#Select vaccine=HPV and National/Regional Level
+    vaccine_API %>% filter(vaccine == "HPV" & geography_type == "HHS Regions/National") %>%
+#Filter Year based on user request
+    filter(year_season == year_of_interest) %>%                              
+    filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
+    filter(dimension == "13-17 Years")
 }
 
 ```
 
 A demonstration of the function (`HPV_gender_eval_function`) is given below.
 ```{r, demonstration of Function 1, message=TRUE, warning=TRUE}
-demo_function_1 <- HPV_gender_eval_function(year_of_interest ="2021")
+demo_function_1 <- HPV_gender_eval_function(year_of_interest = "2021")
+
 demo_function_1
 ```
 
@@ -153,14 +158,16 @@ A demonstration of the results from this function call transformed into a user-f
 
 ```{r, table using data from Function 1, rows.print=11}
 demo_function_1a <- demo_function_1 %>%select(geography, dose, coverage_estimate) %>% 
-                   mutate (coverage_estimate=as.numeric(coverage_estimate)) %>% #to allow calculation of difference
-                   pivot_wider(names_from=dose, values_from=(coverage_estimate)) 
+#to allow calculation of difference
+    mutate (coverage_estimate=as.numeric(coverage_estimate)) %>% 
+    pivot_wider(names_from=dose, values_from=(coverage_estimate)) 
 
 #Rename columns for ease of reference in mutate 
 colnames(demo_function_1a) <-c ("geography",  "cov_est_female", "cov_est_male")
 
 #Add a column for difference between genders
 demo_function_1a <- mutate(demo_function_1a, "Diff"=cov_est_female-cov_est_male)
+
 demo_function_1a
 
 
@@ -181,13 +188,14 @@ HPV_gender_eval_function_state <- function(year_of_interest = "2022" ){
 #                                    '2016','2017','2018','2019','2020','2021','2022'))) stop
 #       ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
          
-                            vaccine_API %>% 
-                            filter((vaccine == "HPV") & 
-                                     (geography %in% state.name | 
-                                        geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands","United States"))) %>%
-                            filter(year_season == year_of_interest) %>%                              #Filter Year based on user request
-                            filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
-                            filter(dimension == "13-17 Years")
+    vaccine_API %>% filter((vaccine == "HPV") & 
+        (geography %in% state.name | 
+         geography %in% c("District of Columbia", "Guam", "Puerto Rico", 
+                          "U.S. Virgin Islands","United States"))) %>%
+#Filter Year based on user request
+    filter(year_season == year_of_interest) %>%    
+    filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
+    filter(dimension == "13-17 Years")
 }
 
 ```
@@ -202,9 +210,9 @@ demo_function_2
 A demonstration of the results from this function call transformed into a user-friendly table is given below.
 
 ```{r, table using data from Function 2}
-demo_function_2a <- demo_function_2 %>%select(geography, dose, coverage_estimate)%>% 
-                   mutate (coverage_estimate=as.numeric(coverage_estimate)) %>%
-                   pivot_wider(names_from=dose, values_from=coverage_estimate)
+demo_function_2a <- demo_function_2 %>% select(geography, dose, coverage_estimate) %>% 
+    mutate (coverage_estimate=as.numeric(coverage_estimate)) %>%
+    pivot_wider(names_from=dose, values_from=coverage_estimate)
 
 #Rename columns for ease of reference in mutate 
 colnames(demo_function_2a) <-c ("geography",  "cov_est_female", "cov_est_male")
@@ -245,11 +253,11 @@ vaccines_regional_eval_function <- function(vaccine_of_interest = NULL, year_of_
         ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
          
     filtered_API <- vaccine_API %>% 
-    filter(vaccine != "HPV" & vaccine != "Varicella"          #Select vaccine=not HPV or Varicella
-           & geography_type == "HHS Regions/National") %>%    #Select National/Regional Level
-    filter(year_season == year_of_interest) %>%               #Filter Year based on user request
-    filter (dimension =="13-17 Years")%>%                            #Filter age to allow comparison between vaccines
-    mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
+        filter(vaccine != "HPV" & vaccine != "Varicella"  #Select vaccine=not HPV or Varicella
+                & geography_type == "HHS Regions/National") %>%  #Select National/Regional Level
+        filter(year_season == year_of_interest) %>%   #Filter Year based on user request
+        filter (dimension =="13-17 Years")%>% #Filter age to allow comparison between vaccines
+        mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
 
     # filter for vaccine_of_interest if it is present, otherwise return all
     if (!is.null(vaccine_of_interest)) {
@@ -271,8 +279,8 @@ Presentation of the results from this function call transformed into a user-frie
 
 ```{r, table using data from Function 3, rows.print=11}
 demo_function_3a <- demo_function_3 %>%
-                    select(geography, vaccine, coverage_estimate)%>% 
-                    pivot_wider(names_from=vaccine, values_from=coverage_estimate)
+    select(geography, vaccine, coverage_estimate) %>% 
+    pivot_wider(names_from = vaccine, values_from = coverage_estimate)
 demo_function_3a
 
 
@@ -311,12 +319,12 @@ vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_in
         ("Year out of range, choose a year between 2006 and 2022 (inclusive).")}
          
     filtered_API <- vaccine_API %>% 
-    filter(vaccine != "HPV" & vaccine != "Varicella" &         #Select vaccine=not HPV or Varicella
-          (geography %in% state.name | 
-           geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands"))) %>%
-    filter(year_season == year_of_interest) %>%               #Filter Year based on user request
-    filter (dimension =="13-17 Years")%>%                     #Filter age to allow easy comparison between vaccines
-    mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
+        filter(vaccine != "HPV" & vaccine != "Varicella" &         #Select vaccine=not HPV or Varicella
+              (geography %in% state.name | 
+              geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands"))) %>%
+        filter(year_season == year_of_interest) %>%               #Filter Year based on user request
+        filter (dimension == "13-17 Years")%>%                     #Filter age to allow easy comparison between vaccines
+        mutate(coverage_estimate = as.numeric(coverage_estimate)) #Recast coverage_estimate to numeric 
 
     # filter for vaccine_of_interest if it is present, otherwise return all
     if (!is.null(vaccine_of_interest)) {
@@ -366,18 +374,16 @@ A default value of NULL is provided for `vaccine_of_interest` this will return d
 
 
 ```{r, Function 5 for looking at 4-year demographic data  }
-vaccines_4_year_function <- function(dimension_type_of_interest="Overall",
-                                     vaccine_of_interest = NULL){
+vaccines_4_year_function <- function(dimension_type_of_interest="Overall", vaccine_of_interest = NULL){
+#add input checks
 
-
-         
     filtered_API <- vaccine_API %>% 
-                    filter(year_season == "2018-2022") %>%                         #select the 4-year season
-                    filter(vaccine != "HPV" & vaccine != "Varicella") %>%          #remove HPV and varicella
-                    filter(dimension_type == dimension_type_of_interest) %>%       #select the dimension_type of interest
-                    filter(geography %in% state.name |                             #remove metropolitan areas
-                           geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands", "United States")) %>%
-                    mutate(coverage_estimate = as.numeric(coverage_estimate))      #Recast coverage_estimate to numeric 
+    filter(year_season == "2018-2022") %>%                         #select the 4-year season
+    filter(vaccine != "HPV" & vaccine != "Varicella") %>%          #remove HPV and varicella
+    filter(dimension_type == dimension_type_of_interest) %>%       #select the dimension_type of interest
+    filter(geography %in% state.name |                             #remove metropolitan areas
+    geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands", "United States")) %>%
+    mutate(coverage_estimate = as.numeric(coverage_estimate))      #Recast coverage_estimate to numeric 
     
     # filter for vaccine_of_interest if it is present, otherwise return all
     if (!is.null(vaccine_of_interest)) {
@@ -390,20 +396,19 @@ vaccines_4_year_function <- function(dimension_type_of_interest="Overall",
 
 A demonstration of the function (`vaccines_4_year_function`) is given below.
 
-```{r, demonstration of Function 5 , message=TRUE, warning=TRUE}
+```{r, demonstration of Function 5}
 demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", vaccine_of_interest = "Meningococcal Conjugate")
 demo_function_5
-unique(demo_function_5$vaccine)
-unique(demo_function_5$dimension)
+
 ```
 
 Presentation of the results from this function call transformed into a user-friendly table is given below.
 
-```{r, table using data from Function 5, rows.print=52}
+```{r, table using data from Function 5}
 
 demo_function_5a <- demo_function_5 %>%
-                    select(geography, dimension, coverage_estimate) %>%
-                    pivot_wider(names_from = dimension, values_from = coverage_estimate)
+    select(geography, dimension, coverage_estimate) %>%
+    pivot_wider(names_from = dimension, values_from = coverage_estimate)
 
 demo_function_5a
 ```
@@ -423,13 +428,13 @@ Five functions were developed to do the following:
 
 ### Comparing Vaccine Coverage for Tdap and Meningococcal Conjugate
 
-While all states require Tdap vaccination for secondary school attendance, only 35 states require vaccination with the meningococcal conjugate for secondary school attendance.  A possible line of inquiry is does this difference lead to lower vaccine coverage for meningococcal conjugate. Data will be obtained for this using Function 5. The function will be called with all vaccines and overall for the dimension.  The other vaccines will be filtered out and then the table will be pivoted to a wide format.
+While all states require Tdap vaccination for secondary school attendance, only 35 states require vaccination with the meningococcal conjugate for secondary school attendance.  A possible line of inquiry is does this difference lead to lower vaccine coverage for meningococcal conjugate. Data will be obtained for this using Function 5, `vaccines_4_year_function`. The function was called using all vaccines and with overall for the dimension.  The other vaccines were filtered out and then the table  pivoted to a wide format.
 
 ```{r, compare Tdap and menigococcal }
 coverage_comparison_1 <- vaccines_4_year_function () %>%
-              filter(vaccine == "Tdap" | vaccine == "Meningococcal Conjugate") %>%
-              select (geography, vaccine, coverage_estimate) %>%
-              pivot_wider(names_from = vaccine, values_from = coverage_estimate)
+    filter(vaccine == "Tdap" | vaccine == "Meningococcal Conjugate") %>%
+    select (geography, vaccine, coverage_estimate) %>%
+    pivot_wider(names_from = vaccine, values_from = coverage_estimate)
 
 #Change columns names to eliminate illegal characters introduced in pivot operation
 
@@ -446,7 +451,7 @@ The data for vaccination with the meningococcal conjugate does appear more sprea
 
 ### Vaccine Coverage for Meningococcal Conjugate by State Requirements
 
-To see if the spread in coverage for mengicoccal disease is related to [requirements for secondary school attendance] (https://www.immunize.org/laws/menin_sec.asp), a column will be added to the data giving the regulatory status (as a categorical variable) and then that will be used for comparison.  Since vaccination is not mandated at a federal level, it is also filtered out.
+To see if the spread in coverage for mengicoccal disease is related to [requirements for secondary school attendance] (https://www.immunize.org/laws/menin_sec.asp), a column was added to the data giving the regulatory status (as a categorical variable) and then that was used for comparison.  Since vaccination is not mandated at a federal level, it wass also filtered out.
 
 ```{r}
 #States not requiring vaccination with meningococcal conjugate
@@ -456,13 +461,17 @@ mening_not_required <- c("Alabama","Alaska","California", "Colorado", "Florida",
 
 
 meningococcal_regulation_analysis <- coverage_comparison_1 %>%
-                                     select(!Tdap) %>%                          #remove Tdap column
-                                     filter(geography != "United States") %>%   #remove US row
-                                     mutate(mening_req = if_else                #create new variable
-                                            (geography %in% mening_not_required, 
-                                             "No", 
-                                             "Yes")) %>%
-                                     select(geography, mening_req, Meningococcal_conjugate) #reorder columns
+#remove Tdap column
+    select(!Tdap) %>%
+#remove US row
+    filter(geography != "United States") %>%   
+#create new variable
+    mutate(mening_req = if_else                
+                        (geography %in% mening_not_required, 
+                         "No", 
+                         "Yes")) %>%
+#reorder columns
+    select(geography, mening_req, Meningococcal_conjugate) 
 
 #Set the regulatory status to be a factor
 meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulation_analysis$mening_req)
@@ -470,16 +479,20 @@ meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulatio
 meningococcal_regulation_analysis
 ```
 
-This data set can be visualized using a boxplot.
+This data set can be visualized using a violin plot.
+```
 
-```{r, boxplot}
-#Boxplots comparing states with and without  requirements for secondary school attendance
-graph_1 <- ggplot(meningococcal_regulation_analysis, aes(x = mening_req, y = Meningococcal_conjugate))
-graph_1 + geom_boxplot(fill='gray')+
-  labs( x = "Vaccination Required for Secondary School",
-        y = "Vaccination Coverage Estimate",
-        title = "Variation in Coverage Estimate for Meningococcal Disease",
-        subtitle = "by if State Requires Vaccination for Secondary School Attendance")
+```{r, violin plot}
+#Violin plot comparing states with and without  requirements for secondary school attendance
+#Make base layer 
+graph_2 <- ggplot(meningococcal_regulation_analysis, aes(x = mening_req, y = Meningococcal_conjugate))
+
+#Add layers
+graph_2 + geom_violin(fill='gray')+
+    labs( x = "Vaccination Required for Secondary School",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 2. Variation in Coverage Estimate for Meningococcal Disease",
+          subtitle = "by if State Requires Vaccination for Secondary School Attendance")
 ```
 
 The boxplots show a considerable difference in vaccination coverage rates between states with and without a vaccination requirement for secondary school.  
@@ -488,79 +501,93 @@ It is interesting to consider if the parental choice to vaccinate children is in
 
 ###  Vaccine Coverage for Meningococcal Conjugate in States without Mandates 
 
-Analyses were performed to determine if coverage estimates for meningococcal disease are affected by the factors insurance coverage, poverty, race/ethnicity, and urbanicity.  Function 5 was used, selecting for meningococcal conjugate and the appropriate dimension, working through them consecutively.
-Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors and a box plots generated.
+Analyses were performed to determine if coverage estimates for meningococcal disease are affected by the factors: insurance coverage, poverty, race/ethnicity, and urbanicity.  Function 5 was used, selecting for meningococcal conjugate and the appropriate dimension, working through them consecutively.
+Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors and box plots generated.
 
 ```{r, compare menigococcal using insurance}
 
 insurance_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage",
                                                    vaccine_of_interest = "Meningococcal Conjugate") %>%
-                          select(geography, dimension, coverage_estimate) %>%
-                          filter(geography %in% mening_not_required) 
-insurance_comparison_1 
+    select(geography, dimension, coverage_estimate) %>%
+    filter(geography %in% mening_not_required) 
 
+#Recast dimension as factor
 insurance_comparison_1$dimension<- as.factor(insurance_comparison_1$dimension)
 
-graph_2 <- ggplot(insurance_comparison_1, aes(x = dimension, y = coverage_estimate))
-graph_2 + geom_boxplot(fill='gray')+
-  labs( x = "Insurance Coverage",
-        y = "Vaccination Coverage Estimate",
-        title = "Variation in Coverage Estimate for Meningococcal Disease with Insurance",
-        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+#Make base layer 
+graph_3 <- ggplot(insurance_comparison_1, aes(x = dimension, y = coverage_estimate))
+
+#Add layers
+graph_3 + geom_boxplot(fill='gray')+
+    labs( x = "Insurance Coverage",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 3. Variation in Coverage Estimate for Meningococcal Disease with Insurance",
+          subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-```{r, compare menigococcal using poverty}
+```{r, compare menigococcal using different dimensions}
 
 poverty_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Poverty",
                                                    vaccine_of_interest = "Meningococcal Conjugate") %>%
-                          select(geography, dimension, coverage_estimate) %>%
-                          filter(geography %in% mening_not_required) 
+    select(geography, dimension, coverage_estimate) %>%
+    filter(geography %in% mening_not_required) 
 
+#Recast dimension as factor
 poverty_comparison_1$dimension<- as.factor(poverty_comparison_1$dimension)
 
-graph_3 <- ggplot(poverty_comparison_1, aes(x = dimension, y = coverage_estimate))
-graph_3 + geom_boxplot(fill='gray')+
-  labs( x = "Poverty",
-        y = "Vaccination Coverage Estimate",
-        title = "Variation in Coverage Estimate for Meningococcal Disease with Poverty Level",
-        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+#Make base layer 
+graph_4 <- ggplot(poverty_comparison_1, aes(x = dimension, y = coverage_estimate))
+
+#Add layers
+graph_4 + geom_boxplot(fill='gray')+
+    labs( x = "Poverty",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 4. Variation in Coverage Estimate for Meningococcal Disease with Poverty Level",
+          subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
 ```
+
+
 
 ```{r, compare menigococcal using race/ethnicity}
 
 ethnicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Race/Ethnicity ",
                                                    vaccine_of_interest = "Meningococcal Conjugate") %>%
-                          select(geography, dimension, coverage_estimate) %>%
-                          filter(geography %in% mening_not_required) 
+    select(geography, dimension, coverage_estimate) %>%
+    filter(geography %in% mening_not_required) 
 
+#Recast dimension as factor
 ethnicity_comparison_1$dimension<- as.factor(ethnicity_comparison_1$dimension)
 
-graph_4 <- ggplot(ethnicity_comparison_1, aes(x = dimension, y = coverage_estimate))
-graph_4 + geom_boxplot(fill='gray')+
-  labs( x = "Race/Ethnicity",
-        y = "Vaccination Coverage Estimate",
-        title = "Variation in Coverage Estimate for Meningococcal Disease with Race/Ethnicity",
-        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
-```
+#Make base layer 
+graph_5 <- ggplot(ethnicity_comparison_1, aes(x = dimension, y = coverage_estimate))
 
+#Add layers
+graph_5 + geom_boxplot(fill='gray')+
+    labs( x = "Race/Ethnicity",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 5. Variation in Coverage Estimate for Meningococcal Disease with Race/Ethnicity",
+          subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+```
 
 ```{r, compare menigococcal using urbanicity}
 
 urbanicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Urbanicity",
                                                    vaccine_of_interest = "Meningococcal Conjugate") %>%
-                          select(geography, dimension, coverage_estimate) %>%
-                          filter(geography %in% mening_not_required) 
+    select(geography, dimension, coverage_estimate) %>%
+    filter(geography %in% mening_not_required) 
 
-urbanicity_comparison_1$dimension<- as.factor(urbanicity_comparison_1$dimension)
+#Recast dimension as factor
+urbanicity_comparison_1$dimension <- as.factor(urbanicity_comparison_1$dimension)
 
-urbanicity_comparison_1 
+#Make base layer 
+graph_6 <- ggplot(urbanicity_comparison_1, aes(x = dimension, y = coverage_estimate))
 
-graph_5 <- ggplot(urbanicity_comparison_1, aes(x = dimension, y = coverage_estimate))
-graph_5 + geom_boxplot(fill='gray')+
-  labs( x = "Urbanicity",
-        y = "Vaccination Coverage Estimate",
-        title = "Variation in Coverage Estimate for Meningococcal Disease with Urbanicity",
-        subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
+#Add layers
+graph_6 + geom_boxplot(fill='gray')+
+    labs( x = "Urbanicity",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 6. Variation in Coverage Estimate for Meningococcal Disease with Urbanicity",
+          subtitle = "In  States without Vaccination Requirements for Secondary School Attendance")
 ```
 
 
@@ -568,3 +595,235 @@ Comparing these four boxplots, it appears that of the factors studied insurance 
 
 
 ###  Vaccine Coverage for Vaccines by Region
+
+To determine which vaccines exhibited the most variation in vaccine coverage, a regional analysis was performed.  Function 3,  `vaccines_regional_eval_function` was used with the year set to 2021.  Data was then graphed as vacciantion coverage versus region in Graph 7.
+
+```{r, Vaccine Coverage by Region}
+#Remove row for country level
+vac_cov_region <- vaccines_regional_eval_function(year_of_interest = "2021")%>%
+    filter(geography != "United States")
+
+#Make base layer
+graph_7 <-ggplot(data = vac_cov_region, aes(x = as.factor(geography), y = coverage_estimate))
+
+#Build graph
+graph_7+geom_point(aes(color = as.factor(vaccine)))+
+    geom_line(aes(color = as.factor(vaccine), group = as.factor(vaccine)))+
+    theme(legend.position = "bottom")+
+    labs( x = "Region",
+          y = "Vaccination Coverage Estimate",
+          title = "Figure 7. Variation in Coverage Estimate for Vaccines Across Regions",
+          color = "vaccine")+
+    guides(fill = guide_legend(title = "Vaccine"))+
+    scale_x_discrete(limits = c('Region 1','Region 2','Region 3', 'Region 4','Region 5','Region 6',
+                                'Region 7','Region 8','Region 9','Region 10'))
+```
+
+After inspection of Graph 7, Hepatitis A was chosen for further examination.  Function 3, `vaccines_state_eval_function` was used to retrieve the data.  To allow comparison with the regional data, a column for region was added.  To allow analysis based on the whether the state requires a child to be vaccinated for hepatitis A to attend secondary school, a column was added for that.
+
+```{r, data set for hepatitis A with mandates}
+#Make vector of states with mandated Hep A vaccination for childcare or secondary school enrollment
+hep_a_required <- c('Alaska', 'Arkansas', "Connecticut", 'District of Columbia', 'Georgia', 'Hawaii',
+    'Idaho', 'Indiana', 'Kansas', 'Kentucky','Louisiana', 'Minnesota','Nevada','New Mexico', 
+    'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 
+    'South Dakota', 'Tennessee','Texas', 'Utah', 'Virginia')
+#State with vaccination required in some counties
+hep_a_required_county <- c("Arizona")
+
+hepatitis_a <- vaccines_state_eval_function(vaccine_of_interest = "Hep A", 
+                                            year_of_interest = "2021") %>%
+    filter((geography != "Guam") & (geography != "U.S. Virgin Islands") & (geography != "Puerto Rico")) %>%
+    select(geography, coverage_estimate) %>% 
+# Add region
+    mutate("HHS_geography" = (if_else(geography %in% c('Connecticut', 'Maine', 'Massachusetts', 
+                                   'New Hampshire', 'Rhode Island', 'Vermont'),"1",
+       if_else(geography %in% c('New Jersey', 'New York', "Puerto Rico", "U.S. Virgin Islands"),"2",
+       if_else(geography %in% c('Delaware','District of Columbia', 'Maryland', 'Pennsylvania', 'Virginia',
+                                'West Virginia'),"3",
+       if_else(geography %in% c('Alabama', 'Florida','Georgia','Kentucky', 'Mississippi','North Carolina',
+                                'South Carolina','Tennessee'),"4",
+       if_else(geography %in% c('Illinois','Indiana', 'Michigan', 'Minnesota', 'Ohio', 
+                                'Wisconsin'),"5",
+       if_else(geography %in% c('Arkansas', 'Louisiana', 'Oklahoma', 'New Mexico','Texas'),"6",
+       if_else(geography %in% c('Iowa', 'Kansas','Missouri', 'Nebraska'),"7",
+       if_else(geography %in% c('Colorado', 'Montana','North Dakota', 'South Dakota',  
+                                'Utah', 'Wyoming'),"8",
+       if_else(geography %in% c('Arizona', 'California', 'Hawaii', 'Nevada', "Guam") ,"9",
+       if_else(geography %in% c('Alaska', 'Idaho', 'Oregon', 
+                                'Washington') ,"10","error")))))))))))) %>%
+#Add column with info about hepatitis vaccine mandate
+    mutate("hep_a_required" = (if_else(geography %in% hep_a_required, 'yes', 
+        (if_else(geography %in% hep_a_required_county, 'some', 'no'))))) %>%
+#Reorder columns
+    select(geography, HHS_geography, hep_a_required, coverage_estimate)
+    
+hepatitis_a
+
+```
+
+The following contingency table shows how the number of states with vaccine requirements vary between regions.
+
+```{r, contingency table}
+#as_integer used to control order in table
+cont_table_1 <- table(as.integer(hepatitis_a$HHS_geography), hepatitis_a$hep_a_required)
+
+#label matrix dimensions more clearly
+my_dimnames <- list (
+    c("Region 1", "Region 2", "Region 3", "Region 4", "Region 5", "Region 6", "Region 7", "Region 8", 
+      "Region 9", "Region 10"),
+    c("No Mandate", "Mandated in Some Areas", "Mandate"))
+
+dimnames(cont_table_1) <- my_dimnames
+
+#print table
+cont_table_1
+
+```
+
+There is a great deal of variation between regions with regard to mandated for vaccination against heptatitis A.  While all states in Region 5 mandate vaccination (for childcare/secondary school enrollment), no states in Region 2 do.  A more detailed analysis was performed.
+
+```{r, summary table with multiple categorical variables, message=FALSE, rows.print=19}
+summary_table <-hepatitis_a %>% 
+    group_by(hep_a_required,as.integer(HHS_geography)) %>%
+    summarise(average_coverage_estimate = round(mean(coverage_estimate),1)) %>%
+    pivot_wider(names_from = hep_a_required, values_from = average_coverage_estimate)
+
+#Rename colnames for printing and for reference in arrange
+colnames(summary_table)<- c("Region","No Mandate", "Mandated in Some Areas", "Mandate" )
+
+#Arrange in Region order
+summary_table <-summary_table %>% arrange(Region)
+
+summary_table
+```
+
+For each region, the averge value for estimated coverage is higher in the states with a mandate than without. Returning to the data and summarizing only based on the presence of a mandate yields the following.
+
+```{r}
+summary_table_short <- hepatitis_a %>% 
+    group_by(hep_a_required) %>%
+    summarise(average_coverage_estimate = round(mean(coverage_estimate),1)) %>%
+    pivot_wider(names_from = hep_a_required, values_from = average_coverage_estimate)
+
+#Rename colnames for printing
+colnames(summary_table_short)<- c("No Mandate", "Mandated in Some Areas", "Mandate" )
+
+summary_table_short
+```
+This graph that variation in  whether states mandate vaccination against heptatis A is a major source of the variable in coverage estimates for this vaccine.
+
+### Coverage for HPV Vaccines by State and Insurance
+
+Vaccination against infection with human papillomavirus is mandated by very few states/districts at this time [(Virginia, Hawaii, Rhode Island, and District of Columbia)](https://www.immunize.org/laws/hpv.asp).  An analysis was performed to evaluate the extent of variablility in coverage for HPV in the states/territories without a mandate.  Function 2 from above, `HPV_gender_eval_function_state` was used setting the `year_of_interest` to 2021.  The data was filtered to include only females and remove the data for the states with mandates. Data was then analyzed using a boxplot.
+
+```{r, Vaccine Coverage for HPV}
+
+#Create vector containing states with mandates
+states_with_HPV_mandate <- c ('Virginia', 'Hawaii', 'Rhode Island', 'District of Columbia')
+
+hpv_state <-  HPV_gender_eval_function_state(year_of_interest = "2021") %>% 
+    filter(dose == "Up-to-Date, Females") %>%
+    filter (!(geography %in% states_with_HPV_mandate)) %>%
+    select(geography, coverage_estimate) %>%
+#recast variable to allow plotting
+    mutate (coverage_estimate=as.numeric(coverage_estimate))   
+
+#Make a boxplot.
+graph_8 <- ggplot() +
+           geom_boxplot(aes (y = hpv_state$coverage_estimate)) +
+           labs(y = "Vaccination Coverage Estimate",
+                title = "Figure 8. Variation in Coverage Estimate for HPV Infection",
+                subtitle = "In States without Vaccination Requirements for Secondary School Attendance")+
+           theme(axis.title.x = element_blank(),
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank())
+
+graph_8
+```
+
+There seems to be a good deal of variability in coverage for HPV among the states without a vaccine mandate for HPV.
+The data was evaluated to determine if there was a relationship between coverae estimates for the state and percentage uninsured for the states. [Data for insurance coverage](https://advisorsmith.com/data/the-most-and-least-uninsured-states-for-health-coverage/) was used to divide the states into  groups of ten.  The ten states with the highest uninsured percentage were assigned as group A.  The next ten as Group B, and so on.  Similarly the states were ranked with regard to coverage estimates with Group 1 being the the states with the lowest vaccination coverage estimates.  
+
+
+```{r, HPV contingency table}
+#Set up vectors with insurance ranking data
+insurance_group_a <- c('Texas', 'Oklahoma', 'Georgia', 'Florida',
+                       'Mississippi', 'Wyoming', 'Alaska', 'Nevada', 'Arizona', 'North Carolina')
+insurance_group_b <- c('Idaho', 'South Carolina', 'South Dakota', 'Tennessee', 'Missouri', 'New Mexico', 
+                       'Alabama', 'Utah', 'Kansas', 'Arkansas')
+insurance_group_c <- c('Louisiana', 'Indiana', 'Montana', 'Nebraska', 'Colorado', 'Maine', 'New Jersey', 
+                       'Virginia', 'California', 'Illinois')
+insurance_group_d <- c('Oregon', 'North Dakota', 'West Virginia', 'Delaware', 'Ohio', 'Washington', 
+                       'Kentucky', 'New Hampshire', 'Maryland', 'Connecticut')
+insurance_group_e <- c('Michigan', 'Pennsylvania', 'Wisconsin', 'New York', 'Iowa', 'Minnesota', 'Vermont', 
+                      'Hawaii', 'Rhode Island', 'Massachusetts')
+
+hpv_state_2 <- hpv_state %>% arrange(coverage_estimate) %>%
+    filter (!(geography %in% c("U.S. Virgin Islands", "United States", "Puerto Rico", "Guam"))) %>%
+#Add variable for coverage estimate ranking
+    mutate (coverage_rank_group = (trunc((row_number()-1)/10)+1))%>%
+#Add variable for ranking based on percent uninsured
+    mutate(insurance_group = (if_else (geography %in% insurance_group_a, "A", 
+                             (if_else (geography %in% insurance_group_b, "B", 
+                             (if_else (geography %in% insurance_group_c, "C", 
+                             (if_else (geography %in% insurance_group_d, "D", 
+                             (if_else (geography %in% insurance_group_e, "E", "error")))))))))))
+
+```
+
+The dataset with rankings was explored using a contingency table.
+```{r, HPV summary}
+cont_table_2 <- table(hpv_state_2$insurance_group, hpv_state_2$coverage_rank_group)
+
+#make  meaningful labels for matrix output
+my_dim_names_2 <- list(c('Ins Grp A-High % Unins', 'Ins Grp B', 'Ins Grp C', 
+                          'Ins Grp D','Ins Grp E-Low % Unins'),
+                       c("Grp 1-Low", "Group 2", "Group 3", "Group 4", "Grp 5-High")
+                       )
+
+dimnames(cont_table_2) <- my_dim_names_2
+
+cont_table_2
+```
+
+There does appear to be a correlation between low coverage against HPV infection in a state and its percent unemployment.  Of the ten states with the lowest vaccine coverage for HPV, six are in the lowest insurance group and two more from the next two.  This was further investigated by generating a summary table using the `insurance_group` as a categorical variable.
+
+```{r}
+summary_table_2 <-hpv_state_2 %>% 
+    group_by(insurance_group) %>%
+    summarise(average_coverage_estimate = round(mean(coverage_estimate),1)) 
+
+#Rename colnames for printing 
+colnames(summary_table_2) <- c("Insurance Group","Average Coverage Estimate")
+summary_table_2
+```
+
+There seems to be a relationship between the percent uninsured for a state and its estimate for coverge against HPV infection.  The group of states with the highest percent uninsured of the population corresponds to the lowest coverge rates.  Similary, thegroup of states with the lowest percent uninsured of the population corresponds to the highest coverge rates.  The ordering for percent uninsured for a state was based on the entire population; it would be interesting to do a similar analysis using insurance information relted only to children/teenagers in the state.
+
+## Summary of Data Analysis
+
+The section of the database dealing with vaccination over a 4-year period was queried and coverage estimates were compared for Tdap and meningococcal conjugate.  Coverge estimates for meningococcal conjugate varied more than those for Tdap.  While Tdap is mandated for enrollment in secondary school in all states, the same is not true for meningococcal conjugate.  Coverge estimates for meningococcal conjugate were compared for staes with and without a mandate. Then the variability in coverge in states without a mandate was analyzed as a function of insurance coverage, poverty level, race/ethnicity, and urbanicity.  The data suggeted that a lack of insurance led to lower coverge estimates. Living in a non-metropolitan area also led to lower rates of vaccine coverage.
+
+Vaccine coverage estimates were compared across regions for vaccines.  The data for hepatitis A seemed the most variable.  Its variabilty was evaluated as a function of region and state mandates.  
+
+Coverage with regard to protection from HPV infection was evaluated for correlation with percent uninsured for the states. 
+
+# Summary for Project
+
+This project involved building functions to interact with data from the Center for Disease Control relating to [Vaccination Coverage among Adolescents](https://data.cdc.gov/Teen-Vaccinations/Vaccination-Coverage-among-Adolescents-13-17-Years/ee48-w5t6).
+Five function were written:
+
+- Function 1: Obtain regional data About differences in HPV vaccination coverage between genders; user can specify year  
+- Function 2: Obtain state sata about differences in HPV vaccination coverage between genders; user can specify year  
+- Function 3: Obtain regional data about vaccination coverage for meningococcal disease, tetanus, diptheria, pertussis, hepatitis A, measles, mumps, rubella, and hepatitis B; the user can specify a year and a vaccine  
+- Function 4: Obtain state data about vaccination coverage for meningococcal disease, tetanus, diptheria, pertussis, hepatitis A, measles, mumps, rubella, and hepatitis B; the user can specify a year , a vaccine, and a state  
+- Function 5: Obtain state data about vaccination data for the Tdap and meningococcal vaccine for the 2018-2022 time frame sorted by dimension (insurance coverage, poverty, race/ethnicity, urbanicity, and overall); the user may specify a vaccine and a dimension.  
+
+An exploratory data analysis was performed.  This involved multiple function calls, multiple contingency tables (for hepatitis A and HPV) and multiple summary tables for hepatitis A and HPV).  Over the course of the analysis several graphs were made.  These included:
+
+- boxplots across categorical variable  
+- single boxplot (new)  
+- violin plot (new)  
+- scatter plot with line plot (new)  
+- map (new).  
+
