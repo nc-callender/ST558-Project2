@@ -45,8 +45,8 @@ For HPV, the database uses the dose variable as way to track differential treatm
 
 In this project, functions were developed to help users query the dataset about the following:
 
-- HPV Vaccination Coverage: Regional level coverage estimates and differences between in coverage between genders   
-- HPV Vaccination Coverage: State level differences coverage estimates and differences in coverage between genders  
+- HPV Vaccination Coverage: Regional level coverage estimates and differences in coverage between genders   
+- HPV Vaccination Coverage: State level coverage estimates and differences in coverage between genders  
 - Vaccination for Vaccines other than HPV: Regional level differences in coverage estimates with the option of changing vaccine and dimension  
 - Vaccination for Vaccines other than HPV: State level differences in coverage estimates with the option of changing vaccine and dimension.  
 
@@ -94,7 +94,7 @@ map_data_2 <- as_tibble(map_data_1) %>%
 #Make plot
 ggplot(map_data_2, aes (x = long, y = lat, group = group)) +
     geom_polygon(aes(fill = HHS_region), color = "black")+
-#removes lat and long labels and grid
+#Removes lat and long labels and grid
     theme(axis.text = element_blank(),                  
           axis.ticks = element_blank(),
           axis.title = element_blank(),
@@ -132,14 +132,18 @@ The function `HPV_gender_eval_function` selects the rows related to HPV vaccinat
 ```{r, Function 1 for looking at HPV data-regional level }
 HPV_gender_eval_function <- function(year_of_interest = "2022" ){
   
-#Check input type
-      if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
-                                    '2016','2017','2018','2019','2020','2021','2022'))) stop
-        ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
+    #Check input type
+    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022')
+
+    out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
+    
+    if (!(year_of_interest %in% possible_years)) stop (out_message)
          
-#Select vaccine=HPV and National/Regional Level
+    #Select vaccine=HPV and National/Regional Level
     vaccine_API %>% filter(vaccine == "HPV" & geography_type == "HHS Regions/National") %>%
-#Filter Year based on user request
+
+    #Filter Year based on user request
     filter(year_season == year_of_interest) %>%                              
     filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
     filter(dimension == "13-17 Years")
@@ -147,7 +151,7 @@ HPV_gender_eval_function <- function(year_of_interest = "2022" ){
 
 ```
 
-A demonstration of the function (`HPV_gender_eval_function`) is given below.
+A demonstration of the function (`HPV_gender_eval_function`) for the year 2021 is given below.
 ```{r, demonstration of Function 1, message=TRUE, warning=TRUE}
 demo_function_1 <- HPV_gender_eval_function(year_of_interest = "2021")
 
@@ -158,15 +162,15 @@ A demonstration of the results from this function call transformed into a user-f
 
 ```{r, table using data from Function 1, rows.print=11}
 demo_function_1a <- demo_function_1 %>%select(geography, dose, coverage_estimate) %>% 
-#to allow calculation of difference
-    mutate (coverage_estimate=as.numeric(coverage_estimate)) %>% 
-    pivot_wider(names_from=dose, values_from=(coverage_estimate)) 
+    #recast as numeric to allow calculation of difference
+    mutate (coverage_estimate = as.numeric(coverage_estimate)) %>% 
+    pivot_wider(names_from = dose, values_from = (coverage_estimate)) 
 
 #Rename columns for ease of reference in mutate 
 colnames(demo_function_1a) <-c ("geography",  "cov_est_female", "cov_est_male")
 
 #Add a column for difference between genders
-demo_function_1a <- mutate(demo_function_1a, "Diff"=cov_est_female-cov_est_male)
+demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_male)
 
 demo_function_1a
 
@@ -183,16 +187,19 @@ The function `HPV_gender_eval_function_state` selects the rows related to HPV va
 ```{r, Function 2 for looking at HPV data-state level }
 HPV_gender_eval_function_state <- function(year_of_interest = "2022" ){
   
-#Check input type
-#      if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
-#                                    '2016','2017','2018','2019','2020','2021','2022'))) stop
-#       ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
-         
+    #Check input type
+    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022')
+
+    out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
+    
+    if (!(year_of_interest %in% possible_years)) stop (out_message)
+    
     vaccine_API %>% filter((vaccine == "HPV") & 
         (geography %in% state.name | 
          geography %in% c("District of Columbia", "Guam", "Puerto Rico", 
                           "U.S. Virgin Islands","United States"))) %>%
-#Filter Year based on user request
+    #Filter Year based on user request
     filter(year_season == year_of_interest) %>%    
     filter((dose == "Up-to-Date, Females")| (dose == "Up-to-Date, Males")) %>%  
     filter(dimension == "13-17 Years")
@@ -201,9 +208,9 @@ HPV_gender_eval_function_state <- function(year_of_interest = "2022" ){
 ```
 
 
-A demonstration of the function (`HPV_gender_eval_function_state`) is given below.
-```{r, demonstration of Function 2,error=TRUE,  message=TRUE, warning=TRUE}
-demo_function_2 <- HPV_gender_eval_function_state(year_of_interest ="2021")
+A demonstration of the function (`HPV_gender_eval_function_state`) for the year 2021 is given below.
+```{r, demonstration of Function 2, message=TRUE, warning=TRUE}
+demo_function_2 <- HPV_gender_eval_function_state(year_of_interest = "2021")
 demo_function_2
 ```
 
@@ -211,8 +218,8 @@ A demonstration of the results from this function call transformed into a user-f
 
 ```{r, table using data from Function 2}
 demo_function_2a <- demo_function_2 %>% select(geography, dose, coverage_estimate) %>% 
-    mutate (coverage_estimate=as.numeric(coverage_estimate)) %>%
-    pivot_wider(names_from=dose, values_from=coverage_estimate)
+    mutate (coverage_estimate = as.numeric(coverage_estimate)) %>%
+    pivot_wider(names_from = dose, values_from = coverage_estimate)
 
 #Rename columns for ease of reference in mutate 
 colnames(demo_function_2a) <-c ("geography",  "cov_est_female", "cov_est_male")
@@ -222,12 +229,12 @@ demo_function_2a <- mutate(demo_function_2a, "Diff"=cov_est_female-cov_est_male)
 demo_function_2a
 ```
 
-*States that have more than a 15% difference (absolute) in coverage rates (with a higher percent of females being vaccinated) include New Jersey, Tennessee, Virginia, and West Virginia.  At the other extreme, Kentucky has more than a 15% difference (absolute) in coverage with a higher percent of males vaccinated.  The quick look at the data suggests that further study of the gender differences in HPV vaccine coverage correlated with region might  be interesting.*  
+*States that have more than a 15% difference (absolute) in coverage rates (with a higher percent of females being vaccinated) include New Jersey, Tennessee, Virginia, and West Virginia.  At the other extreme, Kentucky has more than a 15% difference (absolute) in coverage with a higher percent of males vaccinated.  The quick look at the data suggests that further study of the gender differences in HPV vaccine coverage correlated with states might  be interesting.*  
 
 
 ### Function 3 for  Vaccination Coverage for Vaccines other than HPV: Regional Level Differences 
 
-The function `vaccines_regional_eval_function` selects the rows related to  vaccination with vaccines other than HPV at the regional level.  Varicella data is also being excluded because the compliance data is separated into entries for teens with just vaccinations, those with a history of the disease and those with both. 
+The function `vaccines_regional_eval_function` selects the rows related tovaccination with vaccines other than HPV at the regional level.  Varicella data is also being excluded because the compliance data is separated into entries for teens with just vaccinations, those with a history of the disease, and those with both. 
 
 The user can select a `year_of_interest` to use in the analysis.  Possible values for years are each year of `2006` through `2022`.  The user may also select.  A default value of 2022 is provided for `year_of_interest`
 
@@ -247,10 +254,23 @@ A default value of NULL is provided for `vaccine_of_interest` this will return d
 ```{r, Function 3 for looking at data for vaccines other than HPV data-regional level  }
 vaccines_regional_eval_function <- function(vaccine_of_interest = NULL, year_of_interest = "2022" ){
   
-    #Check input type
-    if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
-                                    '2016','2017','2018','2019','2020','2021','2022'))) stop
-        ("Year out of range, choose a year between 2006 and 2022 (inclusive).")
+    #Check input type-year 
+    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022')
+
+    out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
+    
+    if (!(year_of_interest %in% possible_years)) stop (out_message)      
+  
+    #Check input type-vaccines
+    possible_vaccines <- c("Meningococcal Conjugate", "Td or Tdap", "Tdap", "Hep A", "MMR", "HepB", NULL)  
+
+    out_message <- "Choices for vaccine are 'Meningococcal Conjugate', 'Td or Tdap', 'Tdap', 'Hep A', 'MMR', 'HepB' or NULL."
+
+    if (!(is.null(vaccine_of_interest))) {
+        if (!(vaccine_of_interest %in% possible_vaccines)) stop (out_message)
+}
+
          
     filtered_API <- vaccine_API %>% 
         filter(vaccine != "HPV" & vaccine != "Varicella"  #Select vaccine=not HPV or Varicella
@@ -273,6 +293,7 @@ A demonstration of the function (`vaccines_regional_eval_function`) is given bel
 
 ```{r, demonstration of Function 3 , message=TRUE, warning=TRUE}
 demo_function_3 <- vaccines_regional_eval_function(year_of_interest = "2021")
+
 ```
 
 Presentation of the results from this function call transformed into a user-friendly table is given below.
@@ -312,12 +333,35 @@ The user can select a `state_or_territory_of_interest`. Possible values include 
 ```{r, Function 4 for looking at data for vaccines other than HPV or varicella data-state level  }
 vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_interest=NULL, year_of_interest = "2022" ){
   
-    #Check input type
-    if (!(year_of_interest %in% c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
-                                    '2016','2017','2018','2019','2020','2021','2022'))) 
-       {stop
-        ("Year out of range, choose a year between 2006 and 2022 (inclusive).")}
-         
+    #Check input type-year 
+    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+                                    '2016','2017','2018','2019','2020','2021','2022')
+
+    out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
+    
+    if (!(year_of_interest %in% possible_years)) stop (out_message)      
+  
+    #Check input type-vaccines
+    possible_vaccines <- c("Meningococcal Conjugate", "Td or Tdap", "Tdap", "Hep A", "MMR", "HepB" )  
+
+    out_message <- "Choices for vaccine are 'Meningococcal Conjugate', 'Td or Tdap', 'Tdap', 'Hep A', 'MMR', 'HepB' or NULL."
+  
+    if (!(is.null(vaccine_of_interest))) {
+        if (!(vaccine_of_interest %in% possible_vaccines)) stop (out_message)}
+    
+
+  
+    #Check input type-states
+    possible_nonstates <- c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands") 
+
+    out_message <- "Choices for state include the fifty states as well as 'District of Columbia', 'Guam', 'Puerto Rico', and 'U.S. Virgin Islands'."
+  
+    if (!(is.null(state_of_interest))) {
+    if (!(state_of_interest %in% state.name | state_of_interest %in% possible_nonstates)) stop (out_message)
+    }
+  
+
+  
     filtered_API <- vaccine_API %>% 
         filter(vaccine != "HPV" & vaccine != "Varicella" &         #Select vaccine=not HPV or Varicella
               (geography %in% state.name | 
@@ -345,7 +389,8 @@ vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_in
 A demonstration of the function (`vaccines_state_eval_function`) is given below.
 
 ```{r, demonstration of Function 4 , message=TRUE, warning=TRUE}
-demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state_of_interest="North Carolina")
+demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state_of_interest = "North Carolina")
+
 demo_function_4
 ```
 
@@ -376,6 +421,21 @@ A default value of NULL is provided for `vaccine_of_interest` this will return d
 ```{r, Function 5 for looking at 4-year demographic data  }
 vaccines_4_year_function <- function(dimension_type_of_interest="Overall", vaccine_of_interest = NULL){
 #add input checks
+  
+    #Check input type-vaccines
+    possible_vaccines <- c("Meningococcal Conjugate", "Td or Tdap", "Tdap", "Hep A", "MMR", "HepB" )  
+
+    out_message <- "Choices for vaccine are 'Meningococcal Conjugate', 'Td or Tdap', 'Tdap', 'Hep A', 'MMR', 'HepB' or NULL."
+  
+    if (!(is.null(vaccine_of_interest))) {
+        if (!(vaccine_of_interest %in% possible_vaccines)) stop (out_message)}
+
+    #Check input type-dimension_type
+    possible_dimensions <- c("Insurance Coverage", "Poverty", "Race/Ethnicity ", "Urbanicity", "Overall")
+
+        out_message <- 'Choices for dimension type are Insurance Coverage", "Poverty", "Race/Ethnicity ", "Urbanicity", "Overall".'
+  
+    if (!(dimension_type_of_interest %in% possible_dimensions)) stop (out_message)
 
     filtered_API <- vaccine_API %>% 
     filter(year_season == "2018-2022") %>%                         #select the 4-year season
@@ -396,7 +456,7 @@ vaccines_4_year_function <- function(dimension_type_of_interest="Overall", vacci
 
 A demonstration of the function (`vaccines_4_year_function`) is given below.
 
-```{r, demonstration of Function 5}
+```{r, demonstration of Function 5,  message=TRUE, warning=TRUE}
 demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", vaccine_of_interest = "Meningococcal Conjugate")
 demo_function_5
 
