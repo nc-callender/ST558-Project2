@@ -42,7 +42,7 @@ The vaccines covered by the database include:
 
 Parental attitudes may vary a great deal between these vaccines due to several factors such as perception of the threat being protected against (chicken pox not as serious as diptheria), whether the threat is associated with sexual behavior or drug use (HPV or HepB), and whether the vaccine has received particular attention from the anti-vaccination activists (MMR).  The HPV vaccine may also be perceived as more valuable to children who are assigned female at birth than those assigned male at birth.  
 
-For HPV, the database uses the dose variable as way to track differential treatment of "male" and "female" children.  
+For HPV, the database uses the `dose` variable as way to track differential treatment of "male" and "female" children.  
 
 In this project, functions were developed to help users query the dataset about the following:
 
@@ -50,7 +50,7 @@ In this project, functions were developed to help users query the dataset about 
 - HPV Vaccination Coverage: State level coverage estimates and differences in coverage between genders  
 - Vaccination for Vaccines other than HPV: Regional level differences in coverage estimates with the option of changing vaccine  
 - Vaccination for Vaccines other than HPV: State level differences in coverage estimates with the option of changing vaccine  
-- Vaccination for Tdap or Meningococcal Conjugate: State level differences in coverage estimates with the option of changing dimension  
+- Vaccination for Tdap or Meningococcal Conjugate: State level differences in coverage estimates with the option of changing dimension or vaccine 
 
 Geographical information in the database is presented at a state level and at a regional level. The regions are listed [here](https://www.hhs.gov/about/agencies/iea/regional-offices/index.html). They are:  
 
@@ -135,7 +135,7 @@ The function `HPV_gender_eval_function` selects the rows related to HPV vaccinat
 HPV_gender_eval_function <- function(year_of_interest = "2022" ){
   
     #Check input type
-    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+    possible_years <-c ('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
                                     '2016','2017','2018','2019','2020','2021','2022')
 
     out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
@@ -182,13 +182,13 @@ demo_function_1a
 
 ## Function 2 for HPV Vaccination Coverage: State level differences between genders with user modification of year  
 
-The function `HPV_gender_eval_function_state` selects the rows related to HPV vaccination  at the state/territory level . It makes use of the state.name dataset built into R combined with the territories with entries in the dataset (District of Columbia, Guam, Puerto Rico, and U.S. Virgin Islands).  Additionally The user may specify a specific year.  Possible values for years are each year of `2006` through `2022`.  The function selects rows corresponding to the coverage estimates for up-to-date vaccination of each of males and females in 13-17 year age range.  
+The function `HPV_gender_eval_function_state` selects the rows related to HPV vaccination  at the state/territory level . It makes use of the `state.name` dataset built into R combined with the territories with entries in the dataset (District of Columbia, Guam, Puerto Rico, and U.S. Virgin Islands).  Additionally The user may specify a specific year.  Possible values for years are each year of `2006` through `2022`.  The function selects rows corresponding to the coverage estimates for up-to-date vaccination of each of males and females in 13-17 year age range.  
 
 ```{r, Function 2 for looking at HPV data-state level }
 HPV_gender_eval_function_state <- function(year_of_interest = "2022" ){
   
     #Check input type
-    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+    possible_years <-c ('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
                                     '2016','2017','2018','2019','2020','2021','2022')
 
     out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
@@ -247,13 +247,13 @@ The user can select a `vaccine_of_interest`.  Possible values include:
 - "MMR"  
 - "HepB" 
 
-A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.  
+A default value of NULL is provided for `vaccine_of_interest`; this will return data for all rows with the vaccines equal to any in the above list.  
 
 ```{r, Function 3 for looking at data for vaccines other than HPV data-regional level  }
 vaccines_regional_eval_function <- function(vaccine_of_interest = NULL, year_of_interest = "2022" ){
   
     #Check input type-year 
-    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+    possible_years <- c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
                                     '2016','2017','2018','2019','2020','2021','2022')
 
     out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
@@ -277,7 +277,7 @@ vaccines_regional_eval_function <- function(vaccine_of_interest = NULL, year_of_
         filter(year_season == year_of_interest) %>%
         #Filter age to allow comparison between vaccines
         filter (dimension =="13-17 Years")%>% 
-       #Recast coverage_estimate to numeric 
+        #Recast coverage_estimate to numeric 
         mutate(coverage_estimate = as.numeric(coverage_estimate)) 
 
     # filter for vaccine_of_interest if it is present, otherwise return all
@@ -326,13 +326,13 @@ The user can select a `vaccine_of_interest`.  Possible values include:
 
 A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.  
 
-The user can select a `state_or_territory_of_interest`. Possible values include the fifty states as well as the territories with data present in the dataset (District of Columbia, Guam, Puerto Rico, and U.S. Virgin Islands.) A default value of NULL is provided for `state_of_interest` this will return data for all the states and territories.  
+The user can select a `state_or_territory_of_interest`. Possible values include the fifty states as well as the territories with data present in the dataset (District of Columbia, Guam, Puerto Rico, and U.S. Virgin Islands.) A default value of NULL is provided for `state_of_interest`; this will return data for all the states and territories.  
 
 ```{r, Function 4 for looking at data for vaccines other than HPV or varicella data-state level  }
 vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_interest=NULL, year_of_interest = "2022" ){
   
     #Check input type-year 
-    possible_years <-c('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
+    possible_years <-c ('2006','2007','2008','2009','2010','2011','2012','2013','2014','2015',
                                     '2016','2017','2018','2019','2020','2021','2022')
 
     out_message <- "Year out of range, choose a year between 2006 and 2022 (inclusive)."
@@ -350,7 +350,7 @@ vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_in
 
   
     #Check input type-states
-    possible_nonstates <- c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands") 
+    possible_nonstates <- c ("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands") 
 
     out_message <- "Choices for state include the fifty states as well as 'District of Columbia', 'Guam', 'Puerto Rico', and 'U.S. Virgin Islands'."
   
@@ -363,11 +363,11 @@ vaccines_state_eval_function <- function(vaccine_of_interest = NULL, state_of_in
         #Select rows where vaccine is not HPV or Varicella and geography is a state or territory
         filter(vaccine != "HPV" & vaccine != "Varicella" &         
               (geography %in% state.name | 
-              geography %in% c("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands"))) %>%
+               geography %in% c ("District of Columbia", "Guam", "Puerto Rico", "U.S. Virgin Islands"))) %>%
         #Filter Year based on user input
         filter(year_season == year_of_interest) %>% 
         #Filter age to allow easy comparison between vaccines
-        filter (dimension == "13-17 Years")%>%                    
+        filter (dimension == "13-17 Years") %>%                    
         #Recast coverage_estimate to numeric 
         mutate(coverage_estimate = as.numeric(coverage_estimate)) 
 
@@ -407,7 +407,7 @@ The function `vaccines_4_year_function` selects the rows related to vaccination 
 
 The complete list of dimension types are only available for Tdap and Meningococcal Conjugate.  For other vaccines, only `Overall` is available.  The default value for `dimension_type_of_interest` is "Overall".  
 
-The user can select a `vaccine_of_interest`.  Possible values include:
+The user can select a `vaccine_of_interest`.  Possible values include:  
 - "Meningococcal Conjugate"  
 - "Td or Tdap"  
 - "Tdap"  
@@ -415,7 +415,7 @@ The user can select a `vaccine_of_interest`.  Possible values include:
 - "MMR"  
 - "HepB" 
 
-A default value of NULL is provided for `vaccine_of_interest` this will return data for all rows with the vaccines equal to any in the above list.  
+A default value of NULL is provided for `vaccine_of_interest`; this will return data for all rows with the vaccines equal to any in the above list.  
 
 
 ```{r, Function 5 for looking at 4-year demographic data  }
@@ -462,7 +462,8 @@ vaccines_4_year_function <- function(dimension_type_of_interest="Overall", vacci
 A demonstration of the function (`vaccines_4_year_function`) is given below.  
 
 ```{r, demonstration of Function 5,  message=TRUE, warning=TRUE}
-demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", vaccine_of_interest = "Meningococcal Conjugate")
+demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", 
+                                            vaccine_of_interest = "Meningococcal Conjugate")
 demo_function_5
 
 ```
@@ -556,7 +557,7 @@ This data set can be visualized using a violin plot.
 graph_2 <- ggplot(meningococcal_regulation_analysis, aes(x = mening_req, y = Meningococcal_conjugate))
 
 #Add layers
-graph_2 + geom_violin(fill='gray') +
+graph_2 + geom_violin(fill = 'gray') +
     labs( x = "Vaccination Required for Secondary School",
           y = "Vaccination Coverage Estimate",
           title = "Figure 2. Variation in Coverage Estimate for Meningococcal Disease",
@@ -571,7 +572,7 @@ It is interesting to consider if the parental choice to vaccinate children is in
 ##  Vaccine Coverage for Meningococcal Conjugate in States without Mandates 
 
 Analyses were performed to determine if coverage estimates for meningococcal disease are affected by the factors: insurance coverage, poverty, race/ethnicity, and urbanicity.  Function 5 was used, selecting for meningococcal conjugate and the appropriate dimension, working through them consecutively.  
-Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors and box plots generated.
+Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors, and box plots were generated.
 
 ```{r, compare menigococcal using insurance}
 #Select data relating to insurance
@@ -587,7 +588,7 @@ insurance_comparison_1$dimension <- as.factor(insurance_comparison_1$dimension)
 graph_3 <- ggplot(insurance_comparison_1, aes(x = dimension, y = coverage_estimate))
 
 #Add layers
-graph_3 + geom_boxplot(fill='gray') +
+graph_3 + geom_boxplot(fill = 'gray') +
     labs( x = "Insurance Coverage",
           y = "Vaccination Coverage Estimate",
           title = "Figure 3. Variation in Coverage Estimate for Meningococcal Disease",
@@ -609,7 +610,7 @@ poverty_comparison_1$dimension <- as.factor(poverty_comparison_1$dimension)
 graph_4 <- ggplot(poverty_comparison_1, aes(x = dimension, y = coverage_estimate))
 
 #Add layers
-graph_4 + geom_boxplot(fill='gray') +
+graph_4 + geom_boxplot(fill = 'gray') +
     labs( x = "Poverty",
           y = "Vaccination Coverage Estimate",
           title = "Figure 4. Variation in Coverage Estimate for Meningococcal Disease",
@@ -631,7 +632,7 @@ ethnicity_comparison_1$dimension <- as.factor(ethnicity_comparison_1$dimension)
 graph_5 <- ggplot(ethnicity_comparison_1, aes(x = dimension, y = coverage_estimate))
 
 #Add layers
-graph_5 + geom_boxplot(fill='gray') +
+graph_5 + geom_boxplot(fill = 'gray') +
     labs( x = "Race/Ethnicity",
           y = "Vaccination Coverage Estimate",
           title = "Figure 5. Variation in Coverage Estimate for Meningococcal Disease ",
@@ -653,7 +654,7 @@ urbanicity_comparison_1$dimension <- as.factor(urbanicity_comparison_1$dimension
 graph_6 <- ggplot(urbanicity_comparison_1, aes(x = dimension, y = coverage_estimate))
 
 #Add layers
-graph_6 + geom_boxplot(fill='gray') +
+graph_6 + geom_boxplot(fill = 'gray') +
     labs( x = "Urbanicity",
           y = "Vaccination Coverage Estimate",
           title = "Figure 6. Variation in Coverage Estimate for Meningococcal Disease ",
@@ -683,7 +684,7 @@ graph_7 + geom_point(aes(color = as.factor(vaccine))) +
     labs( x = "Region",
           y = "Vaccination Coverage Estimate",
           title = "Figure 7. Variation in Coverage Estimate for Vaccines Across Regions",
-          color = "vaccine")+
+          color = "vaccine") +
     guides(fill = guide_legend(title = "Vaccine")) +
     scale_x_discrete(limits = c('Region 1','Region 2','Region 3', 'Region 4','Region 5','Region 6',
                                 'Region 7','Region 8','Region 9','Region 10'))
@@ -860,7 +861,7 @@ dimnames(cont_table_2) <- my_dim_names_2
 knitr::kable(cont_table_2, caption="Contingency Table for Ranking by %Uninsured and Coverage Estimate")
 ```
 
-There does appear to be a correlation between low coverage against HPV infection in a state and its percent unemployment.  Of the ten states with the lowest vaccine coverage for HPV, six are in the lowest insurance group and two more are in the second lowest.  This was further investigated by generating a summary table using the `insurance_group` as a categorical variable.  
+There does appear to be a correlation between low coverage against HPV infection in a state and its percent uninsured.  Of the ten states with the lowest vaccine coverage for HPV, six are in the lowest insurance group and two more are in the second lowest.  This was further investigated by generating a summary table using the `insurance_group` as a categorical variable.  
 
 ```{r}
 summary_table_2 <-hpv_state_2 %>% 
@@ -877,7 +878,7 @@ There seems to be a relationship between the percent uninsured for a state and i
 
 ## Summary of Data Analysis
 
-The section of the database dealing with vaccination over a 4-year period was queried and coverage estimates were compared for Tdap and meningococcal conjugate.  Coverage estimates for meningococcal conjugate varied more than those for Tdap.  While Tdap is mandated for enrollment in secondary school in all states, the same is not true for meningococcal conjugate.  Coverage estimates for meningococcal conjugate were compared for states with and without a mandate. Then the variability in coverage in states without a mandate was analyzed as a function of insurance coverage, poverty level, race/ethnicity, and urbanicity.  The data suggested that a lack of insurance led to lower coverage estimates. Living in a non-metropolitan area also led to lower rates of vaccine coverage.  
+The section of the database dealing with vaccination over a 4-year period was queried and coverage estimates were compared for Tdap and meningococcal conjugate.  Coverage estimates for meningococcal conjugate varied more than those for Tdap.  While Tdap is mandated for enrollment in secondary school in all states, the same is not true for meningococcal conjugate.  Coverage estimates for meningococcal conjugate were compared for states with and without a mandate. Then the variability in coverage in states without a mandate was analyzed as a function of insurance coverage, poverty level, race/ethnicity, and urbanicity.  The data suggested that a lack of insurance led to lower coverage estimates. Living in a non-metropolitan area also seems related to lower rates of vaccine coverage.  
 
 Vaccine coverage estimates were compared across regions for vaccines.  The data for hepatitis A seemed the most variable.  Its variability was evaluated as a function of region and state mandates.  
 
