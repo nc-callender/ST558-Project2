@@ -245,21 +245,34 @@ demo_function_1 <- HPV_gender_eval_function(year_of_interest = "2021")
 demo_function_1
 ```
 
-    ## # A tibble: 22 × 10
-    ##    vaccine dose             geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci`
-    ##    <chr>   <chr>            <chr>          <chr>     <chr>       <chr>          <chr>     <chr>             <chr>   
-    ##  1 HPV     Up-to-Date, Fem… HHS Regions/N… United S… 2021        Age            13-17 Ye… 63.8              61.5 to…
-    ##  2 HPV     Up-to-Date, Fem… HHS Regions/N… Region 1  2021        Age            13-17 Ye… 73.9              68.2 to…
-    ##  3 HPV     Up-to-Date, Fem… HHS Regions/N… Region 2  2021        Age            13-17 Ye… 66.0              59.6 to…
-    ##  4 HPV     Up-to-Date, Fem… HHS Regions/N… Region 3  2021        Age            13-17 Ye… 71.0              66.9 to…
-    ##  5 HPV     Up-to-Date, Fem… HHS Regions/N… Region 4  2021        Age            13-17 Ye… 58.3              53.3 to…
-    ##  6 HPV     Up-to-Date, Fem… HHS Regions/N… Region 5  2021        Age            13-17 Ye… 66.9              62.7 to…
-    ##  7 HPV     Up-to-Date, Fem… HHS Regions/N… Region 6  2021        Age            13-17 Ye… 56.0              50.1 to…
-    ##  8 HPV     Up-to-Date, Fem… HHS Regions/N… Region 7  2021        Age            13-17 Ye… 66.2              60.5 to…
-    ##  9 HPV     Up-to-Date, Fem… HHS Regions/N… Region 8  2021        Age            13-17 Ye… 65.0              59.2 to…
-    ## 10 HPV     Up-to-Date, Fem… HHS Regions/N… Region 9  2021        Age            13-17 Ye… 65.7              56.3 to…
-    ## # ℹ 12 more rows
-    ## # ℹ 1 more variable: population_sample_size <chr>
+<div class="kable-table">
+
+| vaccine | dose                | geography_type       | geography     | year_season | dimension_type | dimension   | coverage_estimate | \_95_ci      | population_sample_size |
+|:--------|:--------------------|:---------------------|:--------------|:------------|:---------------|:------------|:------------------|:-------------|:-----------------------|
+| HPV     | Up-to-Date, Females | HHS Regions/National | United States | 2021        | Age            | 13-17 Years | 63.8              | 61.5 to 65.9 | 8423                   |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 1      | 2021        | Age            | 13-17 Years | 73.9              | 68.2 to 78.8 | 898                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 2      | 2021        | Age            | 13-17 Years | 66.0              | 59.6 to 71.8 | 400                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 3      | 2021        | Age            | 13-17 Years | 71.0              | 66.9 to 74.9 | 1546                   |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 4      | 2021        | Age            | 13-17 Years | 58.3              | 53.3 to 63.3 | 1023                   |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 5      | 2021        | Age            | 13-17 Years | 66.9              | 62.7 to 70.7 | 991                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 6      | 2021        | Age            | 13-17 Years | 56.0              | 50.1 to 61.8 | 1022                   |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 7      | 2021        | Age            | 13-17 Years | 66.2              | 60.5 to 71.4 | 535                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 8      | 2021        | Age            | 13-17 Years | 65.0              | 59.2 to 70.3 | 840                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 9      | 2021        | Age            | 13-17 Years | 65.7              | 56.3 to 74.1 | 574                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | Region 10     | 2021        | Age            | 13-17 Years | 64.3              | 58.4 to 69.9 | 594                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | United States | 2021        | Age            | 13-17 Years | 59.8              | 57.6 to 61.8 | 9579                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 1      | 2021        | Age            | 13-17 Years | 69.5              | 64.0 to 74.5 | 1025                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 2      | 2021        | Age            | 13-17 Years | 56.6              | 50.6 to 62.4 | 473                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 3      | 2021        | Age            | 13-17 Years | 64.6              | 60.5 to 68.6 | 1792                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 4      | 2021        | Age            | 13-17 Years | 55.0              | 50.5 to 59.4 | 1240                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 5      | 2021        | Age            | 13-17 Years | 57.8              | 53.5 to 61.9 | 1069                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 6      | 2021        | Age            | 13-17 Years | 51.7              | 46.3 to 57.0 | 1162                   |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 7      | 2021        | Age            | 13-17 Years | 58.5              | 53.0 to 63.7 | 619                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 8      | 2021        | Age            | 13-17 Years | 65.0              | 59.7 to 70.0 | 949                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 9      | 2021        | Age            | 13-17 Years | 68.5              | 59.2 to 76.6 | 599                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | Region 10     | 2021        | Age            | 13-17 Years | 67.7              | 61.9 to 73.0 | 651                    |
+
+</div>
 
 A demonstration of the results from this function call transformed into
 a user-friendly table is given below.
@@ -279,20 +292,23 @@ demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_mal
 demo_function_1a
 ```
 
-    ## # A tibble: 11 × 4
-    ##    geography     cov_est_female cov_est_male  Diff
-    ##    <chr>                  <dbl>        <dbl> <dbl>
-    ##  1 United States           63.8         59.8  4   
-    ##  2 Region 1                73.9         69.5  4.40
-    ##  3 Region 2                66           56.6  9.4 
-    ##  4 Region 3                71           64.6  6.40
-    ##  5 Region 4                58.3         55    3.30
-    ##  6 Region 5                66.9         57.8  9.10
-    ##  7 Region 6                56           51.7  4.30
-    ##  8 Region 7                66.2         58.5  7.7 
-    ##  9 Region 8                65           65    0   
-    ## 10 Region 9                65.7         68.5 -2.80
-    ## 11 Region 10               64.3         67.7 -3.40
+<div class="kable-table">
+
+| geography     | cov_est_female | cov_est_male | Diff |
+|:--------------|---------------:|-------------:|-----:|
+| United States |           63.8 |         59.8 |  4.0 |
+| Region 1      |           73.9 |         69.5 |  4.4 |
+| Region 2      |           66.0 |         56.6 |  9.4 |
+| Region 3      |           71.0 |         64.6 |  6.4 |
+| Region 4      |           58.3 |         55.0 |  3.3 |
+| Region 5      |           66.9 |         57.8 |  9.1 |
+| Region 6      |           56.0 |         51.7 |  4.3 |
+| Region 7      |           66.2 |         58.5 |  7.7 |
+| Region 8      |           65.0 |         65.0 |  0.0 |
+| Region 9      |           65.7 |         68.5 | -2.8 |
+| Region 10     |           64.3 |         67.7 | -3.4 |
+
+</div>
 
 *Considered on a national level, the difference between male and female
 vaccination rates is less than 5%. But in Regions 2 and 5, the
@@ -342,21 +358,122 @@ demo_function_2 <- HPV_gender_eval_function_state(year_of_interest = "2021")
 demo_function_2
 ```
 
-    ## # A tibble: 110 × 10
-    ##    vaccine dose             geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci`
-    ##    <chr>   <chr>            <chr>          <chr>     <chr>       <chr>          <chr>     <chr>             <chr>   
-    ##  1 HPV     Up-to-Date, Fem… States/Local … Alabama   2021        Age            13-17 Ye… 58.2              47.9 to…
-    ##  2 HPV     Up-to-Date, Fem… States/Local … Alaska    2021        Age            13-17 Ye… 60.5              49.5 to…
-    ##  3 HPV     Up-to-Date, Fem… States/Local … Arizona   2021        Age            13-17 Ye… 63.1              52.7 to…
-    ##  4 HPV     Up-to-Date, Fem… States/Local … Arkansas  2021        Age            13-17 Ye… 58.9              49.4 to…
-    ##  5 HPV     Up-to-Date, Fem… States/Local … Californ… 2021        Age            13-17 Ye… 67.0              54.8 to…
-    ##  6 HPV     Up-to-Date, Fem… States/Local … Colorado  2021        Age            13-17 Ye… 68.6              57.5 to…
-    ##  7 HPV     Up-to-Date, Fem… States/Local … Connecti… 2021        Age            13-17 Ye… 67.1              57.0 to…
-    ##  8 HPV     Up-to-Date, Fem… States/Local … Delaware  2021        Age            13-17 Ye… 68.8              59.0 to…
-    ##  9 HPV     Up-to-Date, Fem… States/Local … District… 2021        Age            13-17 Ye… 81.2              73.3 to…
-    ## 10 HPV     Up-to-Date, Fem… States/Local … Florida   2021        Age            13-17 Ye… 49.1              36.9 to…
-    ## # ℹ 100 more rows
-    ## # ℹ 1 more variable: population_sample_size <chr>
+<div class="kable-table">
+
+| vaccine | dose                | geography_type       | geography            | year_season | dimension_type | dimension   | coverage_estimate | \_95_ci      | population_sample_size |
+|:--------|:--------------------|:---------------------|:---------------------|:------------|:---------------|:------------|:------------------|:-------------|:-----------------------|
+| HPV     | Up-to-Date, Females | States/Local Areas   | Alabama              | 2021        | Age            | 13-17 Years | 58.2              | 47.9 to 67.8 | 135                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Alaska               | 2021        | Age            | 13-17 Years | 60.5              | 49.5 to 70.6 | 121                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Arizona              | 2021        | Age            | 13-17 Years | 63.1              | 52.7 to 72.4 | 127                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Arkansas             | 2021        | Age            | 13-17 Years | 58.9              | 49.4 to 67.7 | 149                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | California           | 2021        | Age            | 13-17 Years | 67.0              | 54.8 to 77.3 | 146                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Colorado             | 2021        | Age            | 13-17 Years | 68.6              | 57.5 to 77.9 | 135                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Connecticut          | 2021        | Age            | 13-17 Years | 67.1              | 57.0 to 75.8 | 159                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Delaware             | 2021        | Age            | 13-17 Years | 68.8              | 59.0 to 77.1 | 144                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | District of Columbia | 2021        | Age            | 13-17 Years | 81.2              | 73.3 to 87.2 | 197                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Florida              | 2021        | Age            | 13-17 Years | 49.1              | 36.9 to 61.5 | 127                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Georgia              | 2021        | Age            | 13-17 Years | 66.6              | 55.6 to 76.0 | 118                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Guam                 | 2021        | Age            | 13-17 Years | 52.9              | 40.8 to 64.7 | 94                     |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Hawaii               | 2021        | Age            | 13-17 Years | 69.0              | 59.0 to 77.5 | 126                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Idaho                | 2021        | Age            | 13-17 Years | 63.7              | 53.6 to 72.7 | 153                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Illinois             | 2021        | Age            | 13-17 Years | 64.8              | 57.3 to 71.7 | 282                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Indiana              | 2021        | Age            | 13-17 Years | 62.0              | 51.4 to 71.6 | 122                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Iowa                 | 2021        | Age            | 13-17 Years | 70.3              | 56.4 to 81.3 | 92                     |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Kansas               | 2021        | Age            | 13-17 Years | 70.6              | 60.0 to 79.4 | 140                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Kentucky             | 2021        | Age            | 13-17 Years | 48.9              | 37.2 to 60.7 | 111                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Louisiana            | 2021        | Age            | 13-17 Years | 60.7              | 50.0 to 70.4 | 129                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Maine                | 2021        | Age            | 13-17 Years | 67.8              | 57.9 to 76.4 | 137                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Maryland             | 2021        | Age            | 13-17 Years | 73.8              | 67.4 to 79.4 | 389                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Massachusetts        | 2021        | Age            | 13-17 Years | 78.1              | 66.8 to 86.4 | 115                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Michigan             | 2021        | Age            | 13-17 Years | 68.9              | 58.9 to 77.4 | 179                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Minnesota            | 2021        | Age            | 13-17 Years | 69.5              | 58.0 to 78.9 | 135                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Mississippi          | 2021        | Age            | 13-17 Years | 32.6              | 23.9 to 42.6 | 146                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Missouri             | 2021        | Age            | 13-17 Years | 62.7              | 53.1 to 71.5 | 156                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Montana              | 2021        | Age            | 13-17 Years | 49.5              | 39.6 to 59.3 | 135                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Nebraska             | 2021        | Age            | 13-17 Years | 63.2              | 52.5 to 72.7 | 147                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Nevada               | 2021        | Age            | 13-17 Years | 54.9              | 44.6 to 64.8 | 175                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | New Hampshire        | 2021        | Age            | 13-17 Years | 77.0              | 67.6 to 84.4 | 133                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | New Jersey           | 2021        | Age            | 13-17 Years | 63.0              | 51.3 to 73.4 | 122                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | New Mexico           | 2021        | Age            | 13-17 Years | 62.9              | 53.5 to 71.3 | 168                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | New York             | 2021        | Age            | 13-17 Years | 67.5              | 59.9 to 74.3 | 278                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | North Carolina       | 2021        | Age            | 13-17 Years | 72.8              | 60.0 to 82.7 | 122                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | North Dakota         | 2021        | Age            | 13-17 Years | 68.6              | 56.0 to 78.9 | 87                     |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Ohio                 | 2021        | Age            | 13-17 Years | 69.0              | 57.2 to 78.8 | 129                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Oklahoma             | 2021        | Age            | 13-17 Years | 55.1              | 44.5 to 65.4 | 114                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Oregon               | 2021        | Age            | 13-17 Years | 63.3              | 52.6 to 72.8 | 129                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Pennsylvania         | 2021        | Age            | 13-17 Years | 68.2              | 61.4 to 74.3 | 434                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Puerto Rico          | 2021        | Age            | 13-17 Years | 68.6              | 59.3 to 76.6 | 175                    |
+| HPV     | Up-to-Date, Females | HHS Regions/National | United States        | 2021        | Age            | 13-17 Years | 63.8              | 61.5 to 65.9 | 8423                   |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Rhode Island         | 2021        | Age            | 13-17 Years | 80.1              | 68.4 to 88.2 | 138                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | South Carolina       | 2021        | Age            | 13-17 Years | 61.0              | 50.1 to 71.0 | 123                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | South Dakota         | 2021        | Age            | 13-17 Years | 78.3              | 70.7 to 84.4 | 202                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Tennessee            | 2021        | Age            | 13-17 Years | 64.4              | 54.2 to 73.5 | 141                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Texas                | 2021        | Age            | 13-17 Years | 54.8              | 46.6 to 62.7 | 462                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | U.S. Virgin Islands  | 2021        | Age            | 13-17 Years | 45.7              | 33.0 to 58.9 | 113                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Utah                 | 2021        | Age            | 13-17 Years | 62.5              | 52.1 to 71.9 | 144                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Vermont              | 2021        | Age            | 13-17 Years | 63.8              | 55.8 to 71.1 | 216                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Virginia             | 2021        | Age            | 13-17 Years | 73.5              | 63.4 to 81.6 | 259                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Washington           | 2021        | Age            | 13-17 Years | 65.5              | 55.8 to 74.0 | 191                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | West Virginia        | 2021        | Age            | 13-17 Years | 67.3              | 57.2 to 76.0 | 123                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Wisconsin            | 2021        | Age            | 13-17 Years | 66.9              | 57.3 to 75.3 | 144                    |
+| HPV     | Up-to-Date, Females | States/Local Areas   | Wyoming              | 2021        | Age            | 13-17 Years | 48.7              | 38.2 to 59.3 | 137                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Alabama              | 2021        | Age            | 13-17 Years | 66.6              | 57.7 to 74.5 | 169                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Alaska               | 2021        | Age            | 13-17 Years | 52.1              | 42.2 to 61.8 | 147                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Arizona              | 2021        | Age            | 13-17 Years | 60.3              | 50.6 to 69.2 | 169                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Arkansas             | 2021        | Age            | 13-17 Years | 54.7              | 45.5 to 63.7 | 165                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | California           | 2021        | Age            | 13-17 Years | 70.9              | 58.7 to 80.7 | 140                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Colorado             | 2021        | Age            | 13-17 Years | 69.8              | 60.3 to 77.8 | 163                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Connecticut          | 2021        | Age            | 13-17 Years | 65.8              | 56.8 to 73.8 | 181                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Delaware             | 2021        | Age            | 13-17 Years | 68.9              | 59.7 to 76.9 | 166                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | District of Columbia | 2021        | Age            | 13-17 Years | 77.7              | 68.3 to 84.9 | 212                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Florida              | 2021        | Age            | 13-17 Years | 48.8              | 38.1 to 59.6 | 185                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Georgia              | 2021        | Age            | 13-17 Years | 55.4              | 43.9 to 66.3 | 142                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Guam                 | 2021        | Age            | 13-17 Years | 54.9              | 44.1 to 65.2 | 131                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Hawaii               | 2021        | Age            | 13-17 Years | 69.6              | 59.4 to 78.2 | 132                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Idaho                | 2021        | Age            | 13-17 Years | 59.5              | 50.4 to 68.0 | 181                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Illinois             | 2021        | Age            | 13-17 Years | 59.6              | 52.3 to 66.6 | 296                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Indiana              | 2021        | Age            | 13-17 Years | 48.7              | 39.1 to 58.5 | 146                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Iowa                 | 2021        | Age            | 13-17 Years | 62.0              | 49.5 to 73.0 | 107                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Kansas               | 2021        | Age            | 13-17 Years | 58.3              | 47.9 to 67.9 | 160                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Kentucky             | 2021        | Age            | 13-17 Years | 64.8              | 54.2 to 74.2 | 129                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Louisiana            | 2021        | Age            | 13-17 Years | 67.1              | 57.9 to 75.1 | 174                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Maine                | 2021        | Age            | 13-17 Years | 55.5              | 45.9 to 64.8 | 156                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Maryland             | 2021        | Age            | 13-17 Years | 70.2              | 63.9 to 75.8 | 468                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Massachusetts        | 2021        | Age            | 13-17 Years | 72.0              | 61.0 to 80.9 | 151                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Michigan             | 2021        | Age            | 13-17 Years | 60.7              | 50.4 to 70.2 | 179                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Minnesota            | 2021        | Age            | 13-17 Years | 62.0              | 52.4 to 70.8 | 161                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Mississippi          | 2021        | Age            | 13-17 Years | 32.8              | 24.3 to 42.6 | 157                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Missouri             | 2021        | Age            | 13-17 Years | 56.0              | 46.6 to 65.0 | 184                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Montana              | 2021        | Age            | 13-17 Years | 55.5              | 46.2 to 64.5 | 155                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Nebraska             | 2021        | Age            | 13-17 Years | 60.7              | 50.9 to 69.7 | 168                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Nevada               | 2021        | Age            | 13-17 Years | 58.0              | 47.6 to 67.8 | 158                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | New Hampshire        | 2021        | Age            | 13-17 Years | 67.8              | 58.2 to 76.1 | 149                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | New Jersey           | 2021        | Age            | 13-17 Years | 47.0              | 37.2 to 57.0 | 170                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | New Mexico           | 2021        | Age            | 13-17 Years | 53.1              | 44.2 to 61.9 | 169                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | New York             | 2021        | Age            | 13-17 Years | 61.5              | 53.9 to 68.5 | 303                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | North Carolina       | 2021        | Age            | 13-17 Years | 62.9              | 52.2 to 72.5 | 144                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | North Dakota         | 2021        | Age            | 13-17 Years | 75.6              | 63.8 to 84.4 | 104                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Ohio                 | 2021        | Age            | 13-17 Years | 55.6              | 43.4 to 67.2 | 125                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Oklahoma             | 2021        | Age            | 13-17 Years | 58.2              | 47.9 to 67.8 | 126                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Oregon               | 2021        | Age            | 13-17 Years | 70.6              | 61.2 to 78.5 | 165                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Pennsylvania         | 2021        | Age            | 13-17 Years | 69.2              | 62.9 to 74.9 | 495                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Puerto Rico          | 2021        | Age            | 13-17 Years | 65.9              | 56.5 to 74.1 | 175                    |
+| HPV     | Up-to-Date, Males   | HHS Regions/National | United States        | 2021        | Age            | 13-17 Years | 59.8              | 57.6 to 61.8 | 9579                   |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Rhode Island         | 2021        | Age            | 13-17 Years | 86.3              | 77.1 to 92.2 | 116                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | South Carolina       | 2021        | Age            | 13-17 Years | 63.2              | 52.9 to 72.3 | 140                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | South Dakota         | 2021        | Age            | 13-17 Years | 71.3              | 63.1 to 78.4 | 243                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Tennessee            | 2021        | Age            | 13-17 Years | 48.8              | 39.3 to 58.4 | 174                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Texas                | 2021        | Age            | 13-17 Years | 48.3              | 41.0 to 55.6 | 528                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | U.S. Virgin Islands  | 2021        | Age            | 13-17 Years | 45.3              | 33.3 to 57.8 | 132                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Utah                 | 2021        | Age            | 13-17 Years | 60.2              | 49.9 to 69.7 | 160                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Vermont              | 2021        | Age            | 13-17 Years | 69.5              | 62.6 to 75.6 | 272                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Virginia             | 2021        | Age            | 13-17 Years | 56.7              | 46.4 to 66.4 | 307                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Washington           | 2021        | Age            | 13-17 Years | 70.1              | 60.1 to 78.5 | 158                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | West Virginia        | 2021        | Age            | 13-17 Years | 46.1              | 36.6 to 55.9 | 144                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Wisconsin            | 2021        | Age            | 13-17 Years | 59.9              | 50.7 to 68.4 | 162                    |
+| HPV     | Up-to-Date, Males   | States/Local Areas   | Wyoming              | 2021        | Age            | 13-17 Years | 47.4              | 36.8 to 58.4 | 124                    |
+
+</div>
 
 A demonstration of the results from this function call transformed into
 a user-friendly table is given below.
@@ -374,20 +491,67 @@ demo_function_2a <- mutate(demo_function_2a, "Diff" = cov_est_female-cov_est_mal
 demo_function_2a
 ```
 
-    ## # A tibble: 55 × 4
-    ##    geography            cov_est_female cov_est_male   Diff
-    ##    <chr>                         <dbl>        <dbl>  <dbl>
-    ##  1 Alabama                        58.2         66.6 -8.40 
-    ##  2 Alaska                         60.5         52.1  8.4  
-    ##  3 Arizona                        63.1         60.3  2.80 
-    ##  4 Arkansas                       58.9         54.7  4.20 
-    ##  5 California                     67           70.9 -3.90 
-    ##  6 Colorado                       68.6         69.8 -1.20 
-    ##  7 Connecticut                    67.1         65.8  1.30 
-    ##  8 Delaware                       68.8         68.9 -0.100
-    ##  9 District of Columbia           81.2         77.7  3.5  
-    ## 10 Florida                        49.1         48.8  0.300
-    ## # ℹ 45 more rows
+<div class="kable-table">
+
+| geography            | cov_est_female | cov_est_male |  Diff |
+|:---------------------|---------------:|-------------:|------:|
+| Alabama              |           58.2 |         66.6 |  -8.4 |
+| Alaska               |           60.5 |         52.1 |   8.4 |
+| Arizona              |           63.1 |         60.3 |   2.8 |
+| Arkansas             |           58.9 |         54.7 |   4.2 |
+| California           |           67.0 |         70.9 |  -3.9 |
+| Colorado             |           68.6 |         69.8 |  -1.2 |
+| Connecticut          |           67.1 |         65.8 |   1.3 |
+| Delaware             |           68.8 |         68.9 |  -0.1 |
+| District of Columbia |           81.2 |         77.7 |   3.5 |
+| Florida              |           49.1 |         48.8 |   0.3 |
+| Georgia              |           66.6 |         55.4 |  11.2 |
+| Guam                 |           52.9 |         54.9 |  -2.0 |
+| Hawaii               |           69.0 |         69.6 |  -0.6 |
+| Idaho                |           63.7 |         59.5 |   4.2 |
+| Illinois             |           64.8 |         59.6 |   5.2 |
+| Indiana              |           62.0 |         48.7 |  13.3 |
+| Iowa                 |           70.3 |         62.0 |   8.3 |
+| Kansas               |           70.6 |         58.3 |  12.3 |
+| Kentucky             |           48.9 |         64.8 | -15.9 |
+| Louisiana            |           60.7 |         67.1 |  -6.4 |
+| Maine                |           67.8 |         55.5 |  12.3 |
+| Maryland             |           73.8 |         70.2 |   3.6 |
+| Massachusetts        |           78.1 |         72.0 |   6.1 |
+| Michigan             |           68.9 |         60.7 |   8.2 |
+| Minnesota            |           69.5 |         62.0 |   7.5 |
+| Mississippi          |           32.6 |         32.8 |  -0.2 |
+| Missouri             |           62.7 |         56.0 |   6.7 |
+| Montana              |           49.5 |         55.5 |  -6.0 |
+| Nebraska             |           63.2 |         60.7 |   2.5 |
+| Nevada               |           54.9 |         58.0 |  -3.1 |
+| New Hampshire        |           77.0 |         67.8 |   9.2 |
+| New Jersey           |           63.0 |         47.0 |  16.0 |
+| New Mexico           |           62.9 |         53.1 |   9.8 |
+| New York             |           67.5 |         61.5 |   6.0 |
+| North Carolina       |           72.8 |         62.9 |   9.9 |
+| North Dakota         |           68.6 |         75.6 |  -7.0 |
+| Ohio                 |           69.0 |         55.6 |  13.4 |
+| Oklahoma             |           55.1 |         58.2 |  -3.1 |
+| Oregon               |           63.3 |         70.6 |  -7.3 |
+| Pennsylvania         |           68.2 |         69.2 |  -1.0 |
+| Puerto Rico          |           68.6 |         65.9 |   2.7 |
+| United States        |           63.8 |         59.8 |   4.0 |
+| Rhode Island         |           80.1 |         86.3 |  -6.2 |
+| South Carolina       |           61.0 |         63.2 |  -2.2 |
+| South Dakota         |           78.3 |         71.3 |   7.0 |
+| Tennessee            |           64.4 |         48.8 |  15.6 |
+| Texas                |           54.8 |         48.3 |   6.5 |
+| U.S. Virgin Islands  |           45.7 |         45.3 |   0.4 |
+| Utah                 |           62.5 |         60.2 |   2.3 |
+| Vermont              |           63.8 |         69.5 |  -5.7 |
+| Virginia             |           73.5 |         56.7 |  16.8 |
+| Washington           |           65.5 |         70.1 |  -4.6 |
+| West Virginia        |           67.3 |         46.1 |  21.2 |
+| Wisconsin            |           66.9 |         59.9 |   7.0 |
+| Wyoming              |           48.7 |         47.4 |   1.3 |
+
+</div>
 
 *States that have more than a 15% difference (absolute) in coverage
 rates (with a higher percent of females being vaccinated) include New
@@ -479,20 +643,23 @@ demo_function_3a <- demo_function_3 %>%
 demo_function_3a
 ```
 
-    ## # A tibble: 11 × 7
-    ##    geography     `Meningococcal Conjugate` `Td or Tdap`  Tdap `Hep A`   MMR  HepB
-    ##    <chr>                             <dbl>        <dbl> <dbl>   <dbl> <dbl> <dbl>
-    ##  1 United States                      89           92.2  89.6    85    92.2  92.3
-    ##  2 Region 1                           91.9         95.7  93.8    86.6  96.5  95.8
-    ##  3 Region 2                           93.2         90.7  87.9    81.5  92.8  94.6
-    ##  4 Region 3                           91.4         92    89.7    85.8  93.4  92.1
-    ##  5 Region 4                           84.9         93.5  91      81.9  95.1  95.1
-    ##  6 Region 5                           91.6         93.3  89.4    84.9  94.2  94.1
-    ##  7 Region 6                           89.9         90.7  88.1    84.6  86.6  86.5
-    ##  8 Region 7                           90.4         92    90.2    82.6  92.5  93.1
-    ##  9 Region 8                           88.2         93.1  91.6    89.3  94.8  93.7
-    ## 10 Region 9                           87.5         91    89.2    88.5  89    89.9
-    ## 11 Region 10                          84.6         89.4  86.9    89.4  92.3  91.2
+<div class="kable-table">
+
+| geography     | Meningococcal Conjugate | Td or Tdap | Tdap | Hep A |  MMR | HepB |
+|:--------------|------------------------:|-----------:|-----:|------:|-----:|-----:|
+| United States |                    89.0 |       92.2 | 89.6 |  85.0 | 92.2 | 92.3 |
+| Region 1      |                    91.9 |       95.7 | 93.8 |  86.6 | 96.5 | 95.8 |
+| Region 2      |                    93.2 |       90.7 | 87.9 |  81.5 | 92.8 | 94.6 |
+| Region 3      |                    91.4 |       92.0 | 89.7 |  85.8 | 93.4 | 92.1 |
+| Region 4      |                    84.9 |       93.5 | 91.0 |  81.9 | 95.1 | 95.1 |
+| Region 5      |                    91.6 |       93.3 | 89.4 |  84.9 | 94.2 | 94.1 |
+| Region 6      |                    89.9 |       90.7 | 88.1 |  84.6 | 86.6 | 86.5 |
+| Region 7      |                    90.4 |       92.0 | 90.2 |  82.6 | 92.5 | 93.1 |
+| Region 8      |                    88.2 |       93.1 | 91.6 |  89.3 | 94.8 | 93.7 |
+| Region 9      |                    87.5 |       91.0 | 89.2 |  88.5 | 89.0 | 89.9 |
+| Region 10     |                    84.6 |       89.4 | 86.9 |  89.4 | 92.3 | 91.2 |
+
+</div>
 
 *Based on this function call, it appears that vaccination coverage for
 Hepatitis A is lower than the other vaccines.  
@@ -602,16 +769,18 @@ demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state
 demo_function_4
 ```
 
-    ## # A tibble: 6 × 10
-    ##   vaccine             dose  geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci`
-    ##   <chr>               <chr> <chr>          <chr>     <chr>       <chr>          <chr>                 <dbl> <chr>   
-    ## 1 Meningococcal Conj… >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              93.3 87.6 to…
-    ## 2 Td or Tdap          >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 89.9 to…
-    ## 3 Tdap                >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              94.5 88.9 to…
-    ## 4 Hep A               >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              90.8 83.6 to…
-    ## 5 MMR                 >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.3 88.8 to…
-    ## 6 HepB                >=3 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 88.9 to…
-    ## # ℹ 1 more variable: population_sample_size <chr>
+<div class="kable-table">
+
+| vaccine                 | dose       | geography_type     | geography      | year_season | dimension_type | dimension   | coverage_estimate | \_95_ci      | population_sample_size |
+|:------------------------|:-----------|:-------------------|:---------------|:------------|:---------------|:------------|------------------:|:-------------|:-----------------------|
+| Meningococcal Conjugate | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              93.3 | 87.6 to 96.5 | 266                    |
+| Td or Tdap              | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.5 | 89.9 to 98.1 | 266                    |
+| Tdap                    | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              94.5 | 88.9 to 97.4 | 266                    |
+| Hep A                   | \>=2 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              90.8 | 83.6 to 95.0 | 266                    |
+| MMR                     | \>=2 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.3 | 88.8 to 98.1 | 266                    |
+| HepB                    | \>=3 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.5 | 88.9 to 98.2 | 266                    |
+
+</div>
 
 ## Function 5 for Vaccination Coverage 2018-2022 for Vaccines other than HPV or Varicella: State Level Differences
 
@@ -692,21 +861,207 @@ demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insura
 demo_function_5
 ```
 
-    ## # A tibble: 195 × 10
-    ##    vaccine            dose  geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci`
-    ##    <chr>              <chr> <chr>          <chr>     <chr>       <chr>          <chr>                 <dbl> <chr>   
-    ##  1 Meningococcal Con… >=1 … States/Local … Alabama   2018-2022   Insurance Cov… Other                  76.7 66.4 to…
-    ##  2 Meningococcal Con… >=1 … States/Local … Alaska    2018-2022   Insurance Cov… Other                  80.8 74.6 to…
-    ##  3 Meningococcal Con… >=1 … States/Local … Arizona   2018-2022   Insurance Cov… Other                  83.5 73.3 to…
-    ##  4 Meningococcal Con… >=1 … States/Local … Arkansas  2018-2022   Insurance Cov… Other                  94.8 89.5 to…
-    ##  5 Meningococcal Con… >=1 … States/Local … Californ… 2018-2022   Insurance Cov… Other                  84   64.3 to…
-    ##  6 Meningococcal Con… >=1 … States/Local … Colorado  2018-2022   Insurance Cov… Other                  88.4 81.7 to…
-    ##  7 Meningococcal Con… >=1 … States/Local … Connecti… 2018-2022   Insurance Cov… Other                  91   83.2 to…
-    ##  8 Meningococcal Con… >=1 … States/Local … Delaware  2018-2022   Insurance Cov… Other                  89.8 77.7 to…
-    ##  9 Meningococcal Con… >=1 … States/Local … District… 2018-2022   Insurance Cov… Other                  95.5 80.1 to…
-    ## 10 Meningococcal Con… >=1 … States/Local … Florida   2018-2022   Insurance Cov… Other                  74.7 62.2 to…
-    ## # ℹ 185 more rows
-    ## # ℹ 1 more variable: population_sample_size <chr>
+<div class="kable-table">
+
+| vaccine                 | dose      | geography_type       | geography            | year_season | dimension_type     | dimension              | coverage_estimate | \_95_ci      | population_sample_size |
+|:------------------------|:----------|:---------------------|:---------------------|:------------|:-------------------|:-----------------------|------------------:|:-------------|:-----------------------|
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alabama              | 2018-2022   | Insurance Coverage | Other                  |              76.7 | 66.4 to 84.6 | 138                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alaska               | 2018-2022   | Insurance Coverage | Other                  |              80.8 | 74.6 to 85.9 | 316                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arizona              | 2018-2022   | Insurance Coverage | Other                  |              83.5 | 73.3 to 90.3 | 119                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arkansas             | 2018-2022   | Insurance Coverage | Other                  |              94.8 | 89.5 to 97.5 | 223                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | California           | 2018-2022   | Insurance Coverage | Other                  |              84.0 | 64.3 to 93.8 | 132                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Colorado             | 2018-2022   | Insurance Coverage | Other                  |              88.4 | 81.7 to 92.8 | 133                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Connecticut          | 2018-2022   | Insurance Coverage | Other                  |              91.0 | 83.2 to 95.4 | 211                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Delaware             | 2018-2022   | Insurance Coverage | Other                  |              89.8 | 77.7 to 95.7 | 72                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | District of Columbia | 2018-2022   | Insurance Coverage | Other                  |              95.5 | 80.1 to 99.1 | 44                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Florida              | 2018-2022   | Insurance Coverage | Other                  |              74.7 | 62.2 to 84.1 | 147                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Georgia              | 2018-2022   | Insurance Coverage | Other                  |              95.3 | 89.5 to 98.0 | 158                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Hawaii               | 2018-2022   | Insurance Coverage | Other                  |              79.5 | 70.6 to 86.3 | 157                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Idaho                | 2018-2022   | Insurance Coverage | Other                  |              82.5 | 68.7 to 91.1 | 94                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Illinois             | 2018-2022   | Insurance Coverage | Other                  |              88.1 | 78.5 to 93.7 | 101                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Indiana              | 2018-2022   | Insurance Coverage | Other                  |              85.9 | 69.1 to 94.4 | 41                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Iowa                 | 2018-2022   | Insurance Coverage | Other                  |              95.2 | 90.1 to 97.8 | 103                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kansas               | 2018-2022   | Insurance Coverage | Other                  |              84.5 | 79.1 to 88.7 | 316                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kentucky             | 2018-2022   | Insurance Coverage | Other                  |              87.3 | 75.6 to 93.9 | 78                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Louisiana            | 2018-2022   | Insurance Coverage | Other                  |              91.6 | 81.8 to 96.4 | 67                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maine                | 2018-2022   | Insurance Coverage | Other                  |              82.8 | 70.7 to 90.6 | 83                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maryland             | 2018-2022   | Insurance Coverage | Other                  |              94.1 | 86.6 to 97.5 | 180                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Massachusetts        | 2018-2022   | Insurance Coverage | Other                  |              96.0 | 82.6 to 99.2 | 67                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Michigan             | 2018-2022   | Insurance Coverage | Other                  |              93.4 | 85.1 to 97.2 | 72                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Minnesota            | 2018-2022   | Insurance Coverage | Other                  |              78.8 | 54.9 to 91.9 | 49                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Mississippi          | 2018-2022   | Insurance Coverage | Other                  |              61.1 | 48.6 to 72.3 | 105                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Missouri             | 2018-2022   | Insurance Coverage | Other                  |              84.1 | 72.0 to 91.6 | 85                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Montana              | 2018-2022   | Insurance Coverage | Other                  |              80.6 | 72.0 to 87.0 | 150                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nebraska             | 2018-2022   | Insurance Coverage | Other                  |              98.5 | 95.9 to 99.5 | 89                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nevada               | 2018-2022   | Insurance Coverage | Other                  |              86.1 | 76.7 to 92.1 | 124                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Hampshire        | 2018-2022   | Insurance Coverage | Other                  |              88.3 | 75.3 to 94.9 | 72                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Jersey           | 2018-2022   | Insurance Coverage | Other                  |              91.3 | 78.3 to 96.8 | 47                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Mexico           | 2018-2022   | Insurance Coverage | Other                  |              87.3 | 79.0 to 92.7 | 103                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New York             | 2018-2022   | Insurance Coverage | Other                  |              95.7 | 93.0 to 97.4 | 365                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Carolina       | 2018-2022   | Insurance Coverage | Other                  |              89.5 | 81.8 to 94.2 | 153                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Dakota         | 2018-2022   | Insurance Coverage | Other                  |              95.9 | 91.8 to 98.0 | 148                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Ohio                 | 2018-2022   | Insurance Coverage | Other                  |              78.6 | 59.6 to 90.1 | 65                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oklahoma             | 2018-2022   | Insurance Coverage | Other                  |              78.1 | 70.8 to 84.1 | 217                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oregon               | 2018-2022   | Insurance Coverage | Other                  |              80.7 | 70.4 to 88.0 | 122                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Pennsylvania         | 2018-2022   | Insurance Coverage | Other                  |              90.4 | 83.3 to 94.6 | 305                    |
+| Meningococcal Conjugate | \>=1 Dose | HHS Regions/National | United States        | 2018-2022   | Insurance Coverage | Other                  |              86.6 | 84.9 to 88.2 | 7253                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Rhode Island         | 2018-2022   | Insurance Coverage | Other                  |              91.5 | 76.3 to 97.3 | 54                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Carolina       | 2018-2022   | Insurance Coverage | Other                  |              83.5 | 73.1 to 90.4 | 98                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Dakota         | 2018-2022   | Insurance Coverage | Other                  |              91.8 | 82.1 to 96.4 | 135                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Tennessee            | 2018-2022   | Insurance Coverage | Other                  |              76.3 | 65.6 to 84.4 | 123                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Texas                | 2018-2022   | Insurance Coverage | Other                  |              89.3 | 85.4 to 92.2 | 705                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Utah                 | 2018-2022   | Insurance Coverage | Other                  |              91.4 | 80.9 to 96.4 | 103                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Vermont              | 2018-2022   | Insurance Coverage | Other                  |              95.2 | 87.9 to 98.2 | 78                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Virginia             | 2018-2022   | Insurance Coverage | Other                  |              79.7 | 70.7 to 86.5 | 296                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Washington           | 2018-2022   | Insurance Coverage | Other                  |              83.0 | 73.0 to 89.9 | 143                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | West Virginia        | 2018-2022   | Insurance Coverage | Other                  |              96.1 | 89.3 to 98.6 | 99                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wisconsin            | 2018-2022   | Insurance Coverage | Other                  |              68.6 | 51.8 to 81.7 | 55                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wyoming              | 2018-2022   | Insurance Coverage | Other                  |              76.4 | 64.6 to 85.2 | 113                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alabama              | 2018-2022   | Insurance Coverage | Private Insurance Only |              84.1 | 80.9 to 86.9 | 806                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alaska               | 2018-2022   | Insurance Coverage | Private Insurance Only |              73.5 | 69.5 to 77.1 | 794                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arizona              | 2018-2022   | Insurance Coverage | Private Insurance Only |              87.4 | 84.1 to 90.1 | 826                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arkansas             | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.1 | 93.1 to 96.5 | 752                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | California           | 2018-2022   | Insurance Coverage | Private Insurance Only |              85.7 | 82.1 to 88.7 | 951                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Colorado             | 2018-2022   | Insurance Coverage | Private Insurance Only |              86.8 | 83.9 to 89.3 | 950                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Connecticut          | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.3 | 93.4 to 96.7 | 1000                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Delaware             | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.0 | 88.3 to 93.2 | 915                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | District of Columbia | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.0 | 87.9 to 93.3 | 1006                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Florida              | 2018-2022   | Insurance Coverage | Private Insurance Only |              82.4 | 78.5 to 85.7 | 892                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Georgia              | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.1 | 92.8 to 96.6 | 886                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Hawaii               | 2018-2022   | Insurance Coverage | Private Insurance Only |              89.9 | 87.3 to 92.0 | 797                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Idaho                | 2018-2022   | Insurance Coverage | Private Insurance Only |              89.8 | 86.9 to 92.1 | 911                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Illinois             | 2018-2022   | Insurance Coverage | Private Insurance Only |              94.4 | 92.9 to 95.6 | 1944                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Indiana              | 2018-2022   | Insurance Coverage | Private Insurance Only |              93.0 | 90.6 to 94.8 | 847                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Iowa                 | 2018-2022   | Insurance Coverage | Private Insurance Only |              94.7 | 92.6 to 96.3 | 769                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kansas               | 2018-2022   | Insurance Coverage | Private Insurance Only |              82.2 | 78.8 to 85.1 | 970                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kentucky             | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.3 | 88.4 to 93.6 | 743                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Louisiana            | 2018-2022   | Insurance Coverage | Private Insurance Only |              90.6 | 87.5 to 93.0 | 756                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maine                | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.1 | 88.6 to 93.1 | 943                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maryland             | 2018-2022   | Insurance Coverage | Private Insurance Only |              93.9 | 92.0 to 95.4 | 2139                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Massachusetts        | 2018-2022   | Insurance Coverage | Private Insurance Only |              94.2 | 91.9 to 95.9 | 1143                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Michigan             | 2018-2022   | Insurance Coverage | Private Insurance Only |              94.4 | 92.0 to 96.0 | 1070                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Minnesota            | 2018-2022   | Insurance Coverage | Private Insurance Only |              92.1 | 89.7 to 94.0 | 1092                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Mississippi          | 2018-2022   | Insurance Coverage | Private Insurance Only |              57.1 | 52.1 to 61.9 | 617                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Missouri             | 2018-2022   | Insurance Coverage | Private Insurance Only |              88.3 | 85.7 to 90.6 | 1032                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Montana              | 2018-2022   | Insurance Coverage | Private Insurance Only |              79.7 | 76.2 to 82.8 | 823                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nebraska             | 2018-2022   | Insurance Coverage | Private Insurance Only |              86.7 | 83.7 to 89.2 | 1027                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nevada               | 2018-2022   | Insurance Coverage | Private Insurance Only |              86.4 | 83.3 to 89.1 | 889                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Hampshire        | 2018-2022   | Insurance Coverage | Private Insurance Only |              90.7 | 88.6 to 92.5 | 1058                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Jersey           | 2018-2022   | Insurance Coverage | Private Insurance Only |              93.0 | 90.9 to 94.7 | 1192                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Mexico           | 2018-2022   | Insurance Coverage | Private Insurance Only |              83.4 | 79.7 to 86.6 | 721                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New York             | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.4 | 94.0 to 96.5 | 1581                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Carolina       | 2018-2022   | Insurance Coverage | Private Insurance Only |              92.3 | 89.4 to 94.5 | 906                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Dakota         | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.6 | 93.7 to 97.0 | 1015                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Ohio                 | 2018-2022   | Insurance Coverage | Private Insurance Only |              92.5 | 90.0 to 94.4 | 951                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oklahoma             | 2018-2022   | Insurance Coverage | Private Insurance Only |              72.4 | 67.9 to 76.4 | 632                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oregon               | 2018-2022   | Insurance Coverage | Private Insurance Only |              84.6 | 81.4 to 87.3 | 858                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Pennsylvania         | 2018-2022   | Insurance Coverage | Private Insurance Only |              95.1 | 93.6 to 96.3 | 2218                   |
+| Meningococcal Conjugate | \>=1 Dose | HHS Regions/National | United States        | 2018-2022   | Insurance Coverage | Private Insurance Only |              89.5 | 88.9 to 90.0 | 54111                  |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Rhode Island         | 2018-2022   | Insurance Coverage | Private Insurance Only |              97.7 | 95.8 to 98.8 | 867                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Carolina       | 2018-2022   | Insurance Coverage | Private Insurance Only |              83.5 | 80.2 to 86.4 | 805                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Dakota         | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.2 | 89.2 to 93.0 | 1100                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Tennessee            | 2018-2022   | Insurance Coverage | Private Insurance Only |              83.5 | 80.1 to 86.4 | 814                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Texas                | 2018-2022   | Insurance Coverage | Private Insurance Only |              88.6 | 86.7 to 90.2 | 3327                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Utah                 | 2018-2022   | Insurance Coverage | Private Insurance Only |              89.2 | 86.6 to 91.3 | 1130                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Vermont              | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.2 | 89.0 to 93.1 | 1194                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Virginia             | 2018-2022   | Insurance Coverage | Private Insurance Only |              87.0 | 84.0 to 89.4 | 1860                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Washington           | 2018-2022   | Insurance Coverage | Private Insurance Only |              88.3 | 85.3 to 90.8 | 930                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | West Virginia        | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.1 | 88.4 to 93.2 | 735                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wisconsin            | 2018-2022   | Insurance Coverage | Private Insurance Only |              91.2 | 88.9 to 93.0 | 986                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wyoming              | 2018-2022   | Insurance Coverage | Private Insurance Only |              69.6 | 65.8 to 73.2 | 941                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alabama              | 2018-2022   | Insurance Coverage | Any Medicaid           |              87.2 | 83.6 to 90.1 | 521                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alaska               | 2018-2022   | Insurance Coverage | Any Medicaid           |              76.1 | 71.2 to 80.3 | 474                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arizona              | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.0 | 86.5 to 92.7 | 476                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arkansas             | 2018-2022   | Insurance Coverage | Any Medicaid           |              94.2 | 91.5 to 96.1 | 567                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | California           | 2018-2022   | Insurance Coverage | Any Medicaid           |              87.0 | 82.7 to 90.3 | 528                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Colorado             | 2018-2022   | Insurance Coverage | Any Medicaid           |              84.8 | 80.0 to 88.6 | 414                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Connecticut          | 2018-2022   | Insurance Coverage | Any Medicaid           |              91.8 | 86.7 to 95.1 | 273                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Delaware             | 2018-2022   | Insurance Coverage | Any Medicaid           |              86.6 | 82.3 to 89.9 | 497                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | District of Columbia | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.4 | 89.2 to 94.7 | 549                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Florida              | 2018-2022   | Insurance Coverage | Any Medicaid           |              81.2 | 76.4 to 85.2 | 503                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Georgia              | 2018-2022   | Insurance Coverage | Any Medicaid           |              94.0 | 90.5 to 96.3 | 430                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Hawaii               | 2018-2022   | Insurance Coverage | Any Medicaid           |              82.9 | 78.2 to 86.8 | 443                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Idaho                | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.2 | 88.9 to 94.6 | 521                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Illinois             | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.8 | 88.4 to 92.7 | 1112                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Indiana              | 2018-2022   | Insurance Coverage | Any Medicaid           |              91.1 | 87.5 to 93.7 | 467                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Iowa                 | 2018-2022   | Insurance Coverage | Any Medicaid           |              91.0 | 86.8 to 94.0 | 373                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kansas               | 2018-2022   | Insurance Coverage | Any Medicaid           |              85.5 | 79.7 to 89.9 | 290                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kentucky             | 2018-2022   | Insurance Coverage | Any Medicaid           |              88.3 | 84.4 to 91.4 | 473                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Louisiana            | 2018-2022   | Insurance Coverage | Any Medicaid           |              89.8 | 86.6 to 92.2 | 748                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maine                | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.8 | 87.5 to 93.3 | 496                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maryland             | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.2 | 88.5 to 94.8 | 569                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Massachusetts        | 2018-2022   | Insurance Coverage | Any Medicaid           |              96.1 | 92.5 to 98.0 | 332                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Michigan             | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.7 | 88.6 to 95.3 | 449                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Minnesota            | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.0 | 87.5 to 94.9 | 348                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Mississippi          | 2018-2022   | Insurance Coverage | Any Medicaid           |              63.8 | 58.9 to 68.4 | 589                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Missouri             | 2018-2022   | Insurance Coverage | Any Medicaid           |              82.5 | 77.6 to 86.6 | 445                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Montana              | 2018-2022   | Insurance Coverage | Any Medicaid           |              73.8 | 68.8 to 78.2 | 481                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nebraska             | 2018-2022   | Insurance Coverage | Any Medicaid           |              84.8 | 79.6 to 88.9 | 364                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nevada               | 2018-2022   | Insurance Coverage | Any Medicaid           |              85.5 | 81.1 to 89.1 | 497                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Hampshire        | 2018-2022   | Insurance Coverage | Any Medicaid           |              83.9 | 78.6 to 88.0 | 361                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Jersey           | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.8 | 86.2 to 94.0 | 362                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Mexico           | 2018-2022   | Insurance Coverage | Any Medicaid           |              83.9 | 80.5 to 86.8 | 794                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New York             | 2018-2022   | Insurance Coverage | Any Medicaid           |              93.9 | 91.7 to 95.6 | 897                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Carolina       | 2018-2022   | Insurance Coverage | Any Medicaid           |              92.2 | 88.7 to 94.7 | 471                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Dakota         | 2018-2022   | Insurance Coverage | Any Medicaid           |              93.4 | 88.9 to 96.1 | 267                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Ohio                 | 2018-2022   | Insurance Coverage | Any Medicaid           |              89.3 | 85.5 to 92.2 | 451                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oklahoma             | 2018-2022   | Insurance Coverage | Any Medicaid           |              84.9 | 81.3 to 87.9 | 659                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oregon               | 2018-2022   | Insurance Coverage | Any Medicaid           |              84.0 | 79.4 to 87.7 | 430                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Pennsylvania         | 2018-2022   | Insurance Coverage | Any Medicaid           |              94.0 | 91.7 to 95.7 | 1213                   |
+| Meningococcal Conjugate | \>=1 Dose | HHS Regions/National | United States        | 2018-2022   | Insurance Coverage | Any Medicaid           |              88.3 | 87.5 to 89.0 | 27403                  |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Rhode Island         | 2018-2022   | Insurance Coverage | Any Medicaid           |              95.2 | 92.2 to 97.1 | 508                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Carolina       | 2018-2022   | Insurance Coverage | Any Medicaid           |              84.2 | 80.1 to 87.7 | 523                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Dakota         | 2018-2022   | Insurance Coverage | Any Medicaid           |              93.0 | 89.5 to 95.3 | 381                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Tennessee            | 2018-2022   | Insurance Coverage | Any Medicaid           |              87.7 | 83.3 to 91.0 | 439                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Texas                | 2018-2022   | Insurance Coverage | Any Medicaid           |              88.2 | 85.2 to 90.7 | 2274                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Utah                 | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.4 | 84.7 to 94.1 | 218                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Vermont              | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.2 | 87.3 to 92.5 | 690                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Virginia             | 2018-2022   | Insurance Coverage | Any Medicaid           |              81.8 | 75.3 to 86.9 | 319                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Washington           | 2018-2022   | Insurance Coverage | Any Medicaid           |              85.1 | 80.9 to 88.5 | 544                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | West Virginia        | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.9 | 87.7 to 93.4 | 603                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wisconsin            | 2018-2022   | Insurance Coverage | Any Medicaid           |              90.5 | 87.0 to 93.2 | 454                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wyoming              | 2018-2022   | Insurance Coverage | Any Medicaid           |              79.5 | 73.7 to 84.3 | 316                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Alaska               | 2018-2022   | Insurance Coverage | Uninsured              |              67.4 | 48.2 to 82.1 | 44                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arizona              | 2018-2022   | Insurance Coverage | Uninsured              |              83.3 | 71.6 to 90.8 | 84                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Arkansas             | 2018-2022   | Insurance Coverage | Uninsured              |              90.9 | 78.2 to 96.5 | 63                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Colorado             | 2018-2022   | Insurance Coverage | Uninsured              |              74.5 | 55.9 to 87.0 | 37                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Connecticut          | 2018-2022   | Insurance Coverage | Uninsured              |              82.3 | 59.4 to 93.7 | 32                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Delaware             | 2018-2022   | Insurance Coverage | Uninsured              |              84.6 | 71.6 to 92.3 | 50                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Florida              | 2018-2022   | Insurance Coverage | Uninsured              |              72.9 | 58.9 to 83.4 | 98                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Georgia              | 2018-2022   | Insurance Coverage | Uninsured              |              88.3 | 77.2 to 94.4 | 79                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Idaho                | 2018-2022   | Insurance Coverage | Uninsured              |              76.9 | 61.5 to 87.4 | 58                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Illinois             | 2018-2022   | Insurance Coverage | Uninsured              |              85.5 | 73.8 to 92.5 | 73                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Indiana              | 2018-2022   | Insurance Coverage | Uninsured              |              95.6 | 86.9 to 98.6 | 58                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kansas               | 2018-2022   | Insurance Coverage | Uninsured              |              63.2 | 48.7 to 75.6 | 76                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Kentucky             | 2018-2022   | Insurance Coverage | Uninsured              |              76.3 | 54.2 to 89.8 | 39                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Louisiana            | 2018-2022   | Insurance Coverage | Uninsured              |              93.8 | 83.4 to 97.9 | 38                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maine                | 2018-2022   | Insurance Coverage | Uninsured              |              71.2 | 53.5 to 84.2 | 44                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Maryland             | 2018-2022   | Insurance Coverage | Uninsured              |              89.4 | 66.6 to 97.3 | 47                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Michigan             | 2018-2022   | Insurance Coverage | Uninsured              |              85.8 | 65.4 to 95.1 | 32                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Mississippi          | 2018-2022   | Insurance Coverage | Uninsured              |              55.4 | 40.0 to 69.9 | 61                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Missouri             | 2018-2022   | Insurance Coverage | Uninsured              |              78.0 | 62.9 to 88.2 | 66                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nebraska             | 2018-2022   | Insurance Coverage | Uninsured              |              93.5 | 83.4 to 97.6 | 67                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Nevada               | 2018-2022   | Insurance Coverage | Uninsured              |              86.1 | 75.6 to 92.5 | 98                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Hampshire        | 2018-2022   | Insurance Coverage | Uninsured              |              74.5 | 49.0 to 89.9 | 33                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Jersey           | 2018-2022   | Insurance Coverage | Uninsured              |              92.7 | 82.8 to 97.1 | 41                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New Mexico           | 2018-2022   | Insurance Coverage | Uninsured              |              68.1 | 47.7 to 83.4 | 47                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | New York             | 2018-2022   | Insurance Coverage | Uninsured              |              82.9 | 53.5 to 95.4 | 36                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Carolina       | 2018-2022   | Insurance Coverage | Uninsured              |              90.5 | 77.7 to 96.4 | 70                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | North Dakota         | 2018-2022   | Insurance Coverage | Uninsured              |              82.4 | 64.1 to 92.4 | 48                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Oklahoma             | 2018-2022   | Insurance Coverage | Uninsured              |              74.9 | 58.3 to 86.5 | 48                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Pennsylvania         | 2018-2022   | Insurance Coverage | Uninsured              |              88.8 | 71.9 to 96.1 | 93                     |
+| Meningococcal Conjugate | \>=1 Dose | HHS Regions/National | United States        | 2018-2022   | Insurance Coverage | Uninsured              |              79.9 | 76.7 to 82.8 | 2929                   |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Rhode Island         | 2018-2022   | Insurance Coverage | Uninsured              |              91.7 | 75.1 to 97.6 | 37                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Carolina       | 2018-2022   | Insurance Coverage | Uninsured              |              68.6 | 53.8 to 80.4 | 54                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | South Dakota         | 2018-2022   | Insurance Coverage | Uninsured              |              75.3 | 57.8 to 87.2 | 51                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Tennessee            | 2018-2022   | Insurance Coverage | Uninsured              |              71.5 | 57.4 to 82.3 | 66                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Texas                | 2018-2022   | Insurance Coverage | Uninsured              |              83.2 | 76.4 to 88.3 | 548                    |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Utah                 | 2018-2022   | Insurance Coverage | Uninsured              |              90.5 | 77.2 to 96.4 | 63                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Virginia             | 2018-2022   | Insurance Coverage | Uninsured              |              82.8 | 65.2 to 92.5 | 53                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | West Virginia        | 2018-2022   | Insurance Coverage | Uninsured              |              85.7 | 67.9 to 94.5 | 30                     |
+| Meningococcal Conjugate | \>=1 Dose | States/Local Areas   | Wyoming              | 2018-2022   | Insurance Coverage | Uninsured              |              64.1 | 49.3 to 76.5 | 79                     |
+
+</div>
 
 Presentation of the results from this function call transformed into a
 user-friendly table is given below.
@@ -719,20 +1074,64 @@ demo_function_5a <- demo_function_5 %>%
 demo_function_5a
 ```
 
-    ## # A tibble: 52 × 5
-    ##    geography            Other `Private Insurance Only` `Any Medicaid` Uninsured
-    ##    <chr>                <dbl>                    <dbl>          <dbl>     <dbl>
-    ##  1 Alabama               76.7                     84.1           87.2      NA  
-    ##  2 Alaska                80.8                     73.5           76.1      67.4
-    ##  3 Arizona               83.5                     87.4           90        83.3
-    ##  4 Arkansas              94.8                     95.1           94.2      90.9
-    ##  5 California            84                       85.7           87        NA  
-    ##  6 Colorado              88.4                     86.8           84.8      74.5
-    ##  7 Connecticut           91                       95.3           91.8      82.3
-    ##  8 Delaware              89.8                     91             86.6      84.6
-    ##  9 District of Columbia  95.5                     91             92.4      NA  
-    ## 10 Florida               74.7                     82.4           81.2      72.9
-    ## # ℹ 42 more rows
+<div class="kable-table">
+
+| geography            | Other | Private Insurance Only | Any Medicaid | Uninsured |
+|:---------------------|------:|-----------------------:|-------------:|----------:|
+| Alabama              |  76.7 |                   84.1 |         87.2 |        NA |
+| Alaska               |  80.8 |                   73.5 |         76.1 |      67.4 |
+| Arizona              |  83.5 |                   87.4 |         90.0 |      83.3 |
+| Arkansas             |  94.8 |                   95.1 |         94.2 |      90.9 |
+| California           |  84.0 |                   85.7 |         87.0 |        NA |
+| Colorado             |  88.4 |                   86.8 |         84.8 |      74.5 |
+| Connecticut          |  91.0 |                   95.3 |         91.8 |      82.3 |
+| Delaware             |  89.8 |                   91.0 |         86.6 |      84.6 |
+| District of Columbia |  95.5 |                   91.0 |         92.4 |        NA |
+| Florida              |  74.7 |                   82.4 |         81.2 |      72.9 |
+| Georgia              |  95.3 |                   95.1 |         94.0 |      88.3 |
+| Hawaii               |  79.5 |                   89.9 |         82.9 |        NA |
+| Idaho                |  82.5 |                   89.8 |         92.2 |      76.9 |
+| Illinois             |  88.1 |                   94.4 |         90.8 |      85.5 |
+| Indiana              |  85.9 |                   93.0 |         91.1 |      95.6 |
+| Iowa                 |  95.2 |                   94.7 |         91.0 |        NA |
+| Kansas               |  84.5 |                   82.2 |         85.5 |      63.2 |
+| Kentucky             |  87.3 |                   91.3 |         88.3 |      76.3 |
+| Louisiana            |  91.6 |                   90.6 |         89.8 |      93.8 |
+| Maine                |  82.8 |                   91.1 |         90.8 |      71.2 |
+| Maryland             |  94.1 |                   93.9 |         92.2 |      89.4 |
+| Massachusetts        |  96.0 |                   94.2 |         96.1 |        NA |
+| Michigan             |  93.4 |                   94.4 |         92.7 |      85.8 |
+| Minnesota            |  78.8 |                   92.1 |         92.0 |        NA |
+| Mississippi          |  61.1 |                   57.1 |         63.8 |      55.4 |
+| Missouri             |  84.1 |                   88.3 |         82.5 |      78.0 |
+| Montana              |  80.6 |                   79.7 |         73.8 |        NA |
+| Nebraska             |  98.5 |                   86.7 |         84.8 |      93.5 |
+| Nevada               |  86.1 |                   86.4 |         85.5 |      86.1 |
+| New Hampshire        |  88.3 |                   90.7 |         83.9 |      74.5 |
+| New Jersey           |  91.3 |                   93.0 |         90.8 |      92.7 |
+| New Mexico           |  87.3 |                   83.4 |         83.9 |      68.1 |
+| New York             |  95.7 |                   95.4 |         93.9 |      82.9 |
+| North Carolina       |  89.5 |                   92.3 |         92.2 |      90.5 |
+| North Dakota         |  95.9 |                   95.6 |         93.4 |      82.4 |
+| Ohio                 |  78.6 |                   92.5 |         89.3 |        NA |
+| Oklahoma             |  78.1 |                   72.4 |         84.9 |      74.9 |
+| Oregon               |  80.7 |                   84.6 |         84.0 |        NA |
+| Pennsylvania         |  90.4 |                   95.1 |         94.0 |      88.8 |
+| United States        |  86.6 |                   89.5 |         88.3 |      79.9 |
+| Rhode Island         |  91.5 |                   97.7 |         95.2 |      91.7 |
+| South Carolina       |  83.5 |                   83.5 |         84.2 |      68.6 |
+| South Dakota         |  91.8 |                   91.2 |         93.0 |      75.3 |
+| Tennessee            |  76.3 |                   83.5 |         87.7 |      71.5 |
+| Texas                |  89.3 |                   88.6 |         88.2 |      83.2 |
+| Utah                 |  91.4 |                   89.2 |         90.4 |      90.5 |
+| Vermont              |  95.2 |                   91.2 |         90.2 |        NA |
+| Virginia             |  79.7 |                   87.0 |         81.8 |      82.8 |
+| Washington           |  83.0 |                   88.3 |         85.1 |        NA |
+| West Virginia        |  96.1 |                   91.1 |         90.9 |      85.7 |
+| Wisconsin            |  68.6 |                   91.2 |         90.5 |        NA |
+| Wyoming              |  76.4 |                   69.6 |         79.5 |      64.1 |
+
+</div>
 
 ## Summary of Functions
 
@@ -781,20 +1180,64 @@ colnames(coverage_comparison_1) <- c("geography", "Meningococcal_conjugate", "Td
 coverage_comparison_1
 ```
 
-    ## # A tibble: 52 × 3
-    ##    geography            Meningococcal_conjugate  Tdap
-    ##    <chr>                                  <dbl> <dbl>
-    ##  1 Alabama                                 84.4  91.6
-    ##  2 Alaska                                  75.7  82.4
-    ##  3 Arizona                                 87.8  86.8
-    ##  4 Arkansas                                94.5  93.3
-    ##  5 California                              85.7  87.5
-    ##  6 Colorado                                86    90.8
-    ##  7 Connecticut                             93.6  94.5
-    ##  8 Delaware                                89    88.4
-    ##  9 District of Columbia                    91.5  87.1
-    ## 10 Florida                                 80.7  91.5
-    ## # ℹ 42 more rows
+<div class="kable-table">
+
+| geography            | Meningococcal_conjugate | Tdap |
+|:---------------------|------------------------:|-----:|
+| Alabama              |                    84.4 | 91.6 |
+| Alaska               |                    75.7 | 82.4 |
+| Arizona              |                    87.8 | 86.8 |
+| Arkansas             |                    94.5 | 93.3 |
+| California           |                    85.7 | 87.5 |
+| Colorado             |                    86.0 | 90.8 |
+| Connecticut          |                    93.6 | 94.5 |
+| Delaware             |                    89.0 | 88.4 |
+| District of Columbia |                    91.5 | 87.1 |
+| Florida              |                    80.7 | 91.5 |
+| Georgia              |                    94.4 | 92.2 |
+| Hawaii               |                    85.8 | 86.4 |
+| Idaho                |                    89.8 | 88.2 |
+| Illinois             |                    92.7 | 91.3 |
+| Indiana              |                    92.2 | 91.6 |
+| Iowa                 |                    93.3 | 93.9 |
+| Kansas               |                    82.3 | 89.5 |
+| Kentucky             |                    89.5 | 87.5 |
+| Louisiana            |                    90.2 | 92.9 |
+| Maine                |                    90.1 | 91.0 |
+| Maryland             |                    93.3 | 89.7 |
+| Massachusetts        |                    94.6 | 93.7 |
+| Michigan             |                    93.6 | 90.6 |
+| Minnesota            |                    91.3 | 91.6 |
+| Mississippi          |                    60.6 | 89.9 |
+| Missouri             |                    85.8 | 85.4 |
+| Montana              |                    76.7 | 88.5 |
+| Nebraska             |                    87.1 | 90.8 |
+| Nevada               |                    86.1 | 88.3 |
+| New Hampshire        |                    88.4 | 94.8 |
+| New Jersey           |                    92.3 | 89.3 |
+| New Mexico           |                    83.5 | 87.4 |
+| New York             |                    94.8 | 91.2 |
+| North Carolina       |                    92.0 | 91.9 |
+| North Dakota         |                    94.8 | 93.4 |
+| Ohio                 |                    90.6 | 91.8 |
+| Oklahoma             |                    79.1 | 86.8 |
+| Oregon               |                    83.6 | 88.0 |
+| Pennsylvania         |                    94.2 | 92.8 |
+| United States        |                    88.5 | 89.7 |
+| Rhode Island         |                    96.4 | 95.2 |
+| South Carolina       |                    83.3 | 91.0 |
+| South Dakota         |                    91.2 | 91.5 |
+| Tennessee            |                    83.7 | 90.2 |
+| Texas                |                    88.0 | 84.9 |
+| Utah                 |                    89.6 | 91.0 |
+| Vermont              |                    90.9 | 94.2 |
+| Virginia             |                    84.7 | 89.7 |
+| Washington           |                    86.2 | 89.1 |
+| West Virginia        |                    91.2 | 90.1 |
+| Wisconsin            |                    89.7 | 90.6 |
+| Wyoming              |                    72.4 | 89.3 |
+
+</div>
 
 The summaries for the two vaccines were printed out.
 
@@ -850,20 +1293,63 @@ meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulatio
 meningococcal_regulation_analysis
 ```
 
-    ## # A tibble: 51 × 3
-    ##    geography            mening_req Meningococcal_conjugate
-    ##    <chr>                <fct>                        <dbl>
-    ##  1 Alabama              No                            84.4
-    ##  2 Alaska               No                            75.7
-    ##  3 Arizona              Yes                           87.8
-    ##  4 Arkansas             Yes                           94.5
-    ##  5 California           No                            85.7
-    ##  6 Colorado             No                            86  
-    ##  7 Connecticut          Yes                           93.6
-    ##  8 Delaware             Yes                           89  
-    ##  9 District of Columbia Yes                           91.5
-    ## 10 Florida              No                            80.7
-    ## # ℹ 41 more rows
+<div class="kable-table">
+
+| geography            | mening_req | Meningococcal_conjugate |
+|:---------------------|:-----------|------------------------:|
+| Alabama              | No         |                    84.4 |
+| Alaska               | No         |                    75.7 |
+| Arizona              | Yes        |                    87.8 |
+| Arkansas             | Yes        |                    94.5 |
+| California           | No         |                    85.7 |
+| Colorado             | No         |                    86.0 |
+| Connecticut          | Yes        |                    93.6 |
+| Delaware             | Yes        |                    89.0 |
+| District of Columbia | Yes        |                    91.5 |
+| Florida              | No         |                    80.7 |
+| Georgia              | Yes        |                    94.4 |
+| Hawaii               | Yes        |                    85.8 |
+| Idaho                | Yes        |                    89.8 |
+| Illinois             | Yes        |                    92.7 |
+| Indiana              | Yes        |                    92.2 |
+| Iowa                 | Yes        |                    93.3 |
+| Kansas               | Yes        |                    82.3 |
+| Kentucky             | Yes        |                    89.5 |
+| Louisiana            | Yes        |                    90.2 |
+| Maine                | Yes        |                    90.1 |
+| Maryland             | Yes        |                    93.3 |
+| Massachusetts        | Yes        |                    94.6 |
+| Michigan             | Yes        |                    93.6 |
+| Minnesota            | Yes        |                    91.3 |
+| Mississippi          | No         |                    60.6 |
+| Missouri             | Yes        |                    85.8 |
+| Montana              | No         |                    76.7 |
+| Nebraska             | No         |                    87.1 |
+| Nevada               | Yes        |                    86.1 |
+| New Hampshire        | No         |                    88.4 |
+| New Jersey           | Yes        |                    92.3 |
+| New Mexico           | Yes        |                    83.5 |
+| New York             | Yes        |                    94.8 |
+| North Carolina       | Yes        |                    92.0 |
+| North Dakota         | Yes        |                    94.8 |
+| Ohio                 | Yes        |                    90.6 |
+| Oklahoma             | No         |                    79.1 |
+| Oregon               | No         |                    83.6 |
+| Pennsylvania         | Yes        |                    94.2 |
+| Rhode Island         | Yes        |                    96.4 |
+| South Carolina       | No         |                    83.3 |
+| South Dakota         | Yes        |                    91.2 |
+| Tennessee            | No         |                    83.7 |
+| Texas                | Yes        |                    88.0 |
+| Utah                 | Yes        |                    89.6 |
+| Vermont              | Yes        |                    90.9 |
+| Virginia             | Yes        |                    84.7 |
+| Washington           | No         |                    86.2 |
+| West Virginia        | Yes        |                    91.2 |
+| Wisconsin            | Yes        |                    89.7 |
+| Wyoming              | No         |                    72.4 |
+
+</div>
 
 This data set can be visualized using a violin plot.
 
@@ -1078,20 +1564,63 @@ hepatitis_a <- vaccines_state_eval_function(vaccine_of_interest = "Hep A",
 hepatitis_a
 ```
 
-    ## # A tibble: 51 × 4
-    ##    geography            HHS_geography hep_a_required coverage_estimate
-    ##    <chr>                <chr>         <chr>                      <dbl>
-    ##  1 Alabama              4             no                          83  
-    ##  2 Alaska               10            yes                         89  
-    ##  3 Arizona              9             some                        85.9
-    ##  4 Arkansas             6             yes                         84.2
-    ##  5 California           9             no                          88.9
-    ##  6 Colorado             8             no                          88.4
-    ##  7 Connecticut          1             yes                         87.6
-    ##  8 Delaware             3             no                          85.7
-    ##  9 District of Columbia 3             yes                         84.2
-    ## 10 Florida              4             no                          75.4
-    ## # ℹ 41 more rows
+<div class="kable-table">
+
+| geography            | HHS_geography | hep_a_required | coverage_estimate |
+|:---------------------|:--------------|:---------------|------------------:|
+| Alabama              | 4             | no             |              83.0 |
+| Alaska               | 10            | yes            |              89.0 |
+| Arizona              | 9             | some           |              85.9 |
+| Arkansas             | 6             | yes            |              84.2 |
+| California           | 9             | no             |              88.9 |
+| Colorado             | 8             | no             |              88.4 |
+| Connecticut          | 1             | yes            |              87.6 |
+| Delaware             | 3             | no             |              85.7 |
+| District of Columbia | 3             | yes            |              84.2 |
+| Florida              | 4             | no             |              75.4 |
+| Georgia              | 4             | yes            |              88.9 |
+| Hawaii               | 9             | yes            |              89.5 |
+| Idaho                | 10            | yes            |              90.4 |
+| Illinois             | 5             | no             |              81.2 |
+| Indiana              | 5             | yes            |              90.6 |
+| Iowa                 | 7             | no             |              86.5 |
+| Kansas               | 7             | yes            |              83.9 |
+| Kentucky             | 4             | yes            |              91.5 |
+| Louisiana            | 6             | yes            |              79.7 |
+| Maine                | 1             | no             |              84.5 |
+| Maryland             | 3             | no             |              85.6 |
+| Massachusetts        | 1             | no             |              87.6 |
+| Michigan             | 5             | no             |              84.6 |
+| Minnesota            | 5             | yes            |              91.2 |
+| Mississippi          | 4             | no             |              52.5 |
+| Missouri             | 7             | no             |              79.6 |
+| Montana              | 8             | no             |              81.4 |
+| Nebraska             | 7             | no             |              83.8 |
+| Nevada               | 9             | yes            |              90.1 |
+| New Hampshire        | 1             | no             |              84.1 |
+| New Jersey           | 2             | no             |              80.0 |
+| New Mexico           | 6             | yes            |              87.8 |
+| New York             | 2             | no             |              82.2 |
+| North Carolina       | 4             | no             |              90.8 |
+| North Dakota         | 8             | yes            |              96.9 |
+| Ohio                 | 5             | yes            |              83.8 |
+| Oklahoma             | 6             | yes            |              91.4 |
+| Oregon               | 10            | yes            |              94.8 |
+| Pennsylvania         | 3             | yes            |              86.7 |
+| Rhode Island         | 1             | yes            |              85.9 |
+| South Carolina       | 4             | yes            |              68.4 |
+| South Dakota         | 8             | yes            |              87.2 |
+| Tennessee            | 4             | yes            |              91.4 |
+| Texas                | 6             | yes            |              84.3 |
+| Utah                 | 8             | yes            |              94.3 |
+| Vermont              | 1             | no             |              79.7 |
+| Virginia             | 3             | yes            |              85.6 |
+| Washington           | 10            | no             |              86.2 |
+| West Virginia        | 3             | no             |              81.3 |
+| Wisconsin            | 5             | no             |              82.2 |
+| Wyoming              | 8             | no             |              71.1 |
+
+</div>
 
 The following contingency table shows how the number of states with
 vaccine requirements vary between regions.
