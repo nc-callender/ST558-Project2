@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 rmarkdown:: render("C:/Users/Office/Desktop/NCSU Fall 2023/ST558-Project2/Project 2.Rmd", 
                     output_file ="C:/Users/Office/Desktop/NCSU Fall 2023/ST558-Project2/README.md",
                     output_format = "github_document", 
-                    output_options = list( toc=TRUE, df_print="tibble"))
+                    output_options = list( toc=TRUE, df_print="kable"))
 ```
 # Packages used in this project
 
@@ -164,7 +164,6 @@ A demonstration of the function (`HPV_gender_eval_function`) for the year 2021 i
 ```{r, demonstration of Function 1, message=TRUE, warning=TRUE}
 demo_function_1 <- HPV_gender_eval_function(year_of_interest = "2021")
 
-demo_function_1
 ```
 
 A demonstration of the results from this function call transformed into a user-friendly table is given below.  
@@ -182,7 +181,6 @@ colnames(demo_function_1a) <-c ("geography",  "cov_est_female", "cov_est_male")
 demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_male)
 
 demo_function_1a
-
 
 ```
 
@@ -219,7 +217,6 @@ HPV_gender_eval_function_state <- function(year_of_interest = "2022" ){
 A demonstration of the function (`HPV_gender_eval_function_state`) for the year 2021 is given below.  
 ```{r, demonstration of Function 2, message=TRUE, warning=TRUE}
 demo_function_2 <- HPV_gender_eval_function_state(year_of_interest = "2021")
-demo_function_2
 ```
 
 A demonstration of the results from this function call transformed into a user-friendly table is given below.  
@@ -472,7 +469,6 @@ A demonstration of the function (`vaccines_4_year_function`) is given below.
 ```{r, demonstration of Function 5,  message=TRUE, warning=TRUE}
 demo_function_5 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage", 
                                             vaccine_of_interest = "Meningococcal Conjugate")
-demo_function_5
 
 ```
 
