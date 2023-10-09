@@ -253,20 +253,23 @@ demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_mal
 demo_function_1a
 ```
 
-    ## # A tibble: 11 × 4
-    ##    geography     cov_est_female cov_est_male  Diff
-    ##    <chr>                  <dbl>        <dbl> <dbl>
-    ##  1 United States           63.8         59.8  4   
-    ##  2 Region 1                73.9         69.5  4.40
-    ##  3 Region 2                66           56.6  9.4 
-    ##  4 Region 3                71           64.6  6.40
-    ##  5 Region 4                58.3         55    3.30
-    ##  6 Region 5                66.9         57.8  9.10
-    ##  7 Region 6                56           51.7  4.30
-    ##  8 Region 7                66.2         58.5  7.7 
-    ##  9 Region 8                65           65    0   
-    ## 10 Region 9                65.7         68.5 -2.80
-    ## 11 Region 10               64.3         67.7 -3.40
+<div class="kable-table">
+
+| geography     | cov_est_female | cov_est_male | Diff |
+|:--------------|---------------:|-------------:|-----:|
+| United States |           63.8 |         59.8 |  4.0 |
+| Region 1      |           73.9 |         69.5 |  4.4 |
+| Region 2      |           66.0 |         56.6 |  9.4 |
+| Region 3      |           71.0 |         64.6 |  6.4 |
+| Region 4      |           58.3 |         55.0 |  3.3 |
+| Region 5      |           66.9 |         57.8 |  9.1 |
+| Region 6      |           56.0 |         51.7 |  4.3 |
+| Region 7      |           66.2 |         58.5 |  7.7 |
+| Region 8      |           65.0 |         65.0 |  0.0 |
+| Region 9      |           65.7 |         68.5 | -2.8 |
+| Region 10     |           64.3 |         67.7 | -3.4 |
+
+</div>
 
 *Considered on a national level, the difference between male and female
 vaccination rates is less than 5%. But in Regions 2 and 5, the
@@ -331,20 +334,67 @@ demo_function_2a <- mutate(demo_function_2a, "Diff" = cov_est_female-cov_est_mal
 demo_function_2a
 ```
 
-    ## # A tibble: 55 × 4
-    ##    geography            cov_est_female cov_est_male   Diff
-    ##    <chr>                         <dbl>        <dbl>  <dbl>
-    ##  1 Alabama                        58.2         66.6 -8.40 
-    ##  2 Alaska                         60.5         52.1  8.4  
-    ##  3 Arizona                        63.1         60.3  2.80 
-    ##  4 Arkansas                       58.9         54.7  4.20 
-    ##  5 California                     67           70.9 -3.90 
-    ##  6 Colorado                       68.6         69.8 -1.20 
-    ##  7 Connecticut                    67.1         65.8  1.30 
-    ##  8 Delaware                       68.8         68.9 -0.100
-    ##  9 District of Columbia           81.2         77.7  3.5  
-    ## 10 Florida                        49.1         48.8  0.300
-    ## # ℹ 45 more rows
+<div class="kable-table">
+
+| geography            | cov_est_female | cov_est_male |  Diff |
+|:---------------------|---------------:|-------------:|------:|
+| Alabama              |           58.2 |         66.6 |  -8.4 |
+| Alaska               |           60.5 |         52.1 |   8.4 |
+| Arizona              |           63.1 |         60.3 |   2.8 |
+| Arkansas             |           58.9 |         54.7 |   4.2 |
+| California           |           67.0 |         70.9 |  -3.9 |
+| Colorado             |           68.6 |         69.8 |  -1.2 |
+| Connecticut          |           67.1 |         65.8 |   1.3 |
+| Delaware             |           68.8 |         68.9 |  -0.1 |
+| District of Columbia |           81.2 |         77.7 |   3.5 |
+| Florida              |           49.1 |         48.8 |   0.3 |
+| Georgia              |           66.6 |         55.4 |  11.2 |
+| Guam                 |           52.9 |         54.9 |  -2.0 |
+| Hawaii               |           69.0 |         69.6 |  -0.6 |
+| Idaho                |           63.7 |         59.5 |   4.2 |
+| Illinois             |           64.8 |         59.6 |   5.2 |
+| Indiana              |           62.0 |         48.7 |  13.3 |
+| Iowa                 |           70.3 |         62.0 |   8.3 |
+| Kansas               |           70.6 |         58.3 |  12.3 |
+| Kentucky             |           48.9 |         64.8 | -15.9 |
+| Louisiana            |           60.7 |         67.1 |  -6.4 |
+| Maine                |           67.8 |         55.5 |  12.3 |
+| Maryland             |           73.8 |         70.2 |   3.6 |
+| Massachusetts        |           78.1 |         72.0 |   6.1 |
+| Michigan             |           68.9 |         60.7 |   8.2 |
+| Minnesota            |           69.5 |         62.0 |   7.5 |
+| Mississippi          |           32.6 |         32.8 |  -0.2 |
+| Missouri             |           62.7 |         56.0 |   6.7 |
+| Montana              |           49.5 |         55.5 |  -6.0 |
+| Nebraska             |           63.2 |         60.7 |   2.5 |
+| Nevada               |           54.9 |         58.0 |  -3.1 |
+| New Hampshire        |           77.0 |         67.8 |   9.2 |
+| New Jersey           |           63.0 |         47.0 |  16.0 |
+| New Mexico           |           62.9 |         53.1 |   9.8 |
+| New York             |           67.5 |         61.5 |   6.0 |
+| North Carolina       |           72.8 |         62.9 |   9.9 |
+| North Dakota         |           68.6 |         75.6 |  -7.0 |
+| Ohio                 |           69.0 |         55.6 |  13.4 |
+| Oklahoma             |           55.1 |         58.2 |  -3.1 |
+| Oregon               |           63.3 |         70.6 |  -7.3 |
+| Pennsylvania         |           68.2 |         69.2 |  -1.0 |
+| Puerto Rico          |           68.6 |         65.9 |   2.7 |
+| United States        |           63.8 |         59.8 |   4.0 |
+| Rhode Island         |           80.1 |         86.3 |  -6.2 |
+| South Carolina       |           61.0 |         63.2 |  -2.2 |
+| South Dakota         |           78.3 |         71.3 |   7.0 |
+| Tennessee            |           64.4 |         48.8 |  15.6 |
+| Texas                |           54.8 |         48.3 |   6.5 |
+| U.S. Virgin Islands  |           45.7 |         45.3 |   0.4 |
+| Utah                 |           62.5 |         60.2 |   2.3 |
+| Vermont              |           63.8 |         69.5 |  -5.7 |
+| Virginia             |           73.5 |         56.7 |  16.8 |
+| Washington           |           65.5 |         70.1 |  -4.6 |
+| West Virginia        |           67.3 |         46.1 |  21.2 |
+| Wisconsin            |           66.9 |         59.9 |   7.0 |
+| Wyoming              |           48.7 |         47.4 |   1.3 |
+
+</div>
 
 *States that have more than a 15% difference (absolute) in coverage
 rates (with a higher percent of females being vaccinated) include New
@@ -436,20 +486,23 @@ demo_function_3a <- demo_function_3 %>%
 demo_function_3a
 ```
 
-    ## # A tibble: 11 × 7
-    ##    geography     `Meningococcal Conjugate` `Td or Tdap`  Tdap `Hep A`   MMR  HepB
-    ##    <chr>                             <dbl>        <dbl> <dbl>   <dbl> <dbl> <dbl>
-    ##  1 United States                      89           92.2  89.6    85    92.2  92.3
-    ##  2 Region 1                           91.9         95.7  93.8    86.6  96.5  95.8
-    ##  3 Region 2                           93.2         90.7  87.9    81.5  92.8  94.6
-    ##  4 Region 3                           91.4         92    89.7    85.8  93.4  92.1
-    ##  5 Region 4                           84.9         93.5  91      81.9  95.1  95.1
-    ##  6 Region 5                           91.6         93.3  89.4    84.9  94.2  94.1
-    ##  7 Region 6                           89.9         90.7  88.1    84.6  86.6  86.5
-    ##  8 Region 7                           90.4         92    90.2    82.6  92.5  93.1
-    ##  9 Region 8                           88.2         93.1  91.6    89.3  94.8  93.7
-    ## 10 Region 9                           87.5         91    89.2    88.5  89    89.9
-    ## 11 Region 10                          84.6         89.4  86.9    89.4  92.3  91.2
+<div class="kable-table">
+
+| geography     | Meningococcal Conjugate | Td or Tdap | Tdap | Hep A |  MMR | HepB |
+|:--------------|------------------------:|-----------:|-----:|------:|-----:|-----:|
+| United States |                    89.0 |       92.2 | 89.6 |  85.0 | 92.2 | 92.3 |
+| Region 1      |                    91.9 |       95.7 | 93.8 |  86.6 | 96.5 | 95.8 |
+| Region 2      |                    93.2 |       90.7 | 87.9 |  81.5 | 92.8 | 94.6 |
+| Region 3      |                    91.4 |       92.0 | 89.7 |  85.8 | 93.4 | 92.1 |
+| Region 4      |                    84.9 |       93.5 | 91.0 |  81.9 | 95.1 | 95.1 |
+| Region 5      |                    91.6 |       93.3 | 89.4 |  84.9 | 94.2 | 94.1 |
+| Region 6      |                    89.9 |       90.7 | 88.1 |  84.6 | 86.6 | 86.5 |
+| Region 7      |                    90.4 |       92.0 | 90.2 |  82.6 | 92.5 | 93.1 |
+| Region 8      |                    88.2 |       93.1 | 91.6 |  89.3 | 94.8 | 93.7 |
+| Region 9      |                    87.5 |       91.0 | 89.2 |  88.5 | 89.0 | 89.9 |
+| Region 10     |                    84.6 |       89.4 | 86.9 |  89.4 | 92.3 | 91.2 |
+
+</div>
 
 *Based on this function call, it appears that vaccination coverage for
 Hepatitis A is lower than the other vaccines.  
@@ -559,15 +612,18 @@ demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state
 demo_function_4
 ```
 
-    ## # A tibble: 6 × 10
-    ##   vaccine        dose  geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci` population_sample_size
-    ##   <chr>          <chr> <chr>          <chr>     <chr>       <chr>          <chr>                 <dbl> <chr>    <chr>                 
-    ## 1 Meningococcal… >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              93.3 87.6 to… 266                   
-    ## 2 Td or Tdap     >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 89.9 to… 266                   
-    ## 3 Tdap           >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              94.5 88.9 to… 266                   
-    ## 4 Hep A          >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              90.8 83.6 to… 266                   
-    ## 5 MMR            >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.3 88.8 to… 266                   
-    ## 6 HepB           >=3 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 88.9 to… 266
+<div class="kable-table">
+
+| vaccine                 | dose       | geography_type     | geography      | year_season | dimension_type | dimension   | coverage_estimate | \_95_ci      | population_sample_size |
+|:------------------------|:-----------|:-------------------|:---------------|:------------|:---------------|:------------|------------------:|:-------------|:-----------------------|
+| Meningococcal Conjugate | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              93.3 | 87.6 to 96.5 | 266                    |
+| Td or Tdap              | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.5 | 89.9 to 98.1 | 266                    |
+| Tdap                    | \>=1 Dose  | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              94.5 | 88.9 to 97.4 | 266                    |
+| Hep A                   | \>=2 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              90.8 | 83.6 to 95.0 | 266                    |
+| MMR                     | \>=2 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.3 | 88.8 to 98.1 | 266                    |
+| HepB                    | \>=3 Doses | States/Local Areas | North Carolina | 2021        | Age            | 13-17 Years |              95.5 | 88.9 to 98.2 | 266                    |
+
+</div>
 
 ## Function 5 for Vaccination Coverage 2018-2022 for Vaccines other than HPV or Varicella: State Level Differences
 
@@ -658,20 +714,64 @@ demo_function_5a <- demo_function_5 %>%
 demo_function_5a
 ```
 
-    ## # A tibble: 52 × 5
-    ##    geography            Other `Private Insurance Only` `Any Medicaid` Uninsured
-    ##    <chr>                <dbl>                    <dbl>          <dbl>     <dbl>
-    ##  1 Alabama               76.7                     84.1           87.2      NA  
-    ##  2 Alaska                80.8                     73.5           76.1      67.4
-    ##  3 Arizona               83.5                     87.4           90        83.3
-    ##  4 Arkansas              94.8                     95.1           94.2      90.9
-    ##  5 California            84                       85.7           87        NA  
-    ##  6 Colorado              88.4                     86.8           84.8      74.5
-    ##  7 Connecticut           91                       95.3           91.8      82.3
-    ##  8 Delaware              89.8                     91             86.6      84.6
-    ##  9 District of Columbia  95.5                     91             92.4      NA  
-    ## 10 Florida               74.7                     82.4           81.2      72.9
-    ## # ℹ 42 more rows
+<div class="kable-table">
+
+| geography            | Other | Private Insurance Only | Any Medicaid | Uninsured |
+|:---------------------|------:|-----------------------:|-------------:|----------:|
+| Alabama              |  76.7 |                   84.1 |         87.2 |        NA |
+| Alaska               |  80.8 |                   73.5 |         76.1 |      67.4 |
+| Arizona              |  83.5 |                   87.4 |         90.0 |      83.3 |
+| Arkansas             |  94.8 |                   95.1 |         94.2 |      90.9 |
+| California           |  84.0 |                   85.7 |         87.0 |        NA |
+| Colorado             |  88.4 |                   86.8 |         84.8 |      74.5 |
+| Connecticut          |  91.0 |                   95.3 |         91.8 |      82.3 |
+| Delaware             |  89.8 |                   91.0 |         86.6 |      84.6 |
+| District of Columbia |  95.5 |                   91.0 |         92.4 |        NA |
+| Florida              |  74.7 |                   82.4 |         81.2 |      72.9 |
+| Georgia              |  95.3 |                   95.1 |         94.0 |      88.3 |
+| Hawaii               |  79.5 |                   89.9 |         82.9 |        NA |
+| Idaho                |  82.5 |                   89.8 |         92.2 |      76.9 |
+| Illinois             |  88.1 |                   94.4 |         90.8 |      85.5 |
+| Indiana              |  85.9 |                   93.0 |         91.1 |      95.6 |
+| Iowa                 |  95.2 |                   94.7 |         91.0 |        NA |
+| Kansas               |  84.5 |                   82.2 |         85.5 |      63.2 |
+| Kentucky             |  87.3 |                   91.3 |         88.3 |      76.3 |
+| Louisiana            |  91.6 |                   90.6 |         89.8 |      93.8 |
+| Maine                |  82.8 |                   91.1 |         90.8 |      71.2 |
+| Maryland             |  94.1 |                   93.9 |         92.2 |      89.4 |
+| Massachusetts        |  96.0 |                   94.2 |         96.1 |        NA |
+| Michigan             |  93.4 |                   94.4 |         92.7 |      85.8 |
+| Minnesota            |  78.8 |                   92.1 |         92.0 |        NA |
+| Mississippi          |  61.1 |                   57.1 |         63.8 |      55.4 |
+| Missouri             |  84.1 |                   88.3 |         82.5 |      78.0 |
+| Montana              |  80.6 |                   79.7 |         73.8 |        NA |
+| Nebraska             |  98.5 |                   86.7 |         84.8 |      93.5 |
+| Nevada               |  86.1 |                   86.4 |         85.5 |      86.1 |
+| New Hampshire        |  88.3 |                   90.7 |         83.9 |      74.5 |
+| New Jersey           |  91.3 |                   93.0 |         90.8 |      92.7 |
+| New Mexico           |  87.3 |                   83.4 |         83.9 |      68.1 |
+| New York             |  95.7 |                   95.4 |         93.9 |      82.9 |
+| North Carolina       |  89.5 |                   92.3 |         92.2 |      90.5 |
+| North Dakota         |  95.9 |                   95.6 |         93.4 |      82.4 |
+| Ohio                 |  78.6 |                   92.5 |         89.3 |        NA |
+| Oklahoma             |  78.1 |                   72.4 |         84.9 |      74.9 |
+| Oregon               |  80.7 |                   84.6 |         84.0 |        NA |
+| Pennsylvania         |  90.4 |                   95.1 |         94.0 |      88.8 |
+| United States        |  86.6 |                   89.5 |         88.3 |      79.9 |
+| Rhode Island         |  91.5 |                   97.7 |         95.2 |      91.7 |
+| South Carolina       |  83.5 |                   83.5 |         84.2 |      68.6 |
+| South Dakota         |  91.8 |                   91.2 |         93.0 |      75.3 |
+| Tennessee            |  76.3 |                   83.5 |         87.7 |      71.5 |
+| Texas                |  89.3 |                   88.6 |         88.2 |      83.2 |
+| Utah                 |  91.4 |                   89.2 |         90.4 |      90.5 |
+| Vermont              |  95.2 |                   91.2 |         90.2 |        NA |
+| Virginia             |  79.7 |                   87.0 |         81.8 |      82.8 |
+| Washington           |  83.0 |                   88.3 |         85.1 |        NA |
+| West Virginia        |  96.1 |                   91.1 |         90.9 |      85.7 |
+| Wisconsin            |  68.6 |                   91.2 |         90.5 |        NA |
+| Wyoming              |  76.4 |                   69.6 |         79.5 |      64.1 |
+
+</div>
 
 ## Summary of Functions
 
@@ -720,20 +820,64 @@ colnames(coverage_comparison_1) <- c("geography", "Meningococcal_conjugate", "Td
 coverage_comparison_1
 ```
 
-    ## # A tibble: 52 × 3
-    ##    geography            Meningococcal_conjugate  Tdap
-    ##    <chr>                                  <dbl> <dbl>
-    ##  1 Alabama                                 84.4  91.6
-    ##  2 Alaska                                  75.7  82.4
-    ##  3 Arizona                                 87.8  86.8
-    ##  4 Arkansas                                94.5  93.3
-    ##  5 California                              85.7  87.5
-    ##  6 Colorado                                86    90.8
-    ##  7 Connecticut                             93.6  94.5
-    ##  8 Delaware                                89    88.4
-    ##  9 District of Columbia                    91.5  87.1
-    ## 10 Florida                                 80.7  91.5
-    ## # ℹ 42 more rows
+<div class="kable-table">
+
+| geography            | Meningococcal_conjugate | Tdap |
+|:---------------------|------------------------:|-----:|
+| Alabama              |                    84.4 | 91.6 |
+| Alaska               |                    75.7 | 82.4 |
+| Arizona              |                    87.8 | 86.8 |
+| Arkansas             |                    94.5 | 93.3 |
+| California           |                    85.7 | 87.5 |
+| Colorado             |                    86.0 | 90.8 |
+| Connecticut          |                    93.6 | 94.5 |
+| Delaware             |                    89.0 | 88.4 |
+| District of Columbia |                    91.5 | 87.1 |
+| Florida              |                    80.7 | 91.5 |
+| Georgia              |                    94.4 | 92.2 |
+| Hawaii               |                    85.8 | 86.4 |
+| Idaho                |                    89.8 | 88.2 |
+| Illinois             |                    92.7 | 91.3 |
+| Indiana              |                    92.2 | 91.6 |
+| Iowa                 |                    93.3 | 93.9 |
+| Kansas               |                    82.3 | 89.5 |
+| Kentucky             |                    89.5 | 87.5 |
+| Louisiana            |                    90.2 | 92.9 |
+| Maine                |                    90.1 | 91.0 |
+| Maryland             |                    93.3 | 89.7 |
+| Massachusetts        |                    94.6 | 93.7 |
+| Michigan             |                    93.6 | 90.6 |
+| Minnesota            |                    91.3 | 91.6 |
+| Mississippi          |                    60.6 | 89.9 |
+| Missouri             |                    85.8 | 85.4 |
+| Montana              |                    76.7 | 88.5 |
+| Nebraska             |                    87.1 | 90.8 |
+| Nevada               |                    86.1 | 88.3 |
+| New Hampshire        |                    88.4 | 94.8 |
+| New Jersey           |                    92.3 | 89.3 |
+| New Mexico           |                    83.5 | 87.4 |
+| New York             |                    94.8 | 91.2 |
+| North Carolina       |                    92.0 | 91.9 |
+| North Dakota         |                    94.8 | 93.4 |
+| Ohio                 |                    90.6 | 91.8 |
+| Oklahoma             |                    79.1 | 86.8 |
+| Oregon               |                    83.6 | 88.0 |
+| Pennsylvania         |                    94.2 | 92.8 |
+| United States        |                    88.5 | 89.7 |
+| Rhode Island         |                    96.4 | 95.2 |
+| South Carolina       |                    83.3 | 91.0 |
+| South Dakota         |                    91.2 | 91.5 |
+| Tennessee            |                    83.7 | 90.2 |
+| Texas                |                    88.0 | 84.9 |
+| Utah                 |                    89.6 | 91.0 |
+| Vermont              |                    90.9 | 94.2 |
+| Virginia             |                    84.7 | 89.7 |
+| Washington           |                    86.2 | 89.1 |
+| West Virginia        |                    91.2 | 90.1 |
+| Wisconsin            |                    89.7 | 90.6 |
+| Wyoming              |                    72.4 | 89.3 |
+
+</div>
 
 The summaries for the two vaccines were printed out.
 
@@ -789,20 +933,63 @@ meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulatio
 meningococcal_regulation_analysis
 ```
 
-    ## # A tibble: 51 × 3
-    ##    geography            mening_req Meningococcal_conjugate
-    ##    <chr>                <fct>                        <dbl>
-    ##  1 Alabama              No                            84.4
-    ##  2 Alaska               No                            75.7
-    ##  3 Arizona              Yes                           87.8
-    ##  4 Arkansas             Yes                           94.5
-    ##  5 California           No                            85.7
-    ##  6 Colorado             No                            86  
-    ##  7 Connecticut          Yes                           93.6
-    ##  8 Delaware             Yes                           89  
-    ##  9 District of Columbia Yes                           91.5
-    ## 10 Florida              No                            80.7
-    ## # ℹ 41 more rows
+<div class="kable-table">
+
+| geography            | mening_req | Meningococcal_conjugate |
+|:---------------------|:-----------|------------------------:|
+| Alabama              | No         |                    84.4 |
+| Alaska               | No         |                    75.7 |
+| Arizona              | Yes        |                    87.8 |
+| Arkansas             | Yes        |                    94.5 |
+| California           | No         |                    85.7 |
+| Colorado             | No         |                    86.0 |
+| Connecticut          | Yes        |                    93.6 |
+| Delaware             | Yes        |                    89.0 |
+| District of Columbia | Yes        |                    91.5 |
+| Florida              | No         |                    80.7 |
+| Georgia              | Yes        |                    94.4 |
+| Hawaii               | Yes        |                    85.8 |
+| Idaho                | Yes        |                    89.8 |
+| Illinois             | Yes        |                    92.7 |
+| Indiana              | Yes        |                    92.2 |
+| Iowa                 | Yes        |                    93.3 |
+| Kansas               | Yes        |                    82.3 |
+| Kentucky             | Yes        |                    89.5 |
+| Louisiana            | Yes        |                    90.2 |
+| Maine                | Yes        |                    90.1 |
+| Maryland             | Yes        |                    93.3 |
+| Massachusetts        | Yes        |                    94.6 |
+| Michigan             | Yes        |                    93.6 |
+| Minnesota            | Yes        |                    91.3 |
+| Mississippi          | No         |                    60.6 |
+| Missouri             | Yes        |                    85.8 |
+| Montana              | No         |                    76.7 |
+| Nebraska             | No         |                    87.1 |
+| Nevada               | Yes        |                    86.1 |
+| New Hampshire        | No         |                    88.4 |
+| New Jersey           | Yes        |                    92.3 |
+| New Mexico           | Yes        |                    83.5 |
+| New York             | Yes        |                    94.8 |
+| North Carolina       | Yes        |                    92.0 |
+| North Dakota         | Yes        |                    94.8 |
+| Ohio                 | Yes        |                    90.6 |
+| Oklahoma             | No         |                    79.1 |
+| Oregon               | No         |                    83.6 |
+| Pennsylvania         | Yes        |                    94.2 |
+| Rhode Island         | Yes        |                    96.4 |
+| South Carolina       | No         |                    83.3 |
+| South Dakota         | Yes        |                    91.2 |
+| Tennessee            | No         |                    83.7 |
+| Texas                | Yes        |                    88.0 |
+| Utah                 | Yes        |                    89.6 |
+| Vermont              | Yes        |                    90.9 |
+| Virginia             | Yes        |                    84.7 |
+| Washington           | No         |                    86.2 |
+| West Virginia        | Yes        |                    91.2 |
+| Wisconsin            | Yes        |                    89.7 |
+| Wyoming              | No         |                    72.4 |
+
+</div>
 
 This data set can be visualized using a violin plot.
 
@@ -1017,20 +1204,63 @@ hepatitis_a <- vaccines_state_eval_function(vaccine_of_interest = "Hep A",
 hepatitis_a
 ```
 
-    ## # A tibble: 51 × 4
-    ##    geography            HHS_geography hep_a_required coverage_estimate
-    ##    <chr>                <chr>         <chr>                      <dbl>
-    ##  1 Alabama              4             no                          83  
-    ##  2 Alaska               10            yes                         89  
-    ##  3 Arizona              9             some                        85.9
-    ##  4 Arkansas             6             yes                         84.2
-    ##  5 California           9             no                          88.9
-    ##  6 Colorado             8             no                          88.4
-    ##  7 Connecticut          1             yes                         87.6
-    ##  8 Delaware             3             no                          85.7
-    ##  9 District of Columbia 3             yes                         84.2
-    ## 10 Florida              4             no                          75.4
-    ## # ℹ 41 more rows
+<div class="kable-table">
+
+| geography            | HHS_geography | hep_a_required | coverage_estimate |
+|:---------------------|:--------------|:---------------|------------------:|
+| Alabama              | 4             | no             |              83.0 |
+| Alaska               | 10            | yes            |              89.0 |
+| Arizona              | 9             | some           |              85.9 |
+| Arkansas             | 6             | yes            |              84.2 |
+| California           | 9             | no             |              88.9 |
+| Colorado             | 8             | no             |              88.4 |
+| Connecticut          | 1             | yes            |              87.6 |
+| Delaware             | 3             | no             |              85.7 |
+| District of Columbia | 3             | yes            |              84.2 |
+| Florida              | 4             | no             |              75.4 |
+| Georgia              | 4             | yes            |              88.9 |
+| Hawaii               | 9             | yes            |              89.5 |
+| Idaho                | 10            | yes            |              90.4 |
+| Illinois             | 5             | no             |              81.2 |
+| Indiana              | 5             | yes            |              90.6 |
+| Iowa                 | 7             | no             |              86.5 |
+| Kansas               | 7             | yes            |              83.9 |
+| Kentucky             | 4             | yes            |              91.5 |
+| Louisiana            | 6             | yes            |              79.7 |
+| Maine                | 1             | no             |              84.5 |
+| Maryland             | 3             | no             |              85.6 |
+| Massachusetts        | 1             | no             |              87.6 |
+| Michigan             | 5             | no             |              84.6 |
+| Minnesota            | 5             | yes            |              91.2 |
+| Mississippi          | 4             | no             |              52.5 |
+| Missouri             | 7             | no             |              79.6 |
+| Montana              | 8             | no             |              81.4 |
+| Nebraska             | 7             | no             |              83.8 |
+| Nevada               | 9             | yes            |              90.1 |
+| New Hampshire        | 1             | no             |              84.1 |
+| New Jersey           | 2             | no             |              80.0 |
+| New Mexico           | 6             | yes            |              87.8 |
+| New York             | 2             | no             |              82.2 |
+| North Carolina       | 4             | no             |              90.8 |
+| North Dakota         | 8             | yes            |              96.9 |
+| Ohio                 | 5             | yes            |              83.8 |
+| Oklahoma             | 6             | yes            |              91.4 |
+| Oregon               | 10            | yes            |              94.8 |
+| Pennsylvania         | 3             | yes            |              86.7 |
+| Rhode Island         | 1             | yes            |              85.9 |
+| South Carolina       | 4             | yes            |              68.4 |
+| South Dakota         | 8             | yes            |              87.2 |
+| Tennessee            | 4             | yes            |              91.4 |
+| Texas                | 6             | yes            |              84.3 |
+| Utah                 | 8             | yes            |              94.3 |
+| Vermont              | 1             | no             |              79.7 |
+| Virginia             | 3             | yes            |              85.6 |
+| Washington           | 10            | no             |              86.2 |
+| West Virginia        | 3             | no             |              81.3 |
+| Wisconsin            | 5             | no             |              82.2 |
+| Wyoming              | 8             | no             |              71.1 |
+
+</div>
 
 The following contingency table shows how the number of states with
 vaccine requirements vary between regions.
