@@ -253,13 +253,20 @@ demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_mal
 demo_function_1a
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["cov_est_female"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cov_est_male"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Diff"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"United States","2":"63.8","3":"59.8","4":"4.0"},{"1":"Region 1","2":"73.9","3":"69.5","4":"4.4"},{"1":"Region 2","2":"66.0","3":"56.6","4":"9.4"},{"1":"Region 3","2":"71.0","3":"64.6","4":"6.4"},{"1":"Region 4","2":"58.3","3":"55.0","4":"3.3"},{"1":"Region 5","2":"66.9","3":"57.8","4":"9.1"},{"1":"Region 6","2":"56.0","3":"51.7","4":"4.3"},{"1":"Region 7","2":"66.2","3":"58.5","4":"7.7"},{"1":"Region 8","2":"65.0","3":"65.0","4":"0.0"},{"1":"Region 9","2":"65.7","3":"68.5","4":"-2.8"},{"1":"Region 10","2":"64.3","3":"67.7","4":"-3.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[11],"max":[11]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 11 × 4
+    ##    geography     cov_est_female cov_est_male  Diff
+    ##    <chr>                  <dbl>        <dbl> <dbl>
+    ##  1 United States           63.8         59.8  4   
+    ##  2 Region 1                73.9         69.5  4.40
+    ##  3 Region 2                66           56.6  9.4 
+    ##  4 Region 3                71           64.6  6.40
+    ##  5 Region 4                58.3         55    3.30
+    ##  6 Region 5                66.9         57.8  9.10
+    ##  7 Region 6                56           51.7  4.30
+    ##  8 Region 7                66.2         58.5  7.7 
+    ##  9 Region 8                65           65    0   
+    ## 10 Region 9                65.7         68.5 -2.80
+    ## 11 Region 10               64.3         67.7 -3.40
 
 *Considered on a national level, the difference between male and female
 vaccination rates is less than 5%. But in Regions 2 and 5, the
@@ -324,13 +331,20 @@ demo_function_2a <- mutate(demo_function_2a, "Diff" = cov_est_female-cov_est_mal
 demo_function_2a
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["cov_est_female"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cov_est_male"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Diff"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"58.2","3":"66.6","4":"-8.4"},{"1":"Alaska","2":"60.5","3":"52.1","4":"8.4"},{"1":"Arizona","2":"63.1","3":"60.3","4":"2.8"},{"1":"Arkansas","2":"58.9","3":"54.7","4":"4.2"},{"1":"California","2":"67.0","3":"70.9","4":"-3.9"},{"1":"Colorado","2":"68.6","3":"69.8","4":"-1.2"},{"1":"Connecticut","2":"67.1","3":"65.8","4":"1.3"},{"1":"Delaware","2":"68.8","3":"68.9","4":"-0.1"},{"1":"District of Columbia","2":"81.2","3":"77.7","4":"3.5"},{"1":"Florida","2":"49.1","3":"48.8","4":"0.3"},{"1":"Georgia","2":"66.6","3":"55.4","4":"11.2"},{"1":"Guam","2":"52.9","3":"54.9","4":"-2.0"},{"1":"Hawaii","2":"69.0","3":"69.6","4":"-0.6"},{"1":"Idaho","2":"63.7","3":"59.5","4":"4.2"},{"1":"Illinois","2":"64.8","3":"59.6","4":"5.2"},{"1":"Indiana","2":"62.0","3":"48.7","4":"13.3"},{"1":"Iowa","2":"70.3","3":"62.0","4":"8.3"},{"1":"Kansas","2":"70.6","3":"58.3","4":"12.3"},{"1":"Kentucky","2":"48.9","3":"64.8","4":"-15.9"},{"1":"Louisiana","2":"60.7","3":"67.1","4":"-6.4"},{"1":"Maine","2":"67.8","3":"55.5","4":"12.3"},{"1":"Maryland","2":"73.8","3":"70.2","4":"3.6"},{"1":"Massachusetts","2":"78.1","3":"72.0","4":"6.1"},{"1":"Michigan","2":"68.9","3":"60.7","4":"8.2"},{"1":"Minnesota","2":"69.5","3":"62.0","4":"7.5"},{"1":"Mississippi","2":"32.6","3":"32.8","4":"-0.2"},{"1":"Missouri","2":"62.7","3":"56.0","4":"6.7"},{"1":"Montana","2":"49.5","3":"55.5","4":"-6.0"},{"1":"Nebraska","2":"63.2","3":"60.7","4":"2.5"},{"1":"Nevada","2":"54.9","3":"58.0","4":"-3.1"},{"1":"New Hampshire","2":"77.0","3":"67.8","4":"9.2"},{"1":"New Jersey","2":"63.0","3":"47.0","4":"16.0"},{"1":"New Mexico","2":"62.9","3":"53.1","4":"9.8"},{"1":"New York","2":"67.5","3":"61.5","4":"6.0"},{"1":"North Carolina","2":"72.8","3":"62.9","4":"9.9"},{"1":"North Dakota","2":"68.6","3":"75.6","4":"-7.0"},{"1":"Ohio","2":"69.0","3":"55.6","4":"13.4"},{"1":"Oklahoma","2":"55.1","3":"58.2","4":"-3.1"},{"1":"Oregon","2":"63.3","3":"70.6","4":"-7.3"},{"1":"Pennsylvania","2":"68.2","3":"69.2","4":"-1.0"},{"1":"Puerto Rico","2":"68.6","3":"65.9","4":"2.7"},{"1":"United States","2":"63.8","3":"59.8","4":"4.0"},{"1":"Rhode Island","2":"80.1","3":"86.3","4":"-6.2"},{"1":"South Carolina","2":"61.0","3":"63.2","4":"-2.2"},{"1":"South Dakota","2":"78.3","3":"71.3","4":"7.0"},{"1":"Tennessee","2":"64.4","3":"48.8","4":"15.6"},{"1":"Texas","2":"54.8","3":"48.3","4":"6.5"},{"1":"U.S. Virgin Islands","2":"45.7","3":"45.3","4":"0.4"},{"1":"Utah","2":"62.5","3":"60.2","4":"2.3"},{"1":"Vermont","2":"63.8","3":"69.5","4":"-5.7"},{"1":"Virginia","2":"73.5","3":"56.7","4":"16.8"},{"1":"Washington","2":"65.5","3":"70.1","4":"-4.6"},{"1":"West Virginia","2":"67.3","3":"46.1","4":"21.2"},{"1":"Wisconsin","2":"66.9","3":"59.9","4":"7.0"},{"1":"Wyoming","2":"48.7","3":"47.4","4":"1.3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 55 × 4
+    ##    geography            cov_est_female cov_est_male   Diff
+    ##    <chr>                         <dbl>        <dbl>  <dbl>
+    ##  1 Alabama                        58.2         66.6 -8.40 
+    ##  2 Alaska                         60.5         52.1  8.4  
+    ##  3 Arizona                        63.1         60.3  2.80 
+    ##  4 Arkansas                       58.9         54.7  4.20 
+    ##  5 California                     67           70.9 -3.90 
+    ##  6 Colorado                       68.6         69.8 -1.20 
+    ##  7 Connecticut                    67.1         65.8  1.30 
+    ##  8 Delaware                       68.8         68.9 -0.100
+    ##  9 District of Columbia           81.2         77.7  3.5  
+    ## 10 Florida                        49.1         48.8  0.300
+    ## # ℹ 45 more rows
 
 *States that have more than a 15% difference (absolute) in coverage
 rates (with a higher percent of females being vaccinated) include New
@@ -422,13 +436,20 @@ demo_function_3a <- demo_function_3 %>%
 demo_function_3a
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Meningococcal Conjugate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Td or Tdap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Tdap"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Hep A"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["MMR"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["HepB"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"United States","2":"89.0","3":"92.2","4":"89.6","5":"85.0","6":"92.2","7":"92.3"},{"1":"Region 1","2":"91.9","3":"95.7","4":"93.8","5":"86.6","6":"96.5","7":"95.8"},{"1":"Region 2","2":"93.2","3":"90.7","4":"87.9","5":"81.5","6":"92.8","7":"94.6"},{"1":"Region 3","2":"91.4","3":"92.0","4":"89.7","5":"85.8","6":"93.4","7":"92.1"},{"1":"Region 4","2":"84.9","3":"93.5","4":"91.0","5":"81.9","6":"95.1","7":"95.1"},{"1":"Region 5","2":"91.6","3":"93.3","4":"89.4","5":"84.9","6":"94.2","7":"94.1"},{"1":"Region 6","2":"89.9","3":"90.7","4":"88.1","5":"84.6","6":"86.6","7":"86.5"},{"1":"Region 7","2":"90.4","3":"92.0","4":"90.2","5":"82.6","6":"92.5","7":"93.1"},{"1":"Region 8","2":"88.2","3":"93.1","4":"91.6","5":"89.3","6":"94.8","7":"93.7"},{"1":"Region 9","2":"87.5","3":"91.0","4":"89.2","5":"88.5","6":"89.0","7":"89.9"},{"1":"Region 10","2":"84.6","3":"89.4","4":"86.9","5":"89.4","6":"92.3","7":"91.2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[11],"max":[11]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 11 × 7
+    ##    geography     `Meningococcal Conjugate` `Td or Tdap`  Tdap `Hep A`   MMR  HepB
+    ##    <chr>                             <dbl>        <dbl> <dbl>   <dbl> <dbl> <dbl>
+    ##  1 United States                      89           92.2  89.6    85    92.2  92.3
+    ##  2 Region 1                           91.9         95.7  93.8    86.6  96.5  95.8
+    ##  3 Region 2                           93.2         90.7  87.9    81.5  92.8  94.6
+    ##  4 Region 3                           91.4         92    89.7    85.8  93.4  92.1
+    ##  5 Region 4                           84.9         93.5  91      81.9  95.1  95.1
+    ##  6 Region 5                           91.6         93.3  89.4    84.9  94.2  94.1
+    ##  7 Region 6                           89.9         90.7  88.1    84.6  86.6  86.5
+    ##  8 Region 7                           90.4         92    90.2    82.6  92.5  93.1
+    ##  9 Region 8                           88.2         93.1  91.6    89.3  94.8  93.7
+    ## 10 Region 9                           87.5         91    89.2    88.5  89    89.9
+    ## 11 Region 10                          84.6         89.4  86.9    89.4  92.3  91.2
 
 *Based on this function call, it appears that vaccination coverage for
 Hepatitis A is lower than the other vaccines.  
@@ -538,13 +559,15 @@ demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state
 demo_function_4
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["vaccine"],"name":[1],"type":["chr"],"align":["left"]},{"label":["dose"],"name":[2],"type":["chr"],"align":["left"]},{"label":["geography_type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["geography"],"name":[4],"type":["chr"],"align":["left"]},{"label":["year_season"],"name":[5],"type":["chr"],"align":["left"]},{"label":["dimension_type"],"name":[6],"type":["chr"],"align":["left"]},{"label":["dimension"],"name":[7],"type":["chr"],"align":["left"]},{"label":["coverage_estimate"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["_95_ci"],"name":[9],"type":["chr"],"align":["left"]},{"label":["population_sample_size"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"Meningococcal Conjugate","2":">=1 Dose","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"93.3","9":"87.6 to 96.5","10":"266"},{"1":"Td or Tdap","2":">=1 Dose","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"95.5","9":"89.9 to 98.1","10":"266"},{"1":"Tdap","2":">=1 Dose","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"94.5","9":"88.9 to 97.4","10":"266"},{"1":"Hep A","2":">=2 Doses","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"90.8","9":"83.6 to 95.0","10":"266"},{"1":"MMR","2":">=2 Doses","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"95.3","9":"88.8 to 98.1","10":"266"},{"1":"HepB","2":">=3 Doses","3":"States/Local Areas","4":"North Carolina","5":"2021","6":"Age","7":"13-17 Years","8":"95.5","9":"88.9 to 98.2","10":"266"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 6 × 10
+    ##   vaccine        dose  geography_type geography year_season dimension_type dimension coverage_estimate `_95_ci` population_sample_size
+    ##   <chr>          <chr> <chr>          <chr>     <chr>       <chr>          <chr>                 <dbl> <chr>    <chr>                 
+    ## 1 Meningococcal… >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              93.3 87.6 to… 266                   
+    ## 2 Td or Tdap     >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 89.9 to… 266                   
+    ## 3 Tdap           >=1 … States/Local … North Ca… 2021        Age            13-17 Ye…              94.5 88.9 to… 266                   
+    ## 4 Hep A          >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              90.8 83.6 to… 266                   
+    ## 5 MMR            >=2 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.3 88.8 to… 266                   
+    ## 6 HepB           >=3 … States/Local … North Ca… 2021        Age            13-17 Ye…              95.5 88.9 to… 266
 
 ## Function 5 for Vaccination Coverage 2018-2022 for Vaccines other than HPV or Varicella: State Level Differences
 
@@ -635,13 +658,20 @@ demo_function_5a <- demo_function_5 %>%
 demo_function_5a
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Other"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Private Insurance Only"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Any Medicaid"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Uninsured"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"76.7","3":"84.1","4":"87.2","5":"NA"},{"1":"Alaska","2":"80.8","3":"73.5","4":"76.1","5":"67.4"},{"1":"Arizona","2":"83.5","3":"87.4","4":"90.0","5":"83.3"},{"1":"Arkansas","2":"94.8","3":"95.1","4":"94.2","5":"90.9"},{"1":"California","2":"84.0","3":"85.7","4":"87.0","5":"NA"},{"1":"Colorado","2":"88.4","3":"86.8","4":"84.8","5":"74.5"},{"1":"Connecticut","2":"91.0","3":"95.3","4":"91.8","5":"82.3"},{"1":"Delaware","2":"89.8","3":"91.0","4":"86.6","5":"84.6"},{"1":"District of Columbia","2":"95.5","3":"91.0","4":"92.4","5":"NA"},{"1":"Florida","2":"74.7","3":"82.4","4":"81.2","5":"72.9"},{"1":"Georgia","2":"95.3","3":"95.1","4":"94.0","5":"88.3"},{"1":"Hawaii","2":"79.5","3":"89.9","4":"82.9","5":"NA"},{"1":"Idaho","2":"82.5","3":"89.8","4":"92.2","5":"76.9"},{"1":"Illinois","2":"88.1","3":"94.4","4":"90.8","5":"85.5"},{"1":"Indiana","2":"85.9","3":"93.0","4":"91.1","5":"95.6"},{"1":"Iowa","2":"95.2","3":"94.7","4":"91.0","5":"NA"},{"1":"Kansas","2":"84.5","3":"82.2","4":"85.5","5":"63.2"},{"1":"Kentucky","2":"87.3","3":"91.3","4":"88.3","5":"76.3"},{"1":"Louisiana","2":"91.6","3":"90.6","4":"89.8","5":"93.8"},{"1":"Maine","2":"82.8","3":"91.1","4":"90.8","5":"71.2"},{"1":"Maryland","2":"94.1","3":"93.9","4":"92.2","5":"89.4"},{"1":"Massachusetts","2":"96.0","3":"94.2","4":"96.1","5":"NA"},{"1":"Michigan","2":"93.4","3":"94.4","4":"92.7","5":"85.8"},{"1":"Minnesota","2":"78.8","3":"92.1","4":"92.0","5":"NA"},{"1":"Mississippi","2":"61.1","3":"57.1","4":"63.8","5":"55.4"},{"1":"Missouri","2":"84.1","3":"88.3","4":"82.5","5":"78.0"},{"1":"Montana","2":"80.6","3":"79.7","4":"73.8","5":"NA"},{"1":"Nebraska","2":"98.5","3":"86.7","4":"84.8","5":"93.5"},{"1":"Nevada","2":"86.1","3":"86.4","4":"85.5","5":"86.1"},{"1":"New Hampshire","2":"88.3","3":"90.7","4":"83.9","5":"74.5"},{"1":"New Jersey","2":"91.3","3":"93.0","4":"90.8","5":"92.7"},{"1":"New Mexico","2":"87.3","3":"83.4","4":"83.9","5":"68.1"},{"1":"New York","2":"95.7","3":"95.4","4":"93.9","5":"82.9"},{"1":"North Carolina","2":"89.5","3":"92.3","4":"92.2","5":"90.5"},{"1":"North Dakota","2":"95.9","3":"95.6","4":"93.4","5":"82.4"},{"1":"Ohio","2":"78.6","3":"92.5","4":"89.3","5":"NA"},{"1":"Oklahoma","2":"78.1","3":"72.4","4":"84.9","5":"74.9"},{"1":"Oregon","2":"80.7","3":"84.6","4":"84.0","5":"NA"},{"1":"Pennsylvania","2":"90.4","3":"95.1","4":"94.0","5":"88.8"},{"1":"United States","2":"86.6","3":"89.5","4":"88.3","5":"79.9"},{"1":"Rhode Island","2":"91.5","3":"97.7","4":"95.2","5":"91.7"},{"1":"South Carolina","2":"83.5","3":"83.5","4":"84.2","5":"68.6"},{"1":"South Dakota","2":"91.8","3":"91.2","4":"93.0","5":"75.3"},{"1":"Tennessee","2":"76.3","3":"83.5","4":"87.7","5":"71.5"},{"1":"Texas","2":"89.3","3":"88.6","4":"88.2","5":"83.2"},{"1":"Utah","2":"91.4","3":"89.2","4":"90.4","5":"90.5"},{"1":"Vermont","2":"95.2","3":"91.2","4":"90.2","5":"NA"},{"1":"Virginia","2":"79.7","3":"87.0","4":"81.8","5":"82.8"},{"1":"Washington","2":"83.0","3":"88.3","4":"85.1","5":"NA"},{"1":"West Virginia","2":"96.1","3":"91.1","4":"90.9","5":"85.7"},{"1":"Wisconsin","2":"68.6","3":"91.2","4":"90.5","5":"NA"},{"1":"Wyoming","2":"76.4","3":"69.6","4":"79.5","5":"64.1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 52 × 5
+    ##    geography            Other `Private Insurance Only` `Any Medicaid` Uninsured
+    ##    <chr>                <dbl>                    <dbl>          <dbl>     <dbl>
+    ##  1 Alabama               76.7                     84.1           87.2      NA  
+    ##  2 Alaska                80.8                     73.5           76.1      67.4
+    ##  3 Arizona               83.5                     87.4           90        83.3
+    ##  4 Arkansas              94.8                     95.1           94.2      90.9
+    ##  5 California            84                       85.7           87        NA  
+    ##  6 Colorado              88.4                     86.8           84.8      74.5
+    ##  7 Connecticut           91                       95.3           91.8      82.3
+    ##  8 Delaware              89.8                     91             86.6      84.6
+    ##  9 District of Columbia  95.5                     91             92.4      NA  
+    ## 10 Florida               74.7                     82.4           81.2      72.9
+    ## # ℹ 42 more rows
 
 ## Summary of Functions
 
@@ -690,13 +720,20 @@ colnames(coverage_comparison_1) <- c("geography", "Meningococcal_conjugate", "Td
 coverage_comparison_1
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Meningococcal_conjugate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Tdap"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"84.4","3":"91.6"},{"1":"Alaska","2":"75.7","3":"82.4"},{"1":"Arizona","2":"87.8","3":"86.8"},{"1":"Arkansas","2":"94.5","3":"93.3"},{"1":"California","2":"85.7","3":"87.5"},{"1":"Colorado","2":"86.0","3":"90.8"},{"1":"Connecticut","2":"93.6","3":"94.5"},{"1":"Delaware","2":"89.0","3":"88.4"},{"1":"District of Columbia","2":"91.5","3":"87.1"},{"1":"Florida","2":"80.7","3":"91.5"},{"1":"Georgia","2":"94.4","3":"92.2"},{"1":"Hawaii","2":"85.8","3":"86.4"},{"1":"Idaho","2":"89.8","3":"88.2"},{"1":"Illinois","2":"92.7","3":"91.3"},{"1":"Indiana","2":"92.2","3":"91.6"},{"1":"Iowa","2":"93.3","3":"93.9"},{"1":"Kansas","2":"82.3","3":"89.5"},{"1":"Kentucky","2":"89.5","3":"87.5"},{"1":"Louisiana","2":"90.2","3":"92.9"},{"1":"Maine","2":"90.1","3":"91.0"},{"1":"Maryland","2":"93.3","3":"89.7"},{"1":"Massachusetts","2":"94.6","3":"93.7"},{"1":"Michigan","2":"93.6","3":"90.6"},{"1":"Minnesota","2":"91.3","3":"91.6"},{"1":"Mississippi","2":"60.6","3":"89.9"},{"1":"Missouri","2":"85.8","3":"85.4"},{"1":"Montana","2":"76.7","3":"88.5"},{"1":"Nebraska","2":"87.1","3":"90.8"},{"1":"Nevada","2":"86.1","3":"88.3"},{"1":"New Hampshire","2":"88.4","3":"94.8"},{"1":"New Jersey","2":"92.3","3":"89.3"},{"1":"New Mexico","2":"83.5","3":"87.4"},{"1":"New York","2":"94.8","3":"91.2"},{"1":"North Carolina","2":"92.0","3":"91.9"},{"1":"North Dakota","2":"94.8","3":"93.4"},{"1":"Ohio","2":"90.6","3":"91.8"},{"1":"Oklahoma","2":"79.1","3":"86.8"},{"1":"Oregon","2":"83.6","3":"88.0"},{"1":"Pennsylvania","2":"94.2","3":"92.8"},{"1":"United States","2":"88.5","3":"89.7"},{"1":"Rhode Island","2":"96.4","3":"95.2"},{"1":"South Carolina","2":"83.3","3":"91.0"},{"1":"South Dakota","2":"91.2","3":"91.5"},{"1":"Tennessee","2":"83.7","3":"90.2"},{"1":"Texas","2":"88.0","3":"84.9"},{"1":"Utah","2":"89.6","3":"91.0"},{"1":"Vermont","2":"90.9","3":"94.2"},{"1":"Virginia","2":"84.7","3":"89.7"},{"1":"Washington","2":"86.2","3":"89.1"},{"1":"West Virginia","2":"91.2","3":"90.1"},{"1":"Wisconsin","2":"89.7","3":"90.6"},{"1":"Wyoming","2":"72.4","3":"89.3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 52 × 3
+    ##    geography            Meningococcal_conjugate  Tdap
+    ##    <chr>                                  <dbl> <dbl>
+    ##  1 Alabama                                 84.4  91.6
+    ##  2 Alaska                                  75.7  82.4
+    ##  3 Arizona                                 87.8  86.8
+    ##  4 Arkansas                                94.5  93.3
+    ##  5 California                              85.7  87.5
+    ##  6 Colorado                                86    90.8
+    ##  7 Connecticut                             93.6  94.5
+    ##  8 Delaware                                89    88.4
+    ##  9 District of Columbia                    91.5  87.1
+    ## 10 Florida                                 80.7  91.5
+    ## # ℹ 42 more rows
 
 The summaries for the two vaccines were printed out.
 
@@ -752,13 +789,20 @@ meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulatio
 meningococcal_regulation_analysis
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mening_req"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Meningococcal_conjugate"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"No","3":"84.4"},{"1":"Alaska","2":"No","3":"75.7"},{"1":"Arizona","2":"Yes","3":"87.8"},{"1":"Arkansas","2":"Yes","3":"94.5"},{"1":"California","2":"No","3":"85.7"},{"1":"Colorado","2":"No","3":"86.0"},{"1":"Connecticut","2":"Yes","3":"93.6"},{"1":"Delaware","2":"Yes","3":"89.0"},{"1":"District of Columbia","2":"Yes","3":"91.5"},{"1":"Florida","2":"No","3":"80.7"},{"1":"Georgia","2":"Yes","3":"94.4"},{"1":"Hawaii","2":"Yes","3":"85.8"},{"1":"Idaho","2":"Yes","3":"89.8"},{"1":"Illinois","2":"Yes","3":"92.7"},{"1":"Indiana","2":"Yes","3":"92.2"},{"1":"Iowa","2":"Yes","3":"93.3"},{"1":"Kansas","2":"Yes","3":"82.3"},{"1":"Kentucky","2":"Yes","3":"89.5"},{"1":"Louisiana","2":"Yes","3":"90.2"},{"1":"Maine","2":"Yes","3":"90.1"},{"1":"Maryland","2":"Yes","3":"93.3"},{"1":"Massachusetts","2":"Yes","3":"94.6"},{"1":"Michigan","2":"Yes","3":"93.6"},{"1":"Minnesota","2":"Yes","3":"91.3"},{"1":"Mississippi","2":"No","3":"60.6"},{"1":"Missouri","2":"Yes","3":"85.8"},{"1":"Montana","2":"No","3":"76.7"},{"1":"Nebraska","2":"No","3":"87.1"},{"1":"Nevada","2":"Yes","3":"86.1"},{"1":"New Hampshire","2":"No","3":"88.4"},{"1":"New Jersey","2":"Yes","3":"92.3"},{"1":"New Mexico","2":"Yes","3":"83.5"},{"1":"New York","2":"Yes","3":"94.8"},{"1":"North Carolina","2":"Yes","3":"92.0"},{"1":"North Dakota","2":"Yes","3":"94.8"},{"1":"Ohio","2":"Yes","3":"90.6"},{"1":"Oklahoma","2":"No","3":"79.1"},{"1":"Oregon","2":"No","3":"83.6"},{"1":"Pennsylvania","2":"Yes","3":"94.2"},{"1":"Rhode Island","2":"Yes","3":"96.4"},{"1":"South Carolina","2":"No","3":"83.3"},{"1":"South Dakota","2":"Yes","3":"91.2"},{"1":"Tennessee","2":"No","3":"83.7"},{"1":"Texas","2":"Yes","3":"88.0"},{"1":"Utah","2":"Yes","3":"89.6"},{"1":"Vermont","2":"Yes","3":"90.9"},{"1":"Virginia","2":"Yes","3":"84.7"},{"1":"Washington","2":"No","3":"86.2"},{"1":"West Virginia","2":"Yes","3":"91.2"},{"1":"Wisconsin","2":"Yes","3":"89.7"},{"1":"Wyoming","2":"No","3":"72.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 51 × 3
+    ##    geography            mening_req Meningococcal_conjugate
+    ##    <chr>                <fct>                        <dbl>
+    ##  1 Alabama              No                            84.4
+    ##  2 Alaska               No                            75.7
+    ##  3 Arizona              Yes                           87.8
+    ##  4 Arkansas             Yes                           94.5
+    ##  5 California           No                            85.7
+    ##  6 Colorado             No                            86  
+    ##  7 Connecticut          Yes                           93.6
+    ##  8 Delaware             Yes                           89  
+    ##  9 District of Columbia Yes                           91.5
+    ## 10 Florida              No                            80.7
+    ## # ℹ 41 more rows
 
 This data set can be visualized using a violin plot.
 
@@ -973,13 +1017,20 @@ hepatitis_a <- vaccines_state_eval_function(vaccine_of_interest = "Hep A",
 hepatitis_a
 ```
 
-<div data-pagedtable="false">
-
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["geography"],"name":[1],"type":["chr"],"align":["left"]},{"label":["HHS_geography"],"name":[2],"type":["chr"],"align":["left"]},{"label":["hep_a_required"],"name":[3],"type":["chr"],"align":["left"]},{"label":["coverage_estimate"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Alabama","2":"4","3":"no","4":"83.0"},{"1":"Alaska","2":"10","3":"yes","4":"89.0"},{"1":"Arizona","2":"9","3":"some","4":"85.9"},{"1":"Arkansas","2":"6","3":"yes","4":"84.2"},{"1":"California","2":"9","3":"no","4":"88.9"},{"1":"Colorado","2":"8","3":"no","4":"88.4"},{"1":"Connecticut","2":"1","3":"yes","4":"87.6"},{"1":"Delaware","2":"3","3":"no","4":"85.7"},{"1":"District of Columbia","2":"3","3":"yes","4":"84.2"},{"1":"Florida","2":"4","3":"no","4":"75.4"},{"1":"Georgia","2":"4","3":"yes","4":"88.9"},{"1":"Hawaii","2":"9","3":"yes","4":"89.5"},{"1":"Idaho","2":"10","3":"yes","4":"90.4"},{"1":"Illinois","2":"5","3":"no","4":"81.2"},{"1":"Indiana","2":"5","3":"yes","4":"90.6"},{"1":"Iowa","2":"7","3":"no","4":"86.5"},{"1":"Kansas","2":"7","3":"yes","4":"83.9"},{"1":"Kentucky","2":"4","3":"yes","4":"91.5"},{"1":"Louisiana","2":"6","3":"yes","4":"79.7"},{"1":"Maine","2":"1","3":"no","4":"84.5"},{"1":"Maryland","2":"3","3":"no","4":"85.6"},{"1":"Massachusetts","2":"1","3":"no","4":"87.6"},{"1":"Michigan","2":"5","3":"no","4":"84.6"},{"1":"Minnesota","2":"5","3":"yes","4":"91.2"},{"1":"Mississippi","2":"4","3":"no","4":"52.5"},{"1":"Missouri","2":"7","3":"no","4":"79.6"},{"1":"Montana","2":"8","3":"no","4":"81.4"},{"1":"Nebraska","2":"7","3":"no","4":"83.8"},{"1":"Nevada","2":"9","3":"yes","4":"90.1"},{"1":"New Hampshire","2":"1","3":"no","4":"84.1"},{"1":"New Jersey","2":"2","3":"no","4":"80.0"},{"1":"New Mexico","2":"6","3":"yes","4":"87.8"},{"1":"New York","2":"2","3":"no","4":"82.2"},{"1":"North Carolina","2":"4","3":"no","4":"90.8"},{"1":"North Dakota","2":"8","3":"yes","4":"96.9"},{"1":"Ohio","2":"5","3":"yes","4":"83.8"},{"1":"Oklahoma","2":"6","3":"yes","4":"91.4"},{"1":"Oregon","2":"10","3":"yes","4":"94.8"},{"1":"Pennsylvania","2":"3","3":"yes","4":"86.7"},{"1":"Rhode Island","2":"1","3":"yes","4":"85.9"},{"1":"South Carolina","2":"4","3":"yes","4":"68.4"},{"1":"South Dakota","2":"8","3":"yes","4":"87.2"},{"1":"Tennessee","2":"4","3":"yes","4":"91.4"},{"1":"Texas","2":"6","3":"yes","4":"84.3"},{"1":"Utah","2":"8","3":"yes","4":"94.3"},{"1":"Vermont","2":"1","3":"no","4":"79.7"},{"1":"Virginia","2":"3","3":"yes","4":"85.6"},{"1":"Washington","2":"10","3":"no","4":"86.2"},{"1":"West Virginia","2":"3","3":"no","4":"81.3"},{"1":"Wisconsin","2":"5","3":"no","4":"82.2"},{"1":"Wyoming","2":"8","3":"no","4":"71.1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-
-</div>
+    ## # A tibble: 51 × 4
+    ##    geography            HHS_geography hep_a_required coverage_estimate
+    ##    <chr>                <chr>         <chr>                      <dbl>
+    ##  1 Alabama              4             no                          83  
+    ##  2 Alaska               10            yes                         89  
+    ##  3 Arizona              9             some                        85.9
+    ##  4 Arkansas             6             yes                         84.2
+    ##  5 California           9             no                          88.9
+    ##  6 Colorado             8             no                          88.4
+    ##  7 Connecticut          1             yes                         87.6
+    ##  8 Delaware             3             no                          85.7
+    ##  9 District of Columbia 3             yes                         84.2
+    ## 10 Florida              4             no                          75.4
+    ## # ℹ 41 more rows
 
 The following contingency table shows how the number of states with
 vaccine requirements vary between regions.
