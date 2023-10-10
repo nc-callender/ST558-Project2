@@ -163,8 +163,12 @@ ggplot(map_data_2, aes (x = long, y = lat, group = group)) +
 #Reorder legend
       scale_fill_discrete(breaks = c('1','2','3','4','5','6','7','8','9','10')) 
 ```
+<<<<<<< HEAD
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+=======
+![unnamed-chunk-3-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/3904ab52-e831-4a67-8748-7a2fbdc98ff9)
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 # Accessing Data
 
@@ -966,7 +970,11 @@ graph_2 + geom_violin(fill = 'gray') +
           subtitle = "by if State Requires Vaccination for Secondary School Attendance")
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+=======
+![unnamed-chunk-7-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/68866a2d-a9fc-4e58-a1d9-2500ae479466)
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 The violin plots show a considerable difference in vaccination coverage
 rates between states with and without a vaccination requirement for
@@ -1009,7 +1017,12 @@ graph_3 + geom_boxplot(fill = 'gray') +
           subtitle = "with Insurance in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+=======
+![unnamed-chunk-8-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/8d74a725-6b7c-42b1-ac88-bfeb3a812272)
+
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 ``` r
 #Select data relating to poverty
@@ -1031,8 +1044,12 @@ graph_4 + geom_boxplot(fill = 'gray') +
           title = "Figure 4. Variation in Coverage Estimate for Meningococcal Disease",
           subtitle = "with Poverty Level in States without Vaccination Requirements for Secondary School Attendance")
 ```
+![unnamed-chunk-9-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/25cc680c-45e3-4e76-972c-f0206931f65d)
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+=======
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 ``` r
 #Select data relating to race/ethnicity
@@ -1055,7 +1072,12 @@ graph_5 + geom_boxplot(fill = 'gray') +
           subtitle = "with Race/Ethnicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+=======
+![unnamed-chunk-10-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/d5ae57e5-ae70-48ac-8b1a-aee0a110d390)
+
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 ``` r
 #Select data relating to urbanicity
@@ -1078,7 +1100,11 @@ graph_6 + geom_boxplot(fill = 'gray') +
           subtitle = "with Urbanicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+=======
+![unnamed-chunk-11-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/66b2d699-930e-4337-8f85-d01c83ec71f1)
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 Comparing these four boxplots, it appears that of the factors studied-
 insurance coverage has the largest impact on vaccination. Specifically
@@ -1114,7 +1140,11 @@ graph_7 + geom_point(aes(color = as.factor(vaccine))) +
                                 'Region 7','Region 8','Region 9','Region 10'))
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+=======
+![unnamed-chunk-12-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/6112950b-058e-4fb2-8922-5a014d589145)
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 After inspection of Graph 7, Hepatitis A was chosen for further
 examination. Function 3, `vaccines_state_eval_function` was used to
@@ -1353,7 +1383,12 @@ graph_8 <- ggplot() +
 graph_8
 ```
 
+<<<<<<< HEAD
 ![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+=======
+![unnamed-chunk-15-1](https://github.com/nc-callender/ST558-Project2/assets/143463411/5a613b1a-2c9c-4249-84af-0e5cbd9327fe)
+
+>>>>>>> e2fcb32c52f9110cc19990bb49ead3eb2efa41e3
 
 There seems to be a good deal of variability in coverage for HPV among
 the states without a vaccine mandate for HPV. The data was evaluated to
