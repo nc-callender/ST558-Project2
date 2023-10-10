@@ -3,9 +3,9 @@ title: "Project 2"
 author: "Yvette Callender"
 date: "`r Sys.Date()`"
 output: 
-  html_document:
+  github_document:
     toc: true
-    df_print: paged
+
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 rmarkdown:: render("C:/Users/Office/Desktop/NCSU Fall 2023/ST558-Project2/Project 2.Rmd",
                    output_file ="C:/Users/Office/Desktop/NCSU Fall 2023/ST558-Project2/README_files/README.md",
                    output_format = "github_document",
-                   output_options = list( toc=TRUE, df_print="kable"))
+                   output_options = (toc=TRUE))
 
 ```
 # Packages used in this project
@@ -131,7 +131,6 @@ vaccine_API <- fromJSON("https://data.cdc.gov/resource/ee48-w5t6.json?$limit=500
 #Verify the number of rows is less than 50000 (that the limit was sufficient to retrieve the complete dataset).
 
 nrow(vaccine_API)
-vaccine_API
 
 ```
 
@@ -181,7 +180,7 @@ colnames(demo_function_1a) <-c ("geography",  "cov_est_female", "cov_est_male")
 #Add a column for difference between genders
 demo_function_1a <- mutate(demo_function_1a, "Diff" = cov_est_female-cov_est_male)
 
-demo_function_1a
+knitr::kable(demo_function_1a)
 
 ```
 
@@ -232,7 +231,7 @@ colnames(demo_function_2a) <-c ("geography",  "cov_est_female", "cov_est_male")
 
 #Add a column for difference between genders
 demo_function_2a <- mutate(demo_function_2a, "Diff" = cov_est_female-cov_est_male)
-demo_function_2a
+knitr::kable(demo_function_2a)
 ```
 
 *States that have more than a 15% difference (absolute) in coverage rates (with a higher percent of females being vaccinated) include New Jersey, Tennessee, Virginia, and West Virginia.  At the other extreme, Kentucky has more than a 15% difference (absolute) in coverage with a higher percent of males vaccinated.  The quick look at the data suggests that further study of the gender differences in HPV vaccine coverage correlated with states might  be interesting.*  
@@ -308,7 +307,7 @@ Presentation of the results from this function call transformed into a user-frie
 demo_function_3a <- demo_function_3 %>%
     select(geography, vaccine, coverage_estimate) %>% 
     pivot_wider(names_from = vaccine, values_from = coverage_estimate)
-demo_function_3a
+knitr::kable(demo_function_3a)
 ```
 
 *Based on this function call, it appears that vaccination coverage for Hepatitis A is lower than the other vaccines.  
@@ -398,7 +397,7 @@ A demonstration of the function (`vaccines_state_eval_function`) is given below.
 ```{r, demonstration of Function 4 , message=TRUE, warning=TRUE}
 demo_function_4 <- vaccines_state_eval_function(year_of_interest = "2021", state_of_interest = "North Carolina")
 
-demo_function_4
+knitr::kable(demo_function_4)
 ```
 
 
@@ -481,7 +480,7 @@ demo_function_5a <- demo_function_5 %>%
     select(geography, dimension, coverage_estimate) %>%
     pivot_wider(names_from = dimension, values_from = coverage_estimate)
 
-demo_function_5a
+knitr::kable(demo_function_5a)
 ```
 
 
@@ -512,7 +511,7 @@ coverage_comparison_1 <- vaccines_4_year_function () %>%
 
 colnames(coverage_comparison_1) <- c("geography", "Meningococcal_conjugate", "Tdap")
 
-coverage_comparison_1
+knitr::kable(coverage_comparison_1)
 ```
 
 The summaries for the two vaccines were printed out.  
@@ -551,7 +550,7 @@ meningococcal_regulation_analysis <- coverage_comparison_1 %>%
 #Set the regulatory status to be a factor
 meningococcal_regulation_analysis$mening_req <-as.factor(meningococcal_regulation_analysis$mening_req)
 
-meningococcal_regulation_analysis
+knitr::kable(meningococcal_regulation_analysis)
 ```
 
 This data set can be visualized using a violin plot.  
@@ -641,7 +640,7 @@ graph_5 + geom_boxplot(fill = 'gray') +
     labs( x = "Race/Ethnicity",
           y = "Vaccination Coverage Estimate",
           title = "Figure 5. Variation in Coverage Estimate for Meningococcal Disease ",
-          subtitle = "with Race/Ethnicity inStates without Vaccination Requirements for Secondary School Attendance")
+          subtitle = "with Race/Ethnicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
 ```{r, compare menigococcal using urbanicity}
@@ -663,7 +662,7 @@ graph_6 + geom_boxplot(fill = 'gray') +
     labs( x = "Urbanicity",
           y = "Vaccination Coverage Estimate",
           title = "Figure 6. Variation in Coverage Estimate for Meningococcal Disease ",
-          subtitle = "with Urbanicity inStates without Vaccination Requirements for Secondary School Attendance")
+          subtitle = "with Urbanicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
 
@@ -735,7 +734,7 @@ hepatitis_a <- vaccines_state_eval_function(vaccine_of_interest = "Hep A",
     #Reorder columns
     select(geography, HHS_geography, hep_a_required, coverage_estimate)
     
-hepatitis_a
+knitr::kable(hepatitis_a)
 
 ```
 
