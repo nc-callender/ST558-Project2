@@ -966,7 +966,7 @@ graph_2 + geom_violin(fill = 'gray') +
           subtitle = "by if State Requires Vaccination for Secondary School Attendance")
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/violin%20plot-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/violin_plot-1.png)<!-- -->
 
 The violin plots show a considerable difference in vaccination coverage
 rates between states with and without a vaccination requirement for
@@ -1009,7 +1009,7 @@ graph_3 + geom_boxplot(fill = 'gray') +
           subtitle = "with Insurance in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare%20menigococcal%20using%20insurance-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare_menigococcal_using_insurance-1.png)<!-- -->
 
 ``` r
 #Select data relating to poverty
@@ -1032,7 +1032,7 @@ graph_4 + geom_boxplot(fill = 'gray') +
           subtitle = "with Poverty Level in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare%20menigococcal%20using%20different%20dimensions-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare_menigococcal_using_different_dimensions-1.png)<!-- -->
 
 ``` r
 #Select data relating to race/ethnicity
@@ -1055,7 +1055,7 @@ graph_5 + geom_boxplot(fill = 'gray') +
           subtitle = "with Race/Ethnicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare%20menigococcal%20using%20race/ethnicity-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare_menigococcal_using_race/ethnicity-1.png)<!-- -->
 
 ``` r
 #Select data relating to urbanicity
@@ -1078,7 +1078,7 @@ graph_6 + geom_boxplot(fill = 'gray') +
           subtitle = "with Urbanicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare%20menigococcal%20using%20urbanicity-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/compare_menigococcal_using_urbanicity-1.png)<!-- -->
 
 Comparing these four boxplots, it appears that of the factors studied-
 insurance coverage has the largest impact on vaccination. Specifically
@@ -1114,7 +1114,7 @@ graph_7 + geom_point(aes(color = as.factor(vaccine))) +
                                 'Region 7','Region 8','Region 9','Region 10'))
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/Vaccine%20Coverage%20by%20Region-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/Vaccine_Coverage_by_Region-1.png)<!-- -->
 
 After inspection of Graph 7, Hepatitis A was chosen for further
 examination. Function 3, `vaccines_state_eval_function` was used to
@@ -1353,7 +1353,7 @@ graph_8 <- ggplot() +
 graph_8
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/Vaccine%20Coverage%20for%20HPV-1.png)<!-- -->
+![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/Vaccine_Coverage_for_HPV-1.png)<!-- -->
 
 There seems to be a good deal of variability in coverage for HPV among
 the states without a vaccine mandate for HPV. The data was evaluated to

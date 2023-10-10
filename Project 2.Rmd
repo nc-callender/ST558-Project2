@@ -555,7 +555,7 @@ knitr::kable(meningococcal_regulation_analysis)
 
 This data set can be visualized using a violin plot.  
 
-```{r, violin plot}
+```{r, violin_plot}
 #Violin plot comparing states with and without  requirements for secondary school attendance
 #Make base layer 
 graph_2 <- ggplot(meningococcal_regulation_analysis, aes(x = mening_req, y = Meningococcal_conjugate))
@@ -578,7 +578,7 @@ It is interesting to consider if the parental choice to vaccinate children is in
 Analyses were performed to determine if coverage estimates for meningococcal disease are affected by the factors: insurance coverage, poverty, race/ethnicity, and urbanicity.  Function 5 was used, selecting for meningococcal conjugate and the appropriate dimension, working through them consecutively.  
 Data for states with vaccination requirements for secondary school were filtered out.  The dimension data was recast as factors, and box plots were generated.
 
-```{r, compare menigococcal using insurance}
+```{r, compare_menigococcal_using_insurance}
 #Select data relating to insurance
 insurance_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Insurance Coverage",
                                                    vaccine_of_interest = "Meningococcal Conjugate") %>%
@@ -599,7 +599,7 @@ graph_3 + geom_boxplot(fill = 'gray') +
           subtitle = "with Insurance in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-```{r, compare menigococcal using different dimensions}
+```{r, compare_menigococcal_using_different_dimensions}
 
 #Select data relating to poverty
 poverty_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Poverty",
@@ -621,7 +621,7 @@ graph_4 + geom_boxplot(fill = 'gray') +
           subtitle = "with Poverty Level in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-```{r, compare menigococcal using race/ethnicity}
+```{r, compare_menigococcal_using_race/ethnicity}
 
 #Select data relating to race/ethnicity
 ethnicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Race/Ethnicity ",
@@ -643,7 +643,7 @@ graph_5 + geom_boxplot(fill = 'gray') +
           subtitle = "with Race/Ethnicity in States without Vaccination Requirements for Secondary School Attendance")
 ```
 
-```{r, compare menigococcal using urbanicity}
+```{r, compare_menigococcal_using_urbanicity}
 
 #Select data relating to urbanicity
 urbanicity_comparison_1 <- vaccines_4_year_function(dimension_type_of_interest = "Urbanicity",
@@ -673,7 +673,7 @@ Comparing these four boxplots, it appears that of the factors studied- insurance
 
 To determine which vaccines exhibited the most variation in vaccine coverage, a regional analysis was performed.  Function 3,  `vaccines_regional_eval_function` was used with the year set to 2021.  Data was then graphed as vaccination coverage versus region in Graph 7.  
 
-```{r, Vaccine Coverage by Region}
+```{r, Vaccine_Coverage_by_Region}
 #Remove row for country level
 vac_cov_region <- vaccines_regional_eval_function(year_of_interest = "2021") %>%
     filter(geography != "United States")
@@ -796,7 +796,7 @@ This table shows that variation in  whether states mandate vaccination against h
 
 Vaccination against infection with human papillomavirus is mandated by very few states/districts at this time [(Virginia, Hawaii, Rhode Island, and District of Columbia)](https://www.immunize.org/laws/hpv.asp).  An analysis was performed to evaluate the extent of variablility in coverage for HPV in the states/territories without a mandate.  Function 2 from above, `HPV_gender_eval_function_state` was used setting the `year_of_interest` to 2021.  The data was filtered to include only females and remove the data for the states with mandates. Data was then analyzed using a boxplot.  
 
-```{r, Vaccine Coverage for HPV}
+```{r, Vaccine_Coverage_for_HPV}
 
 #Create vector containing states with mandates
 states_with_HPV_mandate <- c ('Virginia', 'Hawaii', 'Rhode Island', 'District of Columbia')
