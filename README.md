@@ -164,7 +164,7 @@ ggplot(map_data_2, aes (x = long, y = lat, group = group)) +
       scale_fill_discrete(breaks = c('1','2','3','4','5','6','7','8','9','10')) 
 ```
 
-![](C:\Users\Office\Desktop\NCSUFA~1\ST558-~1\README~1/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+https://github.com/nc-callender/ST558-Project2/blob/main/README_files/figure-gfm/unnamed-chunk-3-1.pngd-chunk-3-1.png)<!-- -->
 
 # Accessing Data
 
